@@ -1,3 +1,4 @@
+
 function threeD() {
   // create the 3d scene
   const scene = new THREE.Scene();
@@ -215,7 +216,74 @@ function threeD() {
     return car;
   }
 
+  // create truck object
+  function Truck() {
+    const truck = new THREE.Group();
+    const color = vechicleColors[Math.floor(Math.random() * vechicleColors.length)];
 
+    // truck cargo textures
+    const cargo_texture_1 = new THREE.TextureLoader().load("../assets/textures/white_cargo.jpg");
+    const cargo_texture_2 = new THREE.TextureLoader().load("../assets/textures/red_cargo.jpg");
+    const cargo_texture_3 = new THREE.TextureLoader().load("../assets/textures/orange_cargo.jpg");
+    const cargo_texture_4 = new THREE.TextureLoader().load("../assets/textures/yellow_cargo.jpg");
+    const cargo_texture_5 = new THREE.TextureLoader().load("../assets/textures/blue_cargo.jpg");
+    const cargo_texture_6 = new THREE.TextureLoader().load("../assets/textures/kfc.png");
+
+    // const cargoTypes = [cargo_texture_1, cargo_texture_2, cargo_texture_3, cargo_texture_4, cargo_texture_5];
+    const cargoTypes = [cargo_texture_6];
+    // const selector = Math.floor(Math.random() * cargoTypes.length);
+
+    // base part of the truck
+    const base = new THREE.Mesh(
+      new THREE.BoxBufferGeometry(100 * zoom, 25 * zoom, 5 * zoom),
+      new THREE.MeshLambertMaterial({color: "#b4c6fc", flatShading: true})
+    );
+    base.position.z = 10 * zoom;
+    truck.add(base);
+
+    // cargo part of the truck
+    const cargo = new THREE.Mesh(
+      new THREE.BoxBufferGeometry(75 * zoom, 35 * zoom, 40 * zoom),
+      new THREE.MeshPhongMaterial({map: cargoTypes[Math.floor(Math.random() * cargoTypes.length)]})
+    );
+    cargo.position.x = 15 * zoom;
+    cargo.position.z = 30 * zoom;
+    cargo.castShadow = true;
+    cargo.receiveShadow = true;
+    truck.add(cargo);
+
+    // cabin part of the truck
+    const cabin = new THREE.Mesh(
+      new THREE.BoxBufferGeometry(25 * zoom, 30 * zoom, 30 * zoom),
+      [
+        new THREE.MeshPhongMaterial({color, flatShading: true}), // back
+        new THREE.MeshPhongMaterial({color, flatShading: true, map: truckFrontTexture}),
+        new THREE.MeshPhongMaterial({color, flatShading: true, map: truckRightSideTexture}),
+        new THREE.MeshPhongMaterial({color, flatShading: true, map: truckLeftSideTexture}),
+        new THREE.MeshPhongMaterial({color, flatShading: true}), // top
+        new THREE.MeshPhongMaterial({color, flatShading: true}) // bottom
+      ]
+    );
+    cabin.position.x = -40 * zoom;
+    cabin.position.z = 20 * zoom;
+    cabin.castShadow = true;
+    cabin.receiveShadow = true;
+    truck.add(cabin);
+
+    const frontWheel = new Wheel();
+    frontWheel.position.x = -38 * zoom;
+    truck.add(frontWheel);
+
+    const middleWheel = new Wheel();
+    middleWheel.position.x = -10 * zoom;
+    truck.add(middleWheel);
+
+    const backWheel = new Wheel();
+    backWheel.position.x = 30 * zoom;
+    truck.add(backWheel);
+
+    return truck;
+  }
 }
 
 exports = {
