@@ -157,6 +157,15 @@ function threeD() {
     return new THREE.CanvasTexture(canvas);
   }
 
+  function Wheel() {
+    const wheel = new THREE.Mesh(
+      new THREE.CylinderGeometry(6 * zoom, 6 * zoom, 33 * zoom, 10, 10),
+      // new THREE.BoxBufferGeometry(12 * zoom, 33 * zoom, 12 * zoom),
+      new THREE.MeshLambertMaterial({color: "#333333", flatShading: true})
+    );
+    wheel.position.z = 6 * zoom;
+    return wheel;
+  }
 
 }
 
