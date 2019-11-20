@@ -128,6 +128,35 @@ function threeD() {
   }).filter((lane) => lane.index >= 0);
 
 
+  // Textures
+  const carFrontTexture = new Texture(300, 40, [{x: 0, y: 0, w: 200, h: 250}]);
+  const carBackTexture = new Texture(300, 40, [{x: 100, y: 0, w: 250, h: 60}]);
+  // const carRightSideTexture = new Texture(110, 40, [{x: 10, y: 0, w: 50, h: 30}, {x: 70, y: 0, w: 30, h: 30}]);
+  // const carLeftSideTexture = new Texture(110, 40, [{x: 10, y: 10, w: 50, h: 30}, {x: 70, y: 10, w: 30, h: 30}]);
+  const carRightSideTexture = new Texture(300, 40, [{x: 30, y: 0, w: 100, h: 30}, {x: 160, y: 0, w: 100, h: 30}]);
+  const carLeftSideTexture = new Texture(300, 40, [{x: 30, y: 10, w: 100, h: 30}, {x: 160, y: 10, w: 100, h: 30}]);
+
+
+  const truckFrontTexture = new Texture(300, 30, [{x: 50, y: 0, w: 500, h: 100}]);
+  const truckRightSideTexture = new Texture(300, 20, [{x: 40, y: 10, w: 230, h: 10}]);
+  const truckLeftSideTexture = new Texture(300, 20, [{x: 40, y: 0, w: 230, h: 10}]);
+
+  // create texture
+  function Texture(width, height, rects) {
+    const canvas = document.createElement("canvas");
+    canvas.classList.add("canvas");
+    canvas.height = height;
+    const context = canvas.getContext("2d");
+    context.fillStyle = "#ffffff";
+    context.fillRect(0, 0, width, height);
+    // context.fillStyle = "rgba(0,0,0,0.6)";
+    context.fillStyle = "#4c4c4c";
+    rects.forEach(rect => {
+      context.fillRect(rect.x, rect.y, rect.w, rect.h);
+    });
+    return new THREE.CanvasTexture(canvas);
+  }
+
 
 }
 
