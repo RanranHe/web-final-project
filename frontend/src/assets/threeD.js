@@ -157,6 +157,7 @@ function threeD() {
     return new THREE.CanvasTexture(canvas);
   }
 
+  // create wheel object for car and truck
   function Wheel() {
     const wheel = new THREE.Mesh(
       new THREE.CylinderGeometry(6 * zoom, 6 * zoom, 33 * zoom, 10, 10),
@@ -166,6 +167,54 @@ function threeD() {
     wheel.position.z = 6 * zoom;
     return wheel;
   }
+
+  // create car object
+  function Car() {
+    const car = new THREE.Group();
+    const color = vechicleColors[Math.floor(Math.random() * vechicleColors.length)];
+
+    // main body
+    const main = new THREE.Mesh(
+      new THREE.BoxBufferGeometry(60 * zoom, 30 * zoom, 15 * zoom),
+      new THREE.MeshPhongMaterial({color, flatShading: true})
+    );
+    main.position.z = 12 * zoom;
+    main.castShadow = true;
+    main.receiveShadow = true;
+    car.add(main);
+
+    // cabin part
+    const cabin = new THREE.Mesh(
+      new THREE.BoxBufferGeometry(33 * zoom, 24 * zoom, 12 * zoom),
+      [
+        new THREE.MeshPhongMaterial({color: "#cccccc", flatShading: true}),
+        new THREE.MeshPhongMaterial({color: "#cccccc", flatShading: true, map: carFrontTexture}),
+        new THREE.MeshPhongMaterial({color: "#cccccc", flatShading: true, map: carRightSideTexture}),
+        new THREE.MeshPhongMaterial({color: "#cccccc", flatShading: true, map: carLeftSideTexture}),
+        new THREE.MeshPhongMaterial({color: "#cccccc", flatShading: true}), // top
+        new THREE.MeshPhongMaterial({color: "#cccccc", flatShading: true}) // bottom
+      ]
+    );
+    cabin.position.x = 6 * zoom;
+    cabin.position.z = 25.5 * zoom;
+    cabin.castShadow = true;
+    cabin.receiveShadow = true;
+    car.add(cabin);
+
+    const frontWheel = new Wheel();
+    frontWheel.position.x = -18 * zoom;
+    car.add(frontWheel);
+
+    const backWheel = new Wheel();
+    backWheel.position.x = 18 * zoom;
+    car.add(backWheel);
+
+    car.castShadow = true;
+    car.receiveShadow = false;
+
+    return car;
+  }
+
 
 }
 
