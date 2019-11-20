@@ -1,3 +1,4 @@
+console.log("3d");
 threeD();
 function threeD() {
   const scene = new THREE.Scene();
