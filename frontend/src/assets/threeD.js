@@ -284,6 +284,31 @@ function threeD() {
 
     return truck;
   }
+
+  // road object
+  function Road() {
+    const road = new THREE.Group();
+
+    const createSection = color => new THREE.Mesh(
+      new THREE.BoxGeometry(boardWidth * zoom, positionWidth * zoom, 10),
+      new THREE.MeshPhongMaterial({color: color, opacity: 0.4})
+    );
+
+    // const middle = createSection("#454A59");
+    const middle = createSection("#dd7222");
+    middle.receiveShadow = true;
+    road.add(middle);
+
+    const left = createSection("#393D49");
+    left.position.x = -boardWidth * zoom;
+    road.add(left);
+
+    const right = createSection("#393D49");
+    right.position.x = boardWidth * zoom;
+    road.add(right);
+
+    return road;
+  }
 }
 
 exports = {
