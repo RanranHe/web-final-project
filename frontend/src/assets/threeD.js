@@ -363,7 +363,32 @@ function threeD() {
     }
   }
 
+  // do the animation
+  function animate(timestamp) {
+    requestAnimationFrame(animate);
 
+    if (!previousTimestamp) previousTimestamp = timestamp;
+    const delta = timestamp - previousTimestamp;
+    previousTimestamp = timestamp;
+
+    // Animate cars and trucks moving on the lane
+    lanes.forEach(lane => {
+      if (lane.type === 'car' || lane.type === 'truck') {
+        const aBitBeforeTheBeginingOfLane = -boardWidth * zoom / 2 - positionWidth * 2 * zoom;
+        const aBitAfterTheEndOFLane = boardWidth * zoom / 2 + positionWidth * 2 * zoom;
+        lane.vechicles.forEach(vechicle => {
+          if (lane.direction) {
+            vechicle.position.x = vechicle.position.x < aBitBeforeTheBeginingOfLane ? aBitAfterTheEndOFLane : vechicle.position.x -= lane.speed / 16 * delta;
+          } else {
+            vechicle.position.x = vechicle.position.x > aBitAfterTheEndOFLane ? aBitBeforeTheBeginingOfLane : vechicle.position.x += lane.speed / 16 * delta;
+          }
+        });
+      }
+    });
+    // render the scene
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(animate);
 }
 
 exports = {
