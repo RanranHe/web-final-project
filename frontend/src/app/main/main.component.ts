@@ -5,9 +5,9 @@ import {forEach} from '@angular/router/src/utils/collection';
 import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  selector: 'main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.scss']
 })
 
 export class MainComponent implements OnInit {
