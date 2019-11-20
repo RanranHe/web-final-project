@@ -309,6 +309,61 @@ function threeD() {
 
     return road;
   }
+
+  // gengerate the lane with random car or truck
+  function Lane(index) {
+    this.index = index;
+    this.type = laneTypes[Math.floor(Math.random() * 2)];
+
+    switch (this.type) {
+      case 'car' : {
+        this.mesh = new Road();
+        this.direction = index < 5;
+
+        const occupiedPositions = new Set();
+        this.vechicles = [1, 2, 3].map(() => {
+          const vechicleType = ['car', 'truck'];
+          const selector = Math.floor(Math.random() * vechicleType.length);
+          let vechicle = new Car();
+
+          let position;
+          do {
+            position = Math.floor(Math.random() * columns / 2);
+          } while (occupiedPositions.has(position));
+          occupiedPositions.add(position);
+          vechicle.position.x = (position * positionWidth * 2 + positionWidth / 2) * zoom - boardWidth * zoom / 2;
+          if (!this.direction) vechicle.rotation.z = Math.PI;
+          this.mesh.add(vechicle);
+          return vechicle;
+        });
+        this.speed = laneSpeeds[Math.floor(Math.random() * laneSpeeds.length)];
+        break;
+      }
+      case 'truck' : {
+        this.mesh = new Road();
+        this.direction = index < 5;
+
+        const occupiedPositions = new Set();
+        this.vechicles = [1, 2].map(() => {
+          const vechicle = new Truck();
+          let position;
+          do {
+            position = Math.floor(Math.random() * columns / 3);
+          } while (occupiedPositions.has(position))
+          occupiedPositions.add(position);
+          vechicle.position.x = (position * positionWidth * 3 + positionWidth / 2) * zoom - boardWidth * zoom / 2;
+          if (!this.direction) vechicle.rotation.z = Math.PI;
+          this.mesh.add(vechicle);
+          return vechicle;
+        });
+
+        this.speed = laneSpeeds[Math.floor(Math.random() * laneSpeeds.length)];
+        break;
+      }
+    }
+  }
+
+
 }
 
 exports = {
