@@ -1,24 +1,14 @@
-
+// console.log("3d");
 function threeD() {
-  // create the 3d scene
+  console.log("pass");
   const scene = new THREE.Scene();
-
-  // set up renderer
   const renderer = new THREE.WebGLRenderer({
     alpha: true,
     antialias: true
   });
 
-  // resize render while window size changed
-  window.addEventListener('resize', onResize, false);
-  function onResize() {
-    // set camera aspect
-    camera.aspect = window.innerWidth / window.innerHeight;
-    // recalculate projection matrix
-    camera.updateProjectionMatrix();
-    // set resized render size
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  }
+  // add listener to monitor window size change
+  window.addEventListener('resize', onResize, false)
 
   const distance = 500;
 
@@ -34,60 +24,30 @@ function threeD() {
   camera.position.x = initialCameraPositionX;
   camera.position.z = distance * 1.8;
 
-  // set up lights
-  hemiLight = new THREE.HemisphereLight("#ffffff", "#ffffff", 0.6);
-  scene.add(hemiLight);
-
-  dirLight = new THREE.DirectionalLight("#ffffff", 0.6);
-  dirLight.position.set(-100, -100, 200);
-  dirLight.castShadow = true;
-  scene.add(dirLight);
-
-  dirLight.shadow.mapSize.width = 2048;
-  dirLight.shadow.mapSize.height = 2048;
-  var d = 500;
-  dirLight.shadow.camera.left = -d;
-  dirLight.shadow.camera.right = d;
-  dirLight.shadow.camera.top = d;
-  dirLight.shadow.camera.bottom = -d;
-
-  backLight = new THREE.DirectionalLight("#000000", .4);
-  backLight.position.set(200, 200, 50);
-  backLight.castShadow = true;
-  scene.add(backLight);
-
   const zoom = 2;
 
-  // for the scene objects
   const positionWidth = 45;
   const columns = 17;
-
-  // size of the board
   const boardWidth = positionWidth * columns * 2;
 
-  // road lanes array
   let lanes;
 
-  // for animation
   let previousTimestamp;
 
-  const laneTypes = ['car', 'truck'];
-  const laneSpeeds = [2, 2.5, 3];
-  const vechicleColors = ["#a52523", "#bdb638", "#78b14b"];
+  // draw textures
+  const carFrontTexture = new Texture(300, 40, [{x: 0, y: 0, w: 200, h: 250}]);
+  const carBackTexture = new Texture(300, 40, [{x: 100, y: 0, w: 250, h: 60}]);
+  // const carRightSideTexture = new Texture(110, 40, [{x: 10, y: 0, w: 50, h: 30}, {x: 70, y: 0, w: 30, h: 30}]);
+  // const carLeftSideTexture = new Texture(110, 40, [{x: 10, y: 10, w: 50, h: 30}, {x: 70, y: 10, w: 30, h: 30}]);
+  const carRightSideTexture = new Texture(300, 40, [{x: 30, y: 0, w: 100, h: 30}, {x: 160, y: 0, w: 100, h: 30}]);
+  const carLeftSideTexture = new Texture(300, 40, [{x: 30, y: 10, w: 100, h: 30}, {x: 160, y: 10, w: 100, h: 30}]);
 
-  const initaliseValues = () => {
-    lanes = generateLanes();
 
-    previousTimestamp = null;
+  const truckFrontTexture = new Texture(300, 30, [{x: 50, y: 0, w: 500, h: 100}]);
+  const truckRightSideTexture = new Texture(300, 20, [{x: 40, y: 10, w: 230, h: 10}]);
+  const truckLeftSideTexture = new Texture(300, 20, [{x: 40, y: 0, w: 230, h: 10}]);
 
-    camera.position.y = initialCameraPositionY;
-    camera.position.x = initialCameraPositionX;
-  };
-  initaliseValues();
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-  // generate and add lane to the scene
+  // generate lanes total 5 lanes
   const generateLanes = () => [1, 2, 3, 4, 5].map((index) => {
     const lane = new Lane(index);
     if (index === 1) {
@@ -128,21 +88,60 @@ function threeD() {
     return lane;
   }).filter((lane) => lane.index >= 0);
 
+  const laneTypes = ['car', 'truck'];
+  const laneSpeeds = [2, 2.5, 3];
+  const vechicleColors = ["#a52523", "#bdb638", "#78b14b"];
 
-  // Textures
-  const carFrontTexture = new Texture(300, 40, [{x: 0, y: 0, w: 200, h: 250}]);
-  const carBackTexture = new Texture(300, 40, [{x: 100, y: 0, w: 250, h: 60}]);
-  // const carRightSideTexture = new Texture(110, 40, [{x: 10, y: 0, w: 50, h: 30}, {x: 70, y: 0, w: 30, h: 30}]);
-  // const carLeftSideTexture = new Texture(110, 40, [{x: 10, y: 10, w: 50, h: 30}, {x: 70, y: 10, w: 30, h: 30}]);
-  const carRightSideTexture = new Texture(300, 40, [{x: 30, y: 0, w: 100, h: 30}, {x: 160, y: 0, w: 100, h: 30}]);
-  const carLeftSideTexture = new Texture(300, 40, [{x: 30, y: 10, w: 100, h: 30}, {x: 160, y: 10, w: 100, h: 30}]);
+  const initaliseValues = () => {
+    lanes = generateLanes();
 
+    previousTimestamp = null;
 
-  const truckFrontTexture = new Texture(300, 30, [{x: 50, y: 0, w: 500, h: 100}]);
-  const truckRightSideTexture = new Texture(300, 20, [{x: 40, y: 10, w: 230, h: 10}]);
-  const truckLeftSideTexture = new Texture(300, 20, [{x: 40, y: 0, w: 230, h: 10}]);
+    camera.position.y = initialCameraPositionY;
+    camera.position.x = initialCameraPositionX;
+  };
+  initaliseValues();
 
-  // create texture
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  // adjust size while changing window size
+  function onResize() {
+    // 设置透视摄像机的长宽比
+    camera.aspect = window.innerWidth / window.innerHeight
+    // 摄像机的 position 和 target 是自动更新的，而 fov、aspect、near、far 的修改则需要重新计算投影矩阵（projection matrix）
+    camera.updateProjectionMatrix()
+    // 设置渲染器输出的 canvas 的大小
+    renderer.setSize(window.innerWidth, window.innerHeight - 200)
+  }
+  // set the size of the renderer
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  // add the scene to html
+  document.getElementById('main').appendChild(renderer.domElement);
+
+  // add lights to the scene
+  hemiLight = new THREE.HemisphereLight("#ffffff", "#ffffff", 0.6);
+  scene.add(hemiLight);
+
+  dirLight = new THREE.DirectionalLight("#ffffff", 0.6);
+  dirLight.position.set(-100, -100, 200);
+  dirLight.castShadow = true;
+  scene.add(dirLight);
+
+  dirLight.shadow.mapSize.width = 2048;
+  dirLight.shadow.mapSize.height = 2048;
+  var d = 500;
+  dirLight.shadow.camera.left = -d;
+  dirLight.shadow.camera.right = d;
+  dirLight.shadow.camera.top = d;
+  dirLight.shadow.camera.bottom = -d;
+
+  backLight = new THREE.DirectionalLight("#000000", .4);
+  backLight.position.set(200, 200, 50);
+  backLight.castShadow = true;
+  scene.add(backLight);
+
+  // generate textures
   function Texture(width, height, rects) {
     const canvas = document.createElement("canvas");
     canvas.classList.add("canvas");
@@ -158,7 +157,7 @@ function threeD() {
     return new THREE.CanvasTexture(canvas);
   }
 
-  // create wheel object for car and truck
+  // wheels for car and trucks
   function Wheel() {
     const wheel = new THREE.Mesh(
       new THREE.CylinderGeometry(6 * zoom, 6 * zoom, 33 * zoom, 10, 10),
@@ -174,7 +173,7 @@ function threeD() {
     const car = new THREE.Group();
     const color = vechicleColors[Math.floor(Math.random() * vechicleColors.length)];
 
-    // main body
+    // main body of the car
     const main = new THREE.Mesh(
       new THREE.BoxBufferGeometry(60 * zoom, 30 * zoom, 15 * zoom),
       new THREE.MeshPhongMaterial({color, flatShading: true})
@@ -184,7 +183,7 @@ function threeD() {
     main.receiveShadow = true;
     car.add(main);
 
-    // cabin part
+    // carbin part of the car
     const cabin = new THREE.Mesh(
       new THREE.BoxBufferGeometry(33 * zoom, 24 * zoom, 12 * zoom),
       [
@@ -202,6 +201,7 @@ function threeD() {
     cabin.receiveShadow = true;
     car.add(cabin);
 
+    // wheels
     const frontWheel = new Wheel();
     frontWheel.position.x = -18 * zoom;
     car.add(frontWheel);
@@ -218,22 +218,22 @@ function threeD() {
 
   // create truck object
   function Truck() {
+
     const truck = new THREE.Group();
     const color = vechicleColors[Math.floor(Math.random() * vechicleColors.length)];
 
     // truck cargo textures
-    const cargo_texture_1 = new THREE.TextureLoader().load("../assets/textures/white_cargo.jpg");
-    const cargo_texture_2 = new THREE.TextureLoader().load("../assets/textures/red_cargo.jpg");
-    const cargo_texture_3 = new THREE.TextureLoader().load("../assets/textures/orange_cargo.jpg");
-    const cargo_texture_4 = new THREE.TextureLoader().load("../assets/textures/yellow_cargo.jpg");
-    const cargo_texture_5 = new THREE.TextureLoader().load("../assets/textures/blue_cargo.jpg");
-    const cargo_texture_6 = new THREE.TextureLoader().load("../assets/textures/kfc.png");
+    const cargo_texture_1 = new THREE.TextureLoader().load("../../../resources/textures/white_cargo.jpg");
+    const cargo_texture_2 = new THREE.TextureLoader().load("../../../resources/textures/red_cargo.jpg");
+    const cargo_texture_3 = new THREE.TextureLoader().load("../../../resources/textures/orange_cargo.jpg");
+    const cargo_texture_4 = new THREE.TextureLoader().load("../../../resources/textures/yellow_cargo.jpg");
+    const cargo_texture_5 = new THREE.TextureLoader().load("../../../resources/textures/blue_cargo.jpg");
+    const cargo_texture_6 = new THREE.TextureLoader().load("../../../resources/textures/kfc.png");
 
     // const cargoTypes = [cargo_texture_1, cargo_texture_2, cargo_texture_3, cargo_texture_4, cargo_texture_5];
     const cargoTypes = [cargo_texture_6];
     // const selector = Math.floor(Math.random() * cargoTypes.length);
 
-    // base part of the truck
     const base = new THREE.Mesh(
       new THREE.BoxBufferGeometry(100 * zoom, 25 * zoom, 5 * zoom),
       new THREE.MeshLambertMaterial({color: "#b4c6fc", flatShading: true})
@@ -241,7 +241,6 @@ function threeD() {
     base.position.z = 10 * zoom;
     truck.add(base);
 
-    // cargo part of the truck
     const cargo = new THREE.Mesh(
       new THREE.BoxBufferGeometry(75 * zoom, 35 * zoom, 40 * zoom),
       new THREE.MeshPhongMaterial({map: cargoTypes[Math.floor(Math.random() * cargoTypes.length)]})
@@ -252,7 +251,6 @@ function threeD() {
     cargo.receiveShadow = true;
     truck.add(cargo);
 
-    // cabin part of the truck
     const cabin = new THREE.Mesh(
       new THREE.BoxBufferGeometry(25 * zoom, 30 * zoom, 30 * zoom),
       [
@@ -388,6 +386,7 @@ function threeD() {
     // render the scene
     renderer.render(scene, camera);
   }
+
   requestAnimationFrame(animate);
 }
 
