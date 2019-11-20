@@ -1,4 +1,3 @@
-// console.log("3d");
 function threeD() {
   console.log("pass");
   const scene = new THREE.Scene();
