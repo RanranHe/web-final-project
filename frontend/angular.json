@@ -23,7 +23,10 @@
             "styles": [
               "src/scss/main.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/three.min.js",
+              "src/assets/threeD.js"
+            ]
           },
           "configurations": {
             "production": {
