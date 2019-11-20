@@ -1,2 +1,3 @@
-# final-project-team-tas
-final-project-team-tas created by GitHub Classroom
+## How to run
+1. Run "npm install"
+2. Run "ng serve"
