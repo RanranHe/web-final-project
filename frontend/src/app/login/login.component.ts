@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(userService: UserService) {
     this.userService = userService;
-    const user = new User('user2', 'user3', Role.USER);
-    userService.register(user);
+    // const user = new User('user2', 'user3', Role.USER);
+    // userService.register(user);
   }
 
   ngOnInit() {
