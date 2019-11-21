@@ -26,7 +26,8 @@
             ],
             "scripts": [
               "src/assets/three.min.js",
-              "src/assets/threeD.js"
+              "src/assets/threeD.js",
+              "src/assets/login.js"
             ]
           },
           "configurations": {

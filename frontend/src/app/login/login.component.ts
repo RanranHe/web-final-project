@@ -3,7 +3,7 @@ import {UserService} from '../services/userService'
 // import {Item} from '../models/item';
 // import {ItemService} from '../services/item.service';
 import {Role, User} from "../models/user";
-
+declare var formCheckValid: any;
 
 @Component({
   selector: 'login',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    formCheckValid();
   }
 
 }
