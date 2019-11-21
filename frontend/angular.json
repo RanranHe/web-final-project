@@ -21,11 +21,13 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/scss/main.scss"
+              "src/scss/main.scss",
+              "src/assets/bootstrap.min.css"
             ],
             "scripts": [
               "src/assets/three.min.js",
-              "src/assets/threeD.js"
+              "src/assets/threeD.js",
+              "src/assets/login.js"
             ]
           },
           "configurations": {
