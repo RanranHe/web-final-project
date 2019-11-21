@@ -1,9 +1,8 @@
-import {Component, OnInit, Input, Output} from '@angular/core';
-
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../services/userService'
 // import {Item} from '../models/item';
 // import {ItemService} from '../services/item.service';
-import {forEach} from '@angular/router/src/utils/collection';
-import {Observable} from 'rxjs';
+import {Role, User} from "../models/user";
 
 
 @Component({
@@ -13,8 +12,12 @@ import {Observable} from 'rxjs';
 })
 
 export class LoginComponent implements OnInit {
+  userService: UserService;
 
-  constructor() {
+  constructor(userService: UserService) {
+    this.userService = userService;
+    const user = new User('user2', 'user3', Role.USER);
+    userService.register(user);
   }
 
   ngOnInit() {

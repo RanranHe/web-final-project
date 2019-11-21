@@ -3,16 +3,16 @@ import {Restaurant} from "./restaurant";
 import {Review} from "./review";
 
 export enum Role {
-  USER, DELIVERYMAN, MANAGER, ADMIN
+  USER = 'USER', DELIVERYMAN = 'DELIVERYMAN', MANAGER = 'MANAGER', ADMIN = 'ADMIN'
 }
 
 export enum WorkerStatus {
-  FREE, BUSY
+  FREE = 'FREE', BUSY = 'BUSY'
 }
 
 export class User {
   username: string;
-  role: Role;
+  role: string;
   password: string;
   email: string;
   firstName: string;
@@ -26,10 +26,10 @@ export class User {
   income: Number;
   restaurants: Array<Restaurant>;
   // For DeliveryMan
-  status: WorkerStatus;
+  status: string;
   reviews: Array<Review>;
 
-  constructor(username: string, password: string, role: Role) {
+  constructor(username: string, password: string, role: string) {
     this.username = username;
     this.password = password;
     this.role = role;
@@ -42,7 +42,7 @@ export class User {
 }
 
 export class FaceBook {
-  id:    string;
+  id: string;
   token: string;
 
   constructor(id: string, token: string) {

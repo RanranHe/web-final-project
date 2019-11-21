@@ -3,19 +3,26 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../models/user';
 
 import {environment} from '../../environments/environment';
-import {Observable} from 'rxjs';
+import {observable, Observable} from 'rxjs';
 
 @Injectable()
-export class ItemService {
-
-  itemResource: string;
+export class UserService {
   itemResourceURL: string;
 
   // Constructor
   constructor(private http: HttpClient) {
-    this.itemResource = 'api';
-    this.itemResourceURL = `${environment.serverBaseURL}/${this.itemResource}`;
+    this.itemResourceURL = `${environment.serverBaseURL}/api/project`;
   }
+
+  // Register
+  register(user: User = null) {
+    const url = `${this.itemResourceURL}/register`;
+    const observable = this.http.post<User>(url, {username: "user121", password: "user121", role: "USER"});
+    observable.subscribe(res => {
+      console.log(res);
+    })
+  }
+
 
   // /**
   //  * Returns all items.
