@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  serverBaseURL: 'http://localhost:4000'
+  serverBaseURL: 'https://neu-food-app.herokuapp.com'
 };

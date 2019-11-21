@@ -222,12 +222,12 @@ function threeD() {
     const color = vechicleColors[Math.floor(Math.random() * vechicleColors.length)];
 
     // truck cargo textures
-    const cargo_texture_1 = new THREE.TextureLoader().load("../../../resources/textures/white_cargo.jpg");
-    const cargo_texture_2 = new THREE.TextureLoader().load("../../../resources/textures/red_cargo.jpg");
-    const cargo_texture_3 = new THREE.TextureLoader().load("../../../resources/textures/orange_cargo.jpg");
-    const cargo_texture_4 = new THREE.TextureLoader().load("../../../resources/textures/yellow_cargo.jpg");
-    const cargo_texture_5 = new THREE.TextureLoader().load("../../../resources/textures/blue_cargo.jpg");
-    const cargo_texture_6 = new THREE.TextureLoader().load("../../../resources/textures/kfc.png");
+    const cargo_texture_1 = new THREE.TextureLoader().load("../assets/textures/white_cargo.jpg");
+    const cargo_texture_2 = new THREE.TextureLoader().load("../assets/textures/red_cargo.jpg");
+    const cargo_texture_3 = new THREE.TextureLoader().load("../assets/textures/orange_cargo.jpg");
+    const cargo_texture_4 = new THREE.TextureLoader().load("../assets/textures/yellow_cargo.jpg");
+    const cargo_texture_5 = new THREE.TextureLoader().load("../assets/textures/blue_cargo.jpg");
+    const cargo_texture_6 = new THREE.TextureLoader().load("../assets/textures/kfc.png");
 
     // const cargoTypes = [cargo_texture_1, cargo_texture_2, cargo_texture_3, cargo_texture_4, cargo_texture_5];
     const cargoTypes = [cargo_texture_6];
