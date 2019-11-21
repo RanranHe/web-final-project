@@ -21,7 +21,8 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/scss/main.scss"
+              "src/scss/main.scss",
+              "src/assets/bootstrap.min.css"
             ],
             "scripts": [
               "src/assets/three.min.js",
