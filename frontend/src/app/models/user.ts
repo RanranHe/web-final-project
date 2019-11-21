@@ -3,7 +3,7 @@ import {Restaurant} from "./restaurant";
 import {Review} from "./review";
 
 export enum Role {
-  USER = 'USER', DELIVERYMAN = 'DELIVERYMAN', MANAGER = 'MANAGER', ADMIN = 'ADMIN'
+  CUSTOMER = 'USER', DELIVERYMAN = 'DELIVERYMAN', MANAGER = 'MANAGER', ADMIN = 'ADMIN'
 }
 
 export enum WorkerStatus {
