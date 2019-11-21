@@ -363,7 +363,7 @@ $color_2: #6a7dfe;
   height: 100%;
   top: 0;
   right: 0;
-  padding-right: 5px;
+  //padding-right: 5px;
   cursor: pointer;
   transition: all 0.4s;
 
@@ -450,7 +450,7 @@ $background_color_1: #fff;
     padding: 4px 25px 4px 10px;
     top: 50%;
     transform: translateY(-50%);
-    right: 0;
+    right: 20px;
     pointer-events: none;
     font-family: $font_family_1;
     color: $color_1;
@@ -472,7 +472,7 @@ $background_color_1: #fff;
     background-color: $background_color_1;
     top: 50%;
     transform: translateY(-50%);
-    right: 5px;
+    right: 25px;
   }
 
   &:hover {

@@ -1,100 +1,44 @@
 function formCheckValid() {
-  document.onmousedown = function () {
+  document.onmousedown = document.onkeydown = document.onkeyup = function () {
     const elements = Array.from(document.getElementsByClassName('input'));
     elements.forEach(ele => {
-      console.log(document.hasFocus())
-      console.log(ele.value);
-      if (ele.value !== '') ele.classList.add('has-val');
-      else ele.classList.remove('has-val');
-
-
+      if (ele.value !== '') {
+        ele.classList.add('has-val');
+      } else ele.classList.remove('has-val');
     });
-  }
 
+    const email = document.getElementById('email');
+    const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!filter.test(email.value)) {
+      email.parentElement.classList.add('alert-validate');
+    } else {
+      email.parentElement.classList.remove('alert-validate')
+    }
 
-  // [ Focus input ]*/
-  //   $('.input100').each(function(){
-  //     $(this).on('blur', function(){
-  //       if($(this).val().trim() != "") {
-  //         $(this).addClass('has-val');
-  //       }
-  //       else {
-  //         $(this).removeClass('has-val');
-  //       }
-  //     })
-  //   })
-  //
-  //
-  //   /*==================================================================
-  //   [ Validate ]*/
-  //   var input = $('.validate-input .input100');
-  //
-  //   $('.validate-form').on('submit',function(){
-  //     var check = true;
-  //
-  //     for(var i=0; i<input.length; i++) {
-  //       if(validate(input[i]) == false){
-  //         showValidate(input[i]);
-  //         check=false;
-  //       }
-  //     }
-  //
-  //     return check;
-  //   });
-  //
-  //
-  //   $('.validate-form .input100').each(function(){
-  //     $(this).focus(function(){
-  //       hideValidate(this);
-  //     });
-  //   });
-  //
-  //   function validate (input) {
-  //     if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-  //       if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-  //         return false;
-  //       }
-  //     }
-  //     else {
-  //       if($(input).val().trim() == ''){
-  //         return false;
-  //       }
-  //     }
-  //   }
-  //
-  //   function showValidate(input) {
-  //     var thisAlert = $(input).parent();
-  //
-  //     $(thisAlert).addClass('alert-validate');
-  //   }
-  //
-  //   function hideValidate(input) {
-  //     var thisAlert = $(input).parent();
-  //
-  //     $(thisAlert).removeClass('alert-validate');
-  //   }
-  //
-  //   /*==================================================================
-  //   [ Show pass ]*/
-  //   var showPass = 0;
-  //   $('.btn-show-pass').on('click', function(){
-  //     if(showPass == 0) {
-  //       $(this).next('input').attr('type','text');
-  //       $(this).find('i').removeClass('zmdi-eye');
-  //       $(this).find('i').addClass('zmdi-eye-off');
-  //       showPass = 1;
-  //     }
-  //     else {
-  //       $(this).next('input').attr('type','password');
-  //       $(this).find('i').addClass('zmdi-eye');
-  //       $(this).find('i').removeClass('zmdi-eye-off');
-  //       showPass = 0;
-  //     }
-  //
-  //   });
-  //
-  //
-  // })(jQuery);
+    const pass = document.getElementById('pass');
+    const passV = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    if (!pass.value.match(passV)) {
+      pass.parentElement.classList.add('alert-validate')
+    } else {
+      pass.parentElement.classList.remove('alert-validate')
+    }
+  };
+
+  let showPass = 0;
+  document.getElementById('showPass').onclick = function () {
+    const pass = document.getElementById('showPass');
+    if (showPass === 0) {
+      document.getElementById('pass').setAttribute('type', 'text');
+      pass.classList.remove("fa-eye-slash");
+      pass.classList.add("fa-eye");
+      showPass = 1;
+    } else {
+      document.getElementById('pass').setAttribute('type', 'password');
+      pass.classList.remove('fa-eye');
+      pass.classList.add("fa-eye-slash");
+      showPass = 0;
+    }
+  };
 }
 
 exports = {

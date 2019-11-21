@@ -22,7 +22,8 @@
             ],
             "styles": [
               "src/scss/main.scss",
-              "src/assets/bootstrap.min.css"
+              "src/assets/bootstrap.min.css",
+              "src/assets/fonts/font-awesome-4.7.0/css/font-awesome.css"
             ],
             "scripts": [
               "src/assets/three.min.js",
