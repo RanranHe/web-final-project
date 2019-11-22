@@ -59,8 +59,16 @@ function checkValid() {
   return getValidation();
 }
 
+function removeAlerts() {
+  const email = document.getElementById('email');
+  const pass = document.getElementById('pass');
+  email.parentElement.classList.remove('alert-validate');
+  pass.parentElement.classList.remove('alert-validate');
+}
+
 exports = {
   formTextControl,
-  checkValid
+  checkValid,
+  removeAlerts
 };
 

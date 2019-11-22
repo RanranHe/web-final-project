@@ -316,10 +316,7 @@ $font_family_2: Poppins-Regular;
     height: 2px;
     transition: all 0.4s;
     background: #cd2a1f;
-    background: -webkit-linear-gradient(left, #ffcc33, #339933);
-    background: -o-linear-gradient(left, #ffcc33, #339933);
-    background: -moz-linear-gradient(left, #ffcc33, #339933);
-    background: linear-gradient(left, #ffff6b, #489900);
+    background: linear-gradient(to right, #ffff6b, #489900);
   }
 
   &::after {
