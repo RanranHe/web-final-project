@@ -32,18 +32,39 @@ export class LoginComponent implements OnInit {
   // if username and password are valid
   // TODO: link checkUserCredentials service
   directToHomePage() {
-    // if (checkValid()) {
+    const obs = this.login();
+    obs.subscribe(res => {
+      if (res) {
+        this.router.navigate(['']);
+      }
+    })
+    // this.login().subscribe(res => {
+    //   console.log(res);
+    // });
+    // console.log(this.authenticationService.isLoggedIn())
+
+    // user.subscribe(res=>console.log(res))
+    // console.log(user);
+    // const currentUser = this.authenticationService.currentUserValue;
+    // console.log(currentUser);
+    // if (email === currentUser.username) {
     //   this.router.navigate(['']);
-    // } else {
-    //   return;
     // }
-    this.login();
+    // if (user) {
+    //   this.router.navigate(['']);
+    // }
+    // // if (checkValid()) {
+    // //   this.router.navigate(['']);
+    // // } else {
+    // //   return;
+    // // }
+    // this.login();
   }
 
   login() {
     const email = this.itemForm.get('email').value;
     const pass = this.itemForm.get('pass').value;
-    this.authenticationService.login(email, pass);
+    return this.authenticationService.login(email, pass);
   }
 
   ngOnInit() {
