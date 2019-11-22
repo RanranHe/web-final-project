@@ -1,9 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../services/userService'
+import {Router} from '@angular/router';
 // import {Item} from '../models/item';
 // import {ItemService} from '../services/item.service';
 import {Role, User} from "../models/user";
-declare var formCheckValid: any;
+
+declare var formTextControl: any;
+declare var checkValid: any;
+declare var removeAlerts: any;
 
 @Component({
   selector: 'login',
@@ -14,14 +18,20 @@ declare var formCheckValid: any;
 export class LoginComponent implements OnInit {
   userService: UserService;
 
-  constructor(userService: UserService) {
+  constructor(userService: UserService, private router: Router) {
     this.userService = userService;
-    // const user = new User('user2', 'user3', Role.USER);
-    // userService.register(user);
+  }
+
+  directToHomePage() {
+    if (checkValid()) {
+      this.router.navigate(['']);
+    } else {
+      return;
+    }
   }
 
   ngOnInit() {
-    formCheckValid();
+    formTextControl();
   }
 
 }
