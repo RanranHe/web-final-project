@@ -14,6 +14,7 @@ import {LoginComponent} from './login/login.component'
 
 // Services
 import {UserService} from './services/userService';
+import {AuthenticationService} from './services/authenticationService';
 
 // Routes
 import { appRoutes } from './route';
@@ -35,7 +36,7 @@ import { appRoutes } from './route';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [UserService],
+  providers: [UserService, AuthenticationService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

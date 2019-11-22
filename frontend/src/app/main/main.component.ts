@@ -4,6 +4,7 @@ import {Component, OnInit, Input, Output} from '@angular/core';
 // import {ItemService} from '../services/item.service';
 import {forEach} from '@angular/router/src/utils/collection';
 import {Observable} from 'rxjs';
+import {AuthenticationService} from "../services/authenticationService";
 declare var threeD: any;
 
 @Component({
@@ -13,8 +14,12 @@ declare var threeD: any;
 })
 
 export class MainComponent implements OnInit {
+  authenticationService: AuthenticationService;
 
-  constructor() {
+  constructor(authenticationService: AuthenticationService) {
+    this.authenticationService = authenticationService;
+    const currentUser = this.authenticationService.currentUserValue;
+    console.log(currentUser);
   }
 
   ngOnInit() {

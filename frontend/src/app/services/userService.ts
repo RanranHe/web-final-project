@@ -7,16 +7,16 @@ import {observable, Observable} from 'rxjs';
 
 @Injectable()
 export class UserService {
-  itemResourceURL: string;
+  resourceURL: string;
 
   // Constructor
   constructor(private http: HttpClient) {
-    this.itemResourceURL = `${environment.serverBaseURL}/api/project`;
+    this.resourceURL = `${environment.serverBaseURL}/api/project`;
   }
 
   // Register
   register(user: User = null) {
-    const url = `${this.itemResourceURL}/register`;
+    const url = `${this.resourceURL}/register`;
     const observable = this.http.post<User>(url, {username: "user121", password: "user121", role: "USER"});
     observable.subscribe(res => {
       console.log(res);
