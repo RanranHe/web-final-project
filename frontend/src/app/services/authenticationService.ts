@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {BehaviorSubject, observable, Observable} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 
 import {User} from '../models/user';
 import {environment} from "../../environments/environment";
+import {error} from "selenium-webdriver";
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
@@ -18,29 +19,22 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
+  // get current login user info
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
 
+  // Login service
   login(username: string, password: string) {
     const url = `${this.resourceURL}/login`;
-    const observable = this.http.post<any>(url, {username, password});
-    observable.subscribe(user => {
-      if (user) {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-      }
-    })
-    // .pipe(map(user => {
-    //   // login successful if there's a jwt token in the response
-    //   if (user) {
-    //     // store user details and jwt token in local storage to keep user logged in between page refreshes
-    //     localStorage.setItem('currentUser', JSON.stringify(user));
-    //     this.currentUserSubject.next(user);
-    //   }
-    //   return user;
-    // }));
+    this.http.post<any>(url, {username, password})
+      .subscribe((user) => {
+        if (user) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
+        }
+      }, catchError)
   }
 
   logout() {
