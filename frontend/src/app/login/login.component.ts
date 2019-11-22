@@ -3,9 +3,11 @@ import {UserService} from '../services/userService'
 import {Router} from '@angular/router';
 import {AuthenticationService} from "../services/authenticationService";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {catchError} from "rxjs/operators";
 
 declare var formTextControl: any;
-declare var checkValid: any;
+declare var setLoginAlert: any;
+declare var removeLoginAlert: any;
 
 @Component({
   selector: 'login',
@@ -16,6 +18,7 @@ declare var checkValid: any;
 export class LoginComponent implements OnInit {
   userService: UserService;
   authenticationService: AuthenticationService;
+  isLogin = true;
 
   private itemForm: FormGroup;
 
@@ -30,35 +33,18 @@ export class LoginComponent implements OnInit {
   }
 
   // if username and password are valid
-  // TODO: link checkUserCredentials service
   directToHomePage() {
     const obs = this.login();
+    console.log(obs);
     obs.subscribe(res => {
       if (res) {
+        removeLoginAlert();
         this.router.navigate(['']);
+        return;
       }
+    }, err => {
+      catchError(setLoginAlert())
     })
-    // this.login().subscribe(res => {
-    //   console.log(res);
-    // });
-    // console.log(this.authenticationService.isLoggedIn())
-
-    // user.subscribe(res=>console.log(res))
-    // console.log(user);
-    // const currentUser = this.authenticationService.currentUserValue;
-    // console.log(currentUser);
-    // if (email === currentUser.username) {
-    //   this.router.navigate(['']);
-    // }
-    // if (user) {
-    //   this.router.navigate(['']);
-    // }
-    // // if (checkValid()) {
-    // //   this.router.navigate(['']);
-    // // } else {
-    // //   return;
-    // // }
-    // this.login();
   }
 
   login() {

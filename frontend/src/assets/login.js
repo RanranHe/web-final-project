@@ -25,6 +25,18 @@ function formTextControl() {
   };
 }
 
+function setLoginAlert() {
+  const alert = document.getElementById('alert');
+  alert.classList.add('alert');
+  alert.innerHTML="Username/password doesn't match";
+}
+
+function removeLoginAlert() {
+  const alert = document.getElementById('alert');
+  alert.classList.remove('alert');
+  alert.innerHTML="";
+}
+
 function checkValid() {
   const email = document.getElementById('email');
   const pass = document.getElementById('pass');
@@ -69,6 +81,8 @@ function removeAlerts() {
 exports = {
   formTextControl,
   checkValid,
-  removeAlerts
+  removeAlerts,
+  setLoginAlert,
+  removeLoginAlert
 };
 

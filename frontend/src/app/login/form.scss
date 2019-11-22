@@ -265,6 +265,21 @@ $font_family_2: Poppins-Regular;
     }
   }
 
+  .alert {
+    //margin-bottom: 50px;
+    display: block;
+    padding: 5px;
+    font-family: $font_family_2;
+    font-size: 14px;
+    color: red;
+    border: 1px solid red;
+    border-radius:  0;
+    line-height: 1.2;
+    text-align: center;
+
+
+  }
+
   .wrap-input {
     width: 100%;
     position: relative;

@@ -12,7 +12,6 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
   resourceURL: string;
-  user: any;
 
   constructor(private http: HttpClient) {
     this.resourceURL = `${environment.serverBaseURL}/api/project`;
@@ -25,10 +24,6 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  public get loggedData(): any {
-    return this.user;
-  }
-
   // Login service
   login(username: string, password: string) {
     const url = `${this.resourceURL}/login`;
@@ -38,27 +33,9 @@ export class AuthenticationService {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
-        return this.user = JSON.stringify(user);
       }
-    });
+    }, catchError);
     return observable;
-
-    // console.log(this.user);
-    // return observable.pipe(
-    //   // retry(3),
-    //   map(user => {
-    //     if (user) {
-    //       console.log(user);
-    //       // store user details and jwt token in local storage to keep user logged in between page refreshes
-    //       localStorage.setItem('currentUser', JSON.stringify(user));
-    //       this.currentUserSubject.next(user);
-    //       this.user = JSON.stringify(user);
-    //     }
-    //   }));
-  }
-
-  isLoggedIn() {
-    return !!this.user;
   }
 
   logout() {
