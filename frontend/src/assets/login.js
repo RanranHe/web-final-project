@@ -1,4 +1,4 @@
-function formCheckValid() {
+function formTextControl() {
   document.onmousedown = document.onkeydown = document.onkeyup = function () {
     const elements = Array.from(document.getElementsByClassName('input'));
     elements.forEach(ele => {
@@ -6,22 +6,6 @@ function formCheckValid() {
         ele.classList.add('has-val');
       } else ele.classList.remove('has-val');
     });
-
-    const email = document.getElementById('email');
-    const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    if (!filter.test(email.value)) {
-      email.parentElement.classList.add('alert-validate');
-    } else {
-      email.parentElement.classList.remove('alert-validate')
-    }
-
-    const pass = document.getElementById('pass');
-    const passV = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-    if (!pass.value.match(passV)) {
-      pass.parentElement.classList.add('alert-validate')
-    } else {
-      pass.parentElement.classList.remove('alert-validate')
-    }
   };
 
   let showPass = 0;
@@ -41,7 +25,42 @@ function formCheckValid() {
   };
 }
 
+function checkValid() {
+  const email = document.getElementById('email');
+  const pass = document.getElementById('pass');
+
+  const passV = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+  const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+  function getValidation() {
+    let check = false;
+    if (filter.test(email.value) && pass.value.match(passV)) {
+      email.parentElement.classList.remove('alert-validate');
+      pass.parentElement.classList.remove('alert-validate');
+      check = true;
+    } else {
+      if (!pass.value.match(passV)) {
+        pass.parentElement.classList.add('alert-validate')
+      }
+      if (pass.value.match(passV)) {
+        pass.parentElement.classList.remove('alert-validate')
+      }
+      if (!filter.test(email.value)) {
+        email.parentElement.classList.add('alert-validate');
+      }
+      if (filter.test(email.value)) {
+        email.parentElement.classList.remove('alert-validate');
+      }
+      check = false;
+    }
+    return check;
+  }
+
+  return getValidation();
+}
+
 exports = {
-  formCheckValid
+  formTextControl,
+  checkValid
 };
 
