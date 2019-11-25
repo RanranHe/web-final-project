@@ -18,7 +18,6 @@ declare var removeLoginAlert: any;
 export class LoginComponent implements OnInit {
   userService: UserService;
   authenticationService: AuthenticationService;
-  isLogin = true;
 
   private itemForm: FormGroup;
 
