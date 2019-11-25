@@ -3,6 +3,8 @@ import {Component, OnInit, Input, Output} from '@angular/core';
 // import {ItemService} from '../services/item.service';
 import {forEach} from '@angular/router/src/utils/collection';
 import {Observable} from 'rxjs';
+import {AuthenticationService} from "../services/authenticationService";
+import {User} from "../models/user";
 
 @Component({
   selector: 'nav-bar',
@@ -11,8 +13,23 @@ import {Observable} from 'rxjs';
 })
 
 export class NavBarComponent implements OnInit {
+  authenticationService: AuthenticationService;
+  currentUser = null;
 
-  constructor() {
+  constructor(authenticationService: AuthenticationService) {
+    this.authenticationService = authenticationService;
+    this.authenticationService.currentUser.subscribe(user => {
+      if (user) {
+        this.currentUser = user;
+      } else {
+        this.currentUser = null;
+      }
+    });
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    window.location.reload();
   }
 
   ngOnInit() {

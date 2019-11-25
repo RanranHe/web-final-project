@@ -10,9 +10,12 @@
         <h3>Food</h3>
       </a>
     </li>
-    <li class="li_login" *ngIf="!isLoggedIn">
-      <a href="/login">
+    <li class="li_login">
+      <a *ngIf="currentUser===null" href="/login">
         Login
+      </a>
+      <a *ngIf="currentUser!==null" href="#" (click)="logout()">
+        Logout
       </a>
     </li>
     <li class="li_register" *ngIf="!isLoggedIn">

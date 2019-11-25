@@ -34,16 +34,30 @@ export class LoginComponent implements OnInit {
   // if username and password are valid
   directToHomePage() {
     const obs = this.login();
-    console.log(obs);
-    obs.subscribe(res => {
-      if (res) {
+    this.authenticationService.currentUser.subscribe(user => {
+      console.log(user)
+      if (user) {
         removeLoginAlert();
         this.router.navigate(['']);
         return;
       }
-    }, err => {
-      catchError(setLoginAlert())
-    })
+      else if (user === null) {
+        console.log("hsere");
+        console.log(user);
+        setLoginAlert();
+        return;
+      }
+    });
+    // console.log(obs);
+    // obs.subscribe(res => {
+    //   if (res) {
+    //     removeLoginAlert();
+    //     this.router.navigate(['']);
+    //     return;
+    //   }
+    // }, err => {
+    //   catchError(setLoginAlert())
+    // })
   }
 
   login() {

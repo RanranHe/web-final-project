@@ -21,7 +21,11 @@ export class MainComponent implements OnInit {
   constructor(authenticationService: AuthenticationService) {
     this.authenticationService = authenticationService;
     this.authenticationService.currentUser.subscribe(user => {
-      this.currentUser = user;
+      if (user) {
+        this.currentUser = user;
+      } else {
+        this.currentUser = null;
+      }
     });
     console.log(this.currentUser);
   }
