@@ -1,10 +1,7 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
-// import {Item} from '../models/item';
-// import {ItemService} from '../services/item.service';
-import {forEach} from '@angular/router/src/utils/collection';
-import {Observable} from 'rxjs';
 import {AuthenticationService} from "../services/authenticationService";
-import {User} from "../models/user";
+
+// declare var showCart: any;
 
 @Component({
   selector: 'nav-bar',
@@ -14,17 +11,29 @@ import {User} from "../models/user";
 
 export class NavBarComponent implements OnInit {
   authenticationService: AuthenticationService;
+  isLogin: boolean;
   currentUser = null;
+  showCart = false;
 
   constructor(authenticationService: AuthenticationService) {
     this.authenticationService = authenticationService;
     this.authenticationService.currentUser.subscribe(user => {
       if (user) {
         this.currentUser = user;
+        this.isLogin = true;
       } else {
         this.currentUser = null;
+        this.isLogin = false;
       }
     });
+  }
+
+  show() {
+    if (this.showCart) {
+      this.showCart = false;
+    } else {
+      this.showCart = true;
+    }
   }
 
   logout() {
