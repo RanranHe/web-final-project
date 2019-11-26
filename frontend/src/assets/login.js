@@ -33,8 +33,10 @@ function setLoginAlert() {
 
 function removeLoginAlert() {
   const alert = document.getElementById('alert');
-  alert.classList.remove('alert');
-  alert.innerHTML="";
+  if (alert !== null) {
+    alert.classList.remove('alert');
+    alert.innerHTML="";
+  }
 }
 
 function checkValid() {

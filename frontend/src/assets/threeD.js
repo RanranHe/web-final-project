@@ -23,7 +23,7 @@ function threeD() {
   camera.position.x = initialCameraPositionX;
   camera.position.z = distance * 1.8;
 
-  const zoom = 2;
+  const zoom = 1.5;
 
   const positionWidth = 45;
   const columns = 17;

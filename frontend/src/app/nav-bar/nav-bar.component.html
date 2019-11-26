@@ -1,93 +1,138 @@
-<nav role="navigation">
-  <ul>
-    <li class="li_img">
-      <a href="/">
-        <img src="../../assets/images/navbar.png" alt="">
-      </a>
-    </li>
-    <li>
-      <a href="/">
-        <h3>Food</h3>
-      </a>
-    </li>
-    <li class="li_login" *ngIf="!isLoggedIn">
-      <a href="/login">
-        Login
-      </a>
-    </li>
-    <li class="li_register" *ngIf="!isLoggedIn">
-      <a href="#!/register">
-        Register
-      </a>
-    </li>
-  </ul>
+<nav>
+  <div class="container">
+    <ul class="navbar-left">
+      <li><a href="#">Home</a></li>
+    </ul> <!--end navbar-left -->
 
-  <div *ngIf="isLoggedIn">
-    <ul class="nav navbar-top-links navbar-right">
-      <li class="medium">
-        <div class="dropdown show">
-          <a id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-             aria-expanded="false">
-            <span class="glyphicon glyphicon-user"></span> {{username}}
-          </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="width: 200px">
-            <a href="#!/profile" class="dropdown-item bigFont">
-              <span class="glyphicon glyphicon-pencil"></span> Profile</a>
-            <br>
-            <a (click)="logOut()" class="dropdown-item bigFont">
-              <span class="glyphicon glyphicon-log-out"></span> Log Out</a>
-          </div>
-        </div>
+    <ul class="navbar-right">
+      <li *ngIf="isLogin"><a href="#">Profile</a></li>
+      <li>
+        <a *ngIf="!isLogin" href="/login">Login</a>
+        <a *ngIf="isLogin" (click)="logout()" href="#">Logout</a>
       </li>
-      <li class="medium" *ngIf="isCustomer || hasRole">
-        <a href="#!/orderList">
-          My Order
-        </a>
-      </li>
-      <li class="medium" *ngIf="isManager">
-        <a href="#!/manager">
-          Order Management
-        </a>
-      </li>
-      <li class="medium" *ngIf="isManager">
-        <a href="#!/account">
-          My Restaurants
-        </a>
-      </li>
-      <li class="medium" *ngIf="isDeliveryMan">
-        <a href="#!/delivery">
-          My Deliveries
-        </a>
-      </li>
-      <li class="medium" *ngIf="isCustomer || !hasRole">
-        <div class="dropdown show">
-          <a id="cartLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="glyphicon glyphicon-shopping-cart"></span>
-          </a>
-          <div class="dropdown-menu wideDropdown" aria-labelledby="cartLink">
-            <table class="table table-striped">
-              <thead>
-              <th>Name</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              </thead>
-              <tbody>
-              <tr *ngFor="let cartItem of cartItems">
-                <td>{{cartItem.name}}</td>
-                <td>{{cartItem.quantity}}</td>
-                <td>{{cartItem.price}}</td>
-                <td>
-                  <button (click)="deleteItem(cartItem.name)">
-                    <span class="glyphicon glyphicon-minus"></span>
-                  </button>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-            <a href="#!/orderNew" class="btn btn-danger">Check Out</a>
-          </div>
-        </div>
+      <li *ngIf="isLogin&&isCustomer"><a href="#" id="cart" (mouseover)="show()"><i class="fa fa-shopping-cart"></i> Cart <span
+        class="badge">3</span></a></li>
+    </ul> <!--end navbar-right -->
+  </div> <!--end container -->
+</nav>
+
+
+<div *ngIf="showCart" class="container" (mouseleave)="show()">
+  <div id="shopping-cart" class="shopping-cart">
+    <div class="shopping-cart-header">
+      <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
+      <div class="shopping-cart-total">
+        <span class="lighter-text">Total:</span>
+        <span class="main-color-text">$2,229.97</span>
+      </div>
+    </div> <!--end shopping-cart-header -->
+
+    <ul class="shopping-cart-items">
+      <li class="clearfix">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1"/>
+        <span class="item-name">Sony DSC-RX100M III</span>
+        <span class="item-price">$849.99</span>
+        <span class="item-quantity">Quantity: 01</span>
       </li>
     </ul>
-  </div>
-</nav>
+
+    <a href="#" class="button">Checkout</a>
+  </div> <!--end shopping-cart -->
+</div> <!--end container -->
+
+<!--<nav role="navigation">-->
+<!--<ul>-->
+<!--<li class="li_img">-->
+<!--<a href="/">-->
+<!--<img src="../../assets/images/navbar.png" alt="">-->
+<!--</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="/">-->
+<!--<h3>Food</h3>-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="li_login">-->
+<!--<a *ngIf="currentUser===null" href="/login">-->
+<!--Login-->
+<!--</a>-->
+<!--<a *ngIf="currentUser!==null" href="#" (click)="logout()">-->
+<!--Logout-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="li_register" *ngIf="!isLoggedIn">-->
+<!--<a href="#!/register">-->
+<!--Register-->
+<!--</a>-->
+<!--</li>-->
+<!--</ul>-->
+
+<!--<div *ngIf="isLoggedIn">-->
+<!--<ul class="nav navbar-top-links navbar-right">-->
+<!--<li class="medium">-->
+<!--<div class="dropdown show">-->
+<!--<a id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"-->
+<!--aria-expanded="false">-->
+<!--<span class="glyphicon glyphicon-user"></span> {{username}}-->
+<!--</a>-->
+<!--<div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="width: 200px">-->
+<!--<a href="#!/profile" class="dropdown-item bigFont">-->
+<!--<span class="glyphicon glyphicon-pencil"></span> Profile</a>-->
+<!--<br>-->
+<!--<a (click)="logOut()" class="dropdown-item bigFont">-->
+<!--<span class="glyphicon glyphicon-log-out"></span> Log Out</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--<li class="medium" *ngIf="isCustomer || hasRole">-->
+<!--<a href="#!/orderList">-->
+<!--My Order-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="medium" *ngIf="isManager">-->
+<!--<a href="#!/manager">-->
+<!--Order Management-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="medium" *ngIf="isManager">-->
+<!--<a href="#!/account">-->
+<!--My Restaurants-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="medium" *ngIf="isDeliveryMan">-->
+<!--<a href="#!/delivery">-->
+<!--My Deliveries-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="medium" *ngIf="isCustomer || !hasRole">-->
+<!--<div class="dropdown show">-->
+<!--<a id="cartLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--<span class="glyphicon glyphicon-shopping-cart"></span>-->
+<!--</a>-->
+<!--<div class="dropdown-menu wideDropdown" aria-labelledby="cartLink">-->
+<!--<table class="table table-striped">-->
+<!--<thead>-->
+<!--<th>Name</th>-->
+<!--<th>Quantity</th>-->
+<!--<th>Price</th>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--<tr *ngFor="let cartItem of cartItems">-->
+<!--<td>{{cartItem.name}}</td>-->
+<!--<td>{{cartItem.quantity}}</td>-->
+<!--<td>{{cartItem.price}}</td>-->
+<!--<td>-->
+<!--<button (click)="deleteItem(cartItem.name)">-->
+<!--<span class="glyphicon glyphicon-minus"></span>-->
+<!--</button>-->
+<!--</td>-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--<a href="#!/orderNew" class="btn btn-danger">Check Out</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</nav>-->
