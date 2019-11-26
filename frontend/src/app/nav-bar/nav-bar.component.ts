@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
 import {AuthenticationService} from "../services/authenticationService";
-import {Role} from "../models/user";
+import {Role, User} from "../models/user";
+import {Router} from "@angular/router";
 
 // declare var showCart: any;
 
@@ -11,15 +12,15 @@ import {Role} from "../models/user";
 })
 
 export class NavBarComponent implements OnInit {
-  authenticationService: AuthenticationService;
+  @Input() currentUser: User;
+
   isLogin: boolean;
-  currentUser = null;
   isCustomer = false;
   isDeliveryman = false;
   isManager = false;
   showCart = false;
 
-  constructor(authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
     this.authenticationService = authenticationService;
     this.authenticationService.currentUser.subscribe(user => {
       if (user) {
@@ -57,8 +58,11 @@ export class NavBarComponent implements OnInit {
   }
 
   logout() {
-    window.location.reload();
     this.authenticationService.logout();
+    this.isLogin=false;
+    this.isCustomer = false;
+    this.isDeliveryman = false;
+    this.isManager = false;
   }
 
   ngOnInit() {

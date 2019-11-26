@@ -10,7 +10,7 @@
         <a *ngIf="!isLogin" href="/login">Login</a>
         <a *ngIf="isLogin" (click)="logout()" href="#">Logout</a>
       </li>
-      <li *ngIf="isCustomer"><a href="#" id="cart" (mouseover)="show()"><i class="fa fa-shopping-cart"></i> Cart <span
+      <li *ngIf="isLogin&&isCustomer"><a href="#" id="cart" (mouseover)="show()"><i class="fa fa-shopping-cart"></i> Cart <span
         class="badge">3</span></a></li>
     </ul> <!--end navbar-right -->
   </div> <!--end container -->

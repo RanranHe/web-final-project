@@ -18,6 +18,7 @@ declare var removeLoginAlert: any;
 export class LoginComponent implements OnInit {
   userService: UserService;
   authenticationService: AuthenticationService;
+  currentUser = null;
 
   private itemForm: FormGroup;
 
@@ -33,21 +34,38 @@ export class LoginComponent implements OnInit {
 
   // if username and password are valid
   directToHomePage() {
-    const obs = this.login();
+    const email = this.itemForm.get('email').value;
+    const pass = this.itemForm.get('pass').value;
+    this.authenticationService.login(email, pass);
+    let check = 0;
     this.authenticationService.currentUser.subscribe(user => {
-      console.log(user)
-      if (user) {
+      console.log("user");
+      console.log(user);
+
+      removeLoginAlert();
+      if (user !== null) {
+        console.log(check+1);
         removeLoginAlert();
         this.router.navigate(['']);
         return;
       }
-      else if (user === null) {
-        console.log("hsere");
-        console.log(user);
+      if (user === null) {
+
+        console.log(check+1);
         setLoginAlert();
         return;
       }
+      removeLoginAlert();
+
+      // else if (user === null) {
+      //   console.log("hsere");
+      //   console.log(user);
+      //   setLoginAlert();
+      //   return;
+      // }
+      // return;
     });
+    console.log("hsere");
     // console.log(obs);
     // obs.subscribe(res => {
     //   if (res) {
@@ -60,17 +78,9 @@ export class LoginComponent implements OnInit {
     // })
   }
 
-  login() {
-    const email = this.itemForm.get('email').value;
-    const pass = this.itemForm.get('pass').value;
-    return this.authenticationService.login(email, pass);
-  }
-
   ngOnInit() {
     // js effects
     formTextControl();
-    const currentUser = this.authenticationService.currentUserValue;
-    console.log(currentUser);
   }
 
 }
