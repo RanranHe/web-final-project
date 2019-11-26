@@ -30,10 +30,12 @@ nav {
 
   .navbar-left {
     float: left;
+    margin-left: -20%;
   }
 
   .navbar-right {
     float: right;
+    margin-right: -15%;
   }
 
   ul {
@@ -83,6 +85,7 @@ nav {
   position: relative;
   border-radius: 3px;
   padding: 20px;
+  right: -12%;
 
 
   .shopping-cart-header {
