@@ -5,9 +5,7 @@ import {AuthenticationService} from "../services/authenticationService";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {catchError} from "rxjs/operators";
 
-declare var formTextControl: any;
-declare var setLoginAlert: any;
-declare var removeLoginAlert: any;
+declare var loginFormTextControl: any;
 
 @Component({
   selector: 'login',
@@ -51,7 +49,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // js effects
-    formTextControl();
+    loginFormTextControl();
   }
 
 }

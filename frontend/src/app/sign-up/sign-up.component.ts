@@ -4,54 +4,68 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from "../services/authenticationService";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {catchError} from "rxjs/operators";
+import {Role, User} from "../models/user";
 
-declare var formTextControl: any;
-declare var setLoginAlert: any;
-declare var removeLoginAlert: any;
+declare var signUpFormTextControl: any;
+declare var signUpcheckValid: any;
+declare var signUpExistUserAlert: any;
 
 @Component({
-  selector: 'login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss']
 })
 
 export class SignUpComponent implements OnInit {
-  userService: UserService;
-  authenticationService: AuthenticationService;
   currentUser = null;
   alert = false;
 
   private itemForm: FormGroup;
 
-  constructor(userService: UserService, authenticationService: AuthenticationService, private router: Router) {
-    this.userService = userService;
-    this.authenticationService = authenticationService;
-
+  constructor(private userService: UserService, private router: Router) {
     this.itemForm = new FormGroup({
       email: new FormControl('', Validators.required),
-      pass: new FormControl('', Validators.required)
+      pass: new FormControl('', Validators.required),
+      pass1: new FormControl('', Validators.required)
     });
   }
 
   // if username and password are valid
   directToHomePage() {
+    // in order to pass global value to a nested function
+    const userService = this.userService;
     const email = this.itemForm.get('email').value;
     const pass = this.itemForm.get('pass').value;
-    const temp = this.authenticationService.login(email, pass);
-    temp.subscribe(user => {
-      this.alert = false;
+
+    // js validation, if pass or validations, then return true;
+    // else return false;
+    const result = signUpcheckValid();
+
+    // search typed in email in database, in order to check whether it already exists.
+    this.userService.findUserByEmail(email).subscribe(user => checkAndRegisterUser(user));
+
+    // if the email already exists, show alert
+    // else register this new user
+    function checkAndRegisterUser(user) {
       if (user) {
-        this.alert = false;
-        this.router.navigate(['']);
+        // call js effects
+        signUpExistUserAlert();
+      } else {
+        if (result) {
+          // creat new user and call userService
+          const newUser = new User(email, pass, Role.CUSTOMER);
+          userService.register(newUser);
+        } else {
+          return;
+        }
       }
-    }, err => {
-      this.alert = true;
-    })
+    }
   }
+
 
   ngOnInit() {
     // js effects
-    formTextControl();
+    signUpFormTextControl();
   }
 
 }

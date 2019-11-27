@@ -16,11 +16,19 @@ export class UserService {
 
   // Register
   register(user: User = null) {
+    console.log("register")
     const url = `${this.resourceURL}/register`;
-    const observable = this.http.post<User>(url, {username: "user121", password: "user121", role: "USER"});
+    const observable = this.http.post<User>(url, {username: user.username, password: user.password, role: user.role});
     observable.subscribe(res => {
       console.log(res);
     })
+  }
+
+  // find user by email
+  findUserByEmail(email: string) : Observable<User> {
+    console.log("here find")
+    const url = `${this.resourceURL}/user?username=${email}`;
+    return this.http.get<User>(url);
   }
 
 
