@@ -24,7 +24,6 @@ export class NavBarComponent implements OnInit {
     this.authenticationService = authenticationService;
     this.authenticationService.currentUser.subscribe(user => {
       if (user) {
-        console.log(user);
         this.currentUser = user;
         this.isLogin = true;
         if (user.role === Role.DELIVERYMAN) {
@@ -45,6 +44,9 @@ export class NavBarComponent implements OnInit {
       } else {
         this.currentUser = null;
         this.isLogin = false;
+        this.isManager = false;
+        this.isDeliveryman = false;
+        this.isCustomer = false;
       }
     });
   }
