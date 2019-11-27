@@ -12,6 +12,7 @@ import {NavBarComponent} from './nav-bar/nav-bar.component'
 import {MainComponent} from './main/main.component'
 import {LoginComponent} from './login/login.component'
 import {SignUpComponent} from "./sign-up/sign-up.component";
+import {FooterComponent} from './footer/footer.component';
 
 // Services
 import {UserService} from './services/userService';
@@ -25,6 +26,7 @@ import { appRoutes } from './route';
   declarations: [
     AppComponent,
     NavBarComponent,
+    FooterComponent,
     MainComponent,
     LoginComponent,
     SignUpComponent

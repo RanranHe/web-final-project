@@ -1,0 +1,23 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+footer {
+  font: 14px/22px Poppins-Regular, serif;
+  height: 40px;
+  width: 100%;
+  position: fixed;
+  bottom:0;
+  z-index: 100;
+  padding: 10px 0 35px 0;
+  background: #F8F8F8;
+  opacity: 0.95;
+  font-size: 16px;
+  color: #777777;
+
+  span {
+    margin-left: 5%;
+  }
+}

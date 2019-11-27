@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.alert = false;
       if (user) {
         this.alert = false;
-        this.router.navigate(['']);
+        this.router.navigate(['/signup']);
       }
     }, err => {
       this.alert = true;
