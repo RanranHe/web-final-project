@@ -1,9 +1,12 @@
 $main-color: #6394F8;
 $light-text: #ABB0BE;
 
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
-
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../../assets/fonts/poppins/Poppins-Regular.ttf');
+}
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -18,25 +21,23 @@ $light-text: #ABB0BE;
 }
 
 nav {
-  font: 14px/22px "Lato", Arial, sans-serif;
   height: 40px;
   width: 100%;
   position: fixed;
-  z-index: 100;
+  z-index: 10;
   padding: 10px 0 35px 0;
   background: #F8F8F8;
   opacity: 0.95;
   font-size: 16px;
+  font-family: Poppins-Regular, serif;
 
   .navbar-left {
 
     float: left;
-    //margin-left: -20%;
   }
 
   .navbar-right {
     float: right;
-    //margin-right: -15%;
   }
 
   ul {
@@ -91,8 +92,7 @@ nav {
   position: relative;
   border-radius: 3px;
   padding: 20px;
-  right: -12%;
-
+  z-index: 10;
 
   .shopping-cart-header {
     border-bottom: 1px solid #E8E8E8;

@@ -1,26 +1,30 @@
 <div class="login">
   <div class="login-container">
-    <!--<div class="closeIcon"><a href="">&#10006;</a></div>-->
     <div class="login-wrap">
       <form class="login-form validate-form" [formGroup]="itemForm" (submit)="directToHomePage()">
 					<span class="title p-b-26">
 						Welcome
 					</span>
-        <span *ngIf="alert" class="alert" id='alert'>Username/password doesn't match</span>
-        <!--<span id='alert' class="alert">Username/password doesn't match</span>-->
         <span class="title p-b-48"><i class="zmdi zmdi-font"></i></span>
 
+        <!--First Name-->
+        <div class="wrap-input validate-input" data-validate="Email address not valid">
+          <input id='first' class="input" type="text" name="first" formControlName="firsr">
+          <span class="focus-input" data-placeholder="First Name*"></span>
+        </div>
+
+        <!--Last Name-->
+        <div class="wrap-input validate-input" data-validate="Email address not valid">
+          <input id='last' class="input" type="text" name="last" formControlName="last">
+          <span class="focus-input" data-placeholder="Last Name*"></span>
+        </div>
+
+        <!--Username-->
         <div class="wrap-input validate-input" data-validate="Email address not valid">
           <input id='email' class="input" type="text" name="email" formControlName="email">
           <span class="focus-input" data-placeholder="Email"></span>
         </div>
 
-        <div class="wrap-input validate-input"
-             data-validate="Password should be 6-20 digits and contain number, uppercase and lowercase">
-          <span class="btn-show-pass"><i id="showPass" class="fa fa-eye-slash"></i></span>
-          <input id='pass' class="input" type="password" name="pass" formControlName="pass">
-          <span class="focus-input" data-placeholder="Password"></span>
-        </div>
 
         <div class="container-btn">
           <div class="wrap-btn">
@@ -30,16 +34,6 @@
             </button>
           </div>
         </div>
-
-        <div class="text-center p-t-115">
-						<span class="txt1">
-							Don’t have an account?
-						</span>
-          <a class="txt2" href="/signup">
-            Sign Up
-          </a>
-        </div>
-
       </form>
     </div>
   </div>

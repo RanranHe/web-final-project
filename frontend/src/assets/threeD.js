@@ -17,7 +17,7 @@ function threeD() {
   camera.rotation.x = 50 * Math.PI / 180;
   camera.rotation.y = 20 * Math.PI / 180;
   camera.rotation.z = 10 * Math.PI / 180;
-  const initialCameraPositionY = -Math.tan(camera.rotation.x) * distance;
+  const initialCameraPositionY = -1.2*Math.tan(camera.rotation.x) * distance;
   const initialCameraPositionX = Math.tan(camera.rotation.y) * Math.sqrt(distance ** 2 + initialCameraPositionY ** 2);
   camera.position.y = initialCameraPositionY;
   camera.position.x = initialCameraPositionX;

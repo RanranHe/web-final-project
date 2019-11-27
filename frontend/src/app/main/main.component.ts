@@ -1,11 +1,7 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
-
-// import {Item} from '../models/item';
-// import {ItemService} from '../services/item.service';
-import {forEach} from '@angular/router/src/utils/collection';
-import {Observable} from 'rxjs';
 import {AuthenticationService} from "../services/authenticationService";
 import {User} from "../models/user";
+import {Router} from "@angular/router";
 declare var threeD: any;
 
 @Component({
@@ -15,11 +11,9 @@ declare var threeD: any;
 })
 
 export class MainComponent implements OnInit {
-  authenticationService: AuthenticationService;
   currentUser: User;
 
-  constructor(authenticationService: AuthenticationService) {
-    this.authenticationService = authenticationService;
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
     this.authenticationService.currentUser.subscribe(user => {
       if (user) {
         this.currentUser = user;
@@ -28,6 +22,11 @@ export class MainComponent implements OnInit {
       }
     });
     console.log(this.currentUser);
+  }
+
+  jumpToSearch(key: string) {
+    this.router.navigate([`/list?key=${key}`]);
+    // $location.url("/list?keyword=" + keyword);
   }
 
   ngOnInit() {
