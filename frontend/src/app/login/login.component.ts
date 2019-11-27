@@ -16,7 +16,7 @@ declare var loginFormTextControl: any;
 export class LoginComponent implements OnInit {
   userService: UserService;
   authenticationService: AuthenticationService;
-  currentUser = null;
+  showNavBar = false;
   alert = false;
 
   private itemForm: FormGroup;
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.alert = false;
       if (user) {
         this.alert = false;
-        this.router.navigate(['/signup']);
+        this.router.navigate(['/profile']);
       }
     }, err => {
       this.alert = true;
