@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   userService: UserService;
   authenticationService: AuthenticationService;
   currentUser = null;
+  alert = false;
 
   private itemForm: FormGroup;
 
@@ -36,46 +37,16 @@ export class LoginComponent implements OnInit {
   directToHomePage() {
     const email = this.itemForm.get('email').value;
     const pass = this.itemForm.get('pass').value;
-    this.authenticationService.login(email, pass);
-    let check = 0;
-    this.authenticationService.currentUser.subscribe(user => {
-      console.log("user");
-      console.log(user);
-
-      removeLoginAlert();
-      if (user !== null) {
-        console.log(check+1);
-        removeLoginAlert();
+    const temp = this.authenticationService.login(email, pass);
+    temp.subscribe(user => {
+      this.alert = false;
+      if (user) {
+        this.alert = false;
         this.router.navigate(['']);
-        return;
       }
-      if (user === null) {
-
-        console.log(check+1);
-        setLoginAlert();
-        return;
-      }
-      removeLoginAlert();
-
-      // else if (user === null) {
-      //   console.log("hsere");
-      //   console.log(user);
-      //   setLoginAlert();
-      //   return;
-      // }
-      // return;
-    });
-    console.log("hsere");
-    // console.log(obs);
-    // obs.subscribe(res => {
-    //   if (res) {
-    //     removeLoginAlert();
-    //     this.router.navigate(['']);
-    //     return;
-    //   }
-    // }, err => {
-    //   catchError(setLoginAlert())
-    // })
+    }, err => {
+      this.alert = true;
+    })
   }
 
   ngOnInit() {
