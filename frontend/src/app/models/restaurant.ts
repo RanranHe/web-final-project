@@ -1,10 +1,10 @@
 import {User} from "./user";
 
 export class Restaurant {
-  _user: User;
+  _user: string; //ID
   name: string;
   address: string;
-  food: Array<Food>;
+  food: any;
   foodType: string;
   city: string;
   state: string;
@@ -12,7 +12,7 @@ export class Restaurant {
   zip: string;
   url: string;
 
-  constructor(_user: User, name: string, address: string, foodType: string,
+  constructor(_user: string, name: string, address: string, foodType: string,
               city: string, state: string, phone: string, zip: string) {
     this._user = _user;
     this.address = address;
@@ -22,7 +22,7 @@ export class Restaurant {
     this.state = state;
     this.phone = phone;
     this.zip = zip;
-    this.food = Array<Food>();
+    this.food = [];
   }
 }
 

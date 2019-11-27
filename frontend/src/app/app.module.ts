@@ -14,13 +14,16 @@ import {LoginComponent} from './login/login.component'
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {FooterComponent} from './footer/footer.component';
 import {ProfileComponent} from './profile/profile.component'
+import {RestaurantSearchResultsComponent} from "./restaurant-search-results/restaurant-search-results.component";
 
 // Services
 import {UserService} from './services/userService';
 import {AuthenticationService} from './services/authenticationService';
+import {RestaurantService} from "./services/restaurantService";
 
 // Routes
 import { appRoutes } from './route';
+import {RestaurantComponent} from "./restaurant-search-results/restaurant/restaurant.component";
 
 
 @NgModule({
@@ -31,7 +34,9 @@ import { appRoutes } from './route';
     MainComponent,
     LoginComponent,
     SignUpComponent,
-    ProfileComponent
+    ProfileComponent,
+    RestaurantSearchResultsComponent,
+    RestaurantComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,7 @@ import { appRoutes } from './route';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [UserService, AuthenticationService],
+  providers: [UserService, AuthenticationService, RestaurantService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
