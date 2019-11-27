@@ -13,6 +13,7 @@ import {MainComponent} from './main/main.component'
 import {LoginComponent} from './login/login.component'
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {FooterComponent} from './footer/footer.component';
+import {ProfileComponent} from './profile/profile.component'
 
 // Services
 import {UserService} from './services/userService';
@@ -29,7 +30,8 @@ import { appRoutes } from './route';
     FooterComponent,
     MainComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
