@@ -119,17 +119,22 @@ function signUpExistUserAlert() {
   email.parentElement.classList.add('alert-validate');
 }
 
-// function removeAlerts() {
-//   const email = document.getElementById('email');
-//   const pass = document.getElementById('pass');
-//   email.parentElement.classList.remove('alert-validate');
-//   pass.parentElement.classList.remove('alert-validate');
-// }
+function profileFormTextControl() {
+  document.onmousedown = document.onkeydown = document.onkeyup = function () {
+    const elements = Array.from(document.getElementsByClassName('input'));
+    elements.forEach(ele => {
+      if (ele.value !== '') {
+        ele.classList.add('has-val');
+      } else ele.classList.remove('has-val');
+    });
+  };
+}
 
 exports = {
   loginFormTextControl,
   signUpcheckValid,
   signUpFormTextControl,
-  signUpExistUserAlert
+  signUpExistUserAlert,
+  profileFormTextControl
 };
 
