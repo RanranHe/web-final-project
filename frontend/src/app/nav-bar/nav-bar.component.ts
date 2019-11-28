@@ -21,7 +21,6 @@ export class NavBarComponent implements OnInit {
   showCart = false;
 
   constructor(private authenticationService: AuthenticationService, private router: Router) {
-    this.authenticationService = authenticationService;
     this.authenticationService.currentUser.subscribe(user => {
       if (user) {
         this.currentUser = user;
