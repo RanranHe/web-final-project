@@ -25,8 +25,7 @@ export class MainComponent implements OnInit {
   }
 
   jumpToSearch(key: string) {
-    this.router.navigate([`/list?key=${key}`]);
-    // $location.url("/list?keyword=" + keyword);
+    this.router.navigate([`/list/${key}`]);
   }
 
   ngOnInit() {

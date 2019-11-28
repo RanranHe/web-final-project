@@ -1,7 +1,7 @@
 <section id='main' class="main_page">
   <div class="search">
-    <input type="text" class="form" placeholder=" Please enter address" ng-model="model.keyword">
-    <div class="round" (click)="model.jumpToSearchList(model.keyword)">
+    <input #search type="text" class="form" placeholder=" Please enter address">
+    <div class="round" (click)="jumpToSearch(search.value)">
       <div id="cta">
         <span class="arrow primera next "></span>
         <span class="arrow segunda next "></span>
