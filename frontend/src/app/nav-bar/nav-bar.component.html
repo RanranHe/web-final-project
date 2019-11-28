@@ -8,7 +8,7 @@
       <li *ngIf="isLogin"><a href="/profile">Profile</a></li>
       <li>
         <a *ngIf="!isLogin" href="/login">Login</a>
-        <a *ngIf="isLogin" (click)="logout()" href="#">Logout</a>
+        <a *ngIf="isLogin" (click)="logout()" href="/login">Logout</a>
       </li>
       <li *ngIf="isCustomer"><a href="#" id="cart" (mouseover)="show()"><i class="fa fa-shopping-cart"></i> Cart <span
         class="badge">3</span></a></li>

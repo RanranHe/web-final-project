@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
     temp.subscribe(user => {
       this.alert = false;
       if (user) {
-        this.alert = false;
         this.router.navigate(['/profile']);
       }
     }, err => {
