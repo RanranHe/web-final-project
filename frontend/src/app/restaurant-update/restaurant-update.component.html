@@ -1,0 +1,94 @@
+<div class="panel panel-default orderPanel">
+  <div class="panel-heading"><b><h2>{{restName}}</h2></b></div>
+  <div class="panel-body">
+      <label for="name">Name</label>
+      <input id="name"
+             [(ngModel)]="name"
+             class="form-control"/>
+
+      <label for="foodtype">FoodType</label>
+      <input id="foodtype"
+             [(ngModel)]="foodType"
+             class="form-control"/>
+
+      <label for="phone">Phone</label>
+      <input id="phone"
+             [(ngModel)]="phone"
+             class="form-control"/>
+
+      <label for="address">Address</label>
+      <input id="address"
+             type="text"
+             [(ngModel)]="address"
+             class="form-control"/>
+
+      <label for="city">City</label>
+      <input id="city"
+             type="text"
+             [(ngModel)]="city"
+             class="form-control"/>
+
+      <label for="state">State</label>
+      <input id="state"
+             type="text"
+             [(ngModel)]="state"
+             class="form-control"/>
+
+      <label for="zip">Zip</label>
+      <input id="zip"
+             type="text"
+             [(ngModel)]="zip"
+             class="form-control"/>
+
+      <div>
+          <label for="url">URL</label>
+          <input type="url"
+                 class="form-control"
+                 id="url"
+                 placeholder="Image URL"
+                 [(ngModel)]="uRL">
+      </div>
+
+      <a (click)="updateRestaurant()"
+         class="btn btn-block btn-primary">Update</a>
+      <a (click)="backToSearch()" class="btn btn-block btn-success">Cancel</a>
+  </div>
+</div>
+
+<div class="panel panel-default orderPanel">
+  <div class="panel-heading">
+      <b><h2>Editing Menu</h2></b>
+  </div>
+  <div class="panel-body">
+      <div class="col-md-4"><label for="dishname">Dish Name</label>
+          <input id="dishname"
+                 [(ngModel)]="newFoodName"
+                 class="form-control"/>
+      </div>
+      <div class="col-md-2">
+          <label for="dishprice">Dish Price</label>
+          <input id="dishprice"
+                 [(ngModel)]="newFoodPrice"
+                 class="form-control"/>
+      </div>
+      <div class="col-md-1">
+          <a class="btn btn-info" style="margin-top: 25px" (click)="addFood()">Add</a>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Food Name</th>
+            <th>Food Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table table-bordered" *ngFor="let ob of foods">
+            <td>{{ob.name}}</td>
+            <td>{{ob.price}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
+
+

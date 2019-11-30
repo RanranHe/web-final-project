@@ -5,7 +5,9 @@ import {AuthenticationService} from "../services/authenticationService";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {catchError} from "rxjs/operators";
 
-declare var loginFormTextControl: any;
+declare var formTextControl: any;
+declare var setLoginAlert: any;
+declare var removeLoginAlert: any;
 
 @Component({
   selector: 'login',
@@ -16,8 +18,7 @@ declare var loginFormTextControl: any;
 export class LoginComponent implements OnInit {
   userService: UserService;
   authenticationService: AuthenticationService;
-  showNavBar = false;
-  alert = false;
+  isLogin = true;
 
   private itemForm: FormGroup;
 
@@ -33,22 +34,30 @@ export class LoginComponent implements OnInit {
 
   // if username and password are valid
   directToHomePage() {
-    const email = this.itemForm.get('email').value;
-    const pass = this.itemForm.get('pass').value;
-    const temp = this.authenticationService.login(email, pass);
-    temp.subscribe(user => {
-      this.alert = false;
-      if (user) {
-        this.router.navigate(['/profile']);
+    const obs = this.login();
+    console.log(obs);
+    obs.subscribe(res => {
+      if (res) {
+        removeLoginAlert();
+        this.router.navigate(['']);
+        return;
       }
     }, err => {
-      this.alert = true;
+      catchError(setLoginAlert())
     })
+  }
+
+  login() {
+    const email = this.itemForm.get('email').value;
+    const pass = this.itemForm.get('pass').value;
+    return this.authenticationService.login(email, pass);
   }
 
   ngOnInit() {
     // js effects
-    loginFormTextControl();
+    formTextControl();
+    const currentUser = this.authenticationService.currentUserValue;
+    console.log(currentUser);
   }
 
 }

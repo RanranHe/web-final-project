@@ -11,6 +11,7 @@ export enum WorkerStatus {
 }
 
 export class User {
+  _id: string;
   username: string;
   role: string;
   password: string;

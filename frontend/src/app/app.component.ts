@@ -10,10 +10,9 @@ import {Observable} from 'rxjs';
 })
 
 export class AppComponent {
-  showNavBar = true;
 
   // itemsParent: Array<Item>;
-  //
+
   // constructor(itemService: ItemService) {
   //   // get all items
   //   const items$: Observable<Array<Item>> = itemService.getItems();

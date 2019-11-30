@@ -1,0 +1,58 @@
+<div class="orderPanel">
+  <div class="container-fluid">
+      <h1>New Restaurant</h1>
+
+      <label for="name">Name</label>
+      <input id="name"
+             [(ngModel)]="name"
+             class="form-control"/>
+
+      <label for="foodtype">FoodType</label>
+      <input id="foodtype"
+             [(ngModel)]="foodType"
+             class="form-control"/>
+
+      <label for="phone">Phone</label>
+      <input id="phone"
+             [(ngModel)]="phone"
+             class="form-control"/>
+
+      <label for="address">Address</label>
+      <input id="address"
+             type="text"
+             [(ngModel)]="address"
+             class="form-control"/>
+
+      <label for="city">City</label>
+      <input id="city"
+             type="text"
+             [(ngModel)]="city"
+             class="form-control"/>
+
+      <label for="state">State</label>
+      <input id="state"
+             type="text"
+             [(ngModel)]="state"
+             class="form-control"/>
+
+      <label for="zip">Zip</label>
+      <input id="zip"
+             type="text"
+             [(ngModel)]="zip"
+             class="form-control"/>
+
+      <div>
+          <label for="url">URL</label>
+          <input type="url"
+                 class="form-control"
+                 id="url"
+                 placeholder="Image URL"
+                 [(ngModel)]="uRL">
+      </div>
+
+      <a (click)="createRestaurant()"
+         class="btn btn-block btn-primary">Submit</a>
+      <a (click)="backToSearch()" class="btn btn-block btn-success">Cancel</a>
+  </div>
+
+</div>
