@@ -15,12 +15,13 @@ export class UserService {
   }
 
   // Register
-  register(user: User = null) {
+  register(user: User = null): Observable<User> {
     const url = `${this.resourceURL}/register`;
     const observable = this.http.post<User>(url, {username: user.username, password: user.password, role: user.role});
-    observable.subscribe(res => {
-      console.log(res);
-    })
+    // observable.subscribe(res => {
+    //   console.log(res);
+    // })
+    return observable
   }
 
   // find user by email

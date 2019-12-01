@@ -43,7 +43,8 @@ import {RestaurantComponent} from "./restaurant-search-results/restaurant/restau
     RestaurantSearchComponent,
     RestaurantCreateComponent,
     RestaurantUpdateComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    RestaurantSearchResultsComponent
   ],
   imports: [
     BrowserModule,

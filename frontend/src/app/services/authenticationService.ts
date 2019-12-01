@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, observable, Observable, Subscription} from 'rxjs';
 import {catchError, map, retry} from 'rxjs/operators';
-
+import {UserService} from '../services/userService';
 import {User} from '../models/user';
 import {environment} from "../../environments/environment";
 import {error} from "selenium-webdriver";
@@ -13,15 +13,26 @@ export class AuthenticationService {
   public currentUser: Observable<User>;
   resourceURL: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserService) {
     this.resourceURL = `${environment.serverBaseURL}/api/project`;
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    
     this.currentUser = this.currentUserSubject.asObservable();
+    this.userService = userService;
+    if(this.currentUserSubject.value==null){
+      let curr = new User("mmzz","mmzz","User");
+      this.userService.register(curr).subscribe(user=>{
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+      })
+    }
   }
 
   // get current login user info
   public get currentUserValue(): User {
-    return this.currentUserSubject.value;
+
+      return this.currentUserSubject.value; 
+    
   }
 
   // Login service
