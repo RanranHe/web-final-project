@@ -9,10 +9,12 @@ import {observable, Observable} from 'rxjs';
 @Injectable()
 export class RestaurantService {
   resourceURL: string;
+  yelpResourceURL: string;
 
   // Constructor
   constructor(private http: HttpClient) {
     this.resourceURL = `${environment.serverBaseURL}/api/project`;
+    this.yelpResourceURL = `${environment.serverBaseURL}/api/yelp`;
   }
 
   // Register
@@ -66,5 +68,11 @@ export class RestaurantService {
     //   console.log(res);
     // })
     return observable;
+  }
+
+  // implement eatstreet api to get restaurants by location
+  findFoodByLocation(location) {
+    const url = `${this.yelpResourceURL}?location=${location}`;
+    return this.http.get<Array<Restaurant>>(url);
   }
 }

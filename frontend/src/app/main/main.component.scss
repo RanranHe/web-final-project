@@ -11,9 +11,10 @@ $background_color_2: red;
   text-align: center;
   background-image: url("../../assets/images/home.jpg");
   background-size: 100% 100vh;
+  font-family: Poppins-Regular, serif;
 
   .search {
-    margin-top: 8%;
+    margin-top: 10%;
     width: 50%;
     height: 150px;
     display: inline-block;
@@ -57,6 +58,7 @@ $background_color_2: red;
   .arrow {
     position: absolute;
     left: 25%;
+    top: 30%;
   }
 }
 

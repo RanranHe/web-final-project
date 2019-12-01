@@ -5,9 +5,7 @@ import {AuthenticationService} from "../services/authenticationService";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {catchError} from "rxjs/operators";
 
-declare var formTextControl: any;
-declare var setLoginAlert: any;
-declare var removeLoginAlert: any;
+declare var loginFormTextControl: any;
 
 @Component({
   selector: 'login',
@@ -18,7 +16,8 @@ declare var removeLoginAlert: any;
 export class LoginComponent implements OnInit {
   userService: UserService;
   authenticationService: AuthenticationService;
-  isLogin = true;
+  showNavBar = false;
+  alert = false;
 
   private itemForm: FormGroup;
 
@@ -34,30 +33,22 @@ export class LoginComponent implements OnInit {
 
   // if username and password are valid
   directToHomePage() {
-    const obs = this.login();
-    console.log(obs);
-    obs.subscribe(res => {
-      if (res) {
-        removeLoginAlert();
-        this.router.navigate(['']);
-        return;
-      }
-    }, err => {
-      catchError(setLoginAlert())
-    })
-  }
-
-  login() {
     const email = this.itemForm.get('email').value;
     const pass = this.itemForm.get('pass').value;
-    return this.authenticationService.login(email, pass);
+    const temp = this.authenticationService.login(email, pass);
+    temp.subscribe(user => {
+      this.alert = false;
+      if (user) {
+        this.router.navigate(['/profile']);
+      }
+    }, err => {
+      this.alert = true;
+    })
   }
 
   ngOnInit() {
     // js effects
-    formTextControl();
-    const currentUser = this.authenticationService.currentUserValue;
-    console.log(currentUser);
+    loginFormTextControl();
   }
 
 }

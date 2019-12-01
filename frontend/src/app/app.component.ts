@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 })
 
 export class AppComponent {
-
+  showNavBar = true;
   // itemsParent: Array<Item>;
 
   // constructor(itemService: ItemService) {
