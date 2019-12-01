@@ -1,0 +1,66 @@
+<div class="login">
+  <div class="login-container">
+    <!--<div class="closeIcon"><a href="">&#10006;</a></div>-->
+    <div class="login-wrap">
+      <form class="login-form validate-form" [formGroup]="itemForm" (submit)="directToHomePage()">
+					<span class="title p-b-26">
+						Sign up
+					</span>
+        <span *ngIf="alert" class="alert" id='alert'>Username/password doesn't match</span>
+
+        <span class="title p-b-48"><i class="zmdi zmdi-font"></i></span>
+
+        <div class="wrap-input validate-input" data-validate="Email address not valid">
+          <input id='email' class="input" type="text" name="email" formControlName="email">
+          <span class="focus-input" data-placeholder="Email"></span>
+        </div>
+
+        <div class="wrap-input validate-input"
+             data-validate="Password should be 6-20 digits and contain number, uppercase and lowercase">
+          <span class="btn-show-pass"><i id="showPass" class="fa fa-eye-slash"></i></span>
+          <input id='pass' class="input" type="password" name="pass" formControlName="pass">
+          <span class="focus-input" data-placeholder="Password"></span>
+        </div>
+
+        <div class="wrap-input validate-input"
+             data-validate="Passwords don't match">
+          <span class="btn-show-pass"><i id="showPass1" class="fa fa-eye-slash"></i></span>
+          <input id='pass1' class="input" type="password" name="pass" formControlName="pass1">
+          <span class="focus-input" data-placeholder="Confirm Password"></span>
+        </div>
+
+        <!--<div class="control-group">-->
+          <!--<div class="select">-->
+            <!--<select>-->
+              <!--<option>Please select your role</option>-->
+              <!--<option>Option</option>-->
+              <!--<option>Option</option>-->
+            <!--</select>-->
+            <!--<div class="select__arrow"></div>-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <div class="container-btn">
+          <div class="wrap-btn">
+            <div class="bgbtn"></div>
+            <button type="submit" class="login-btn">
+              <a id="signin" class="button">Sign up</a>
+            </button>
+          </div>
+        </div>
+
+        <div class="text-center p-t-115">
+						<span class="txt1">
+							Already have an account?
+						</span>
+          <a class="txt2" href="/login">
+            Sign in
+          </a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="dropDownSelect1"></div>
