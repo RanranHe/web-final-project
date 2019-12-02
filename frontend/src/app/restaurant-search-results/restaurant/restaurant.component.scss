@@ -1,10 +1,120 @@
-.closeIcon {
-  display: flex;
-  position: absolute;
-  top: 10px;
-  right: 20px;
+$color_1: #2b2b2b;
+$color_2: #808080;
+$color_3: #f09911;
+$color_4: #5d5d5d;
+$color_5: #ffffff;
+$color_6: #c15017;
+$color_7: #4e4e4e;
+$background_color_1: #ffffff;
+$background_color_2: #86b986;
+
+.restaurant-photo {
+  display: block;
+  text-align: center;
+  box-shadow: 0 0 20px 8px #f3f3f3 inset;
+  width: 300px;
+  margin-bottom: 25px;
+  padding: 20px 0;
+  box-sizing: border-box;
+  top: 50px;
+}
+
+h2 {
+  display: block;
+  height: 40px;
+  font-size: 18px;
+  word-wrap: break-word;
+  overflow: hidden;
+  width: 300px;
+  text-overflow: ellipsis;
+  margin: 0;
 
   a {
-    font-size: 20px;
+    text-decoration: none;
+    color: $color_1;
   }
 }
+
+.restaurant-compare {
+  float: right;
+  color: $color_2;
+  text-decoration: none;
+  margin-top: -16px;
+}
+
+.restaurant-rating {
+  div {
+    display: inline-block;
+    width: 80px;
+    margin-top: 10px;
+  }
+
+  .restaurant-stars {
+    display: inline-block;
+    color: $color_3;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+
+    i {
+      margin-right: 2px;
+    }
+  }
+
+  span {
+    margin-bottom: -4px;
+
+    a {
+      color: $color_2;
+      text-decoration: none;
+    }
+  }
+}
+
+@mixin restaurant-description {
+  margin-top: 8px;
+  color: $color_4;
+  font-size: 14px;
+  //line-height: 1.45;
+  white-space: normal;
+  width: 300px;
+  margin-bottom: 0;
+}
+
+.restaurant-phone {
+  @include restaurant-description;
+  height: 15px;
+}
+
+.restaurant-foodType {
+  @include restaurant-description;
+  height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+button {
+  margin-top: 10px;
+  border-radius: 2px;
+  background-color: $background_color_2;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+  border: 0;
+  color: $color_5;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  width: 120px;
+  height: 32px;
+}
+
+//.restaurant-price {
+//  float: right;
+//  color: $color_7;
+//  font-weight: bold;
+//  font-size: 20px;
+//  padding-top: 6px;
+//  margin: 0;
+//}
+
+

@@ -1,7 +1,39 @@
-{{restaurant.name}}
-{{restaurant.city}}
-{{restaurant.address}}
-{{restaurant.phone}}
-{{restaurant.foodType}}
-<img id="image" src="{{restaurant.logoUrl}}" alt="">
+<!--{{restaurant.name}}-->
+<!--{{restaurant.city}}-->
+<!--{{restaurant.address}}-->
+<!--{{restaurant.phone}}-->
+<!--{{restaurant.foodType}}-->
+<!--<img id="image" src="{{restaurant.logoUrl}}" alt="">-->
 
+<a href="#" class="restaurant-photo">
+  <img src="{{restaurant.logoUrl}}" height="130" alt="iPhone 6"/>
+</a>
+
+<h2><a href="#">{{restaurant.name}}</a></h2>
+<!--<a href="#" class="restaurant-compare">{{restaurant.city}}</a>-->
+
+<div class="restaurant-rating">
+  <div>
+    <span class="restaurant-stars" style="width: 60px">
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+    </span>
+  </div>
+
+  <span><a href="#">82 reviews</a></span>
+</div>
+
+<p class="restaurant-foodType">
+  {{restaurant.foodTypes}}<br>
+</p>
+<a href="tel:{{restaurant.phone}}">
+  <p class="restaurant-phone">{{restaurant.phone}}<br></p>
+</a>
+<p class="restaurant-foodType">
+  {{address}}
+</p>
+
+<button>View Menu</button>
