@@ -1,0 +1,49 @@
+.restaurant-list {
+  width: 100%;
+
+  ul {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    //text-align: center;
+  }
+
+  .restaurant-list-basic {
+    font-family: Poppins-Regular, serif;
+    list-style: none;
+    //max-width: 1200px;
+    min-width: 1160px;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    position: absolute;
+    background-color: #f2f2f2;
+    overflow: hidden;
+
+    li {
+      width: 350px;
+      height: 450px;
+      box-sizing: border-box;
+      display: inline-block;
+      text-align: left;
+      font: normal 12px sans-serif;
+      background-color: #ffffff;
+      border: 1px solid #dbe3e7;
+      box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+      margin: 0 1.5% 3% 1.5%;
+      padding: 25px;
+      border-radius: 10px;
+      float: left;
+    }
+
+    .button {
+      width: calc(910px + 6%);
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+      background: #fefefe;
+      height: 40px;
+      color: #86b986;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
