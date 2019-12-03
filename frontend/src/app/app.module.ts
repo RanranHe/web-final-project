@@ -15,6 +15,8 @@ import {SignUpComponent} from "./sign-up/sign-up.component";
 import {FooterComponent} from './footer/footer.component';
 import {ProfileComponent} from './profile/profile.component'
 import {RestaurantSearchResultsComponent} from "./restaurant-search-results/restaurant-search-results.component";
+import {RestaurantListComponent} from "./restaurant-search-results/restaurant-list/restaurant-list.component";
+import {RestaurantComponent} from "./restaurant-search-results/restaurant/restaurant.component";
 
 // Services
 import {UserService} from './services/userService';
@@ -23,7 +25,6 @@ import {RestaurantService} from "./services/restaurantService";
 
 // Routes
 import { appRoutes } from './route';
-import {RestaurantComponent} from "./restaurant-search-results/restaurant/restaurant.component";
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {RestaurantComponent} from "./restaurant-search-results/restaurant/restau
     SignUpComponent,
     ProfileComponent,
     RestaurantSearchResultsComponent,
+    RestaurantListComponent,
     RestaurantComponent
   ],
   imports: [
