@@ -17,6 +17,9 @@ import {ProfileComponent} from './profile/profile.component'
 import {RestaurantSearchResultsComponent} from "./restaurant-search-results/restaurant-search-results.component";
 import {RestaurantListComponent} from "./restaurant-search-results/restaurant-list/restaurant-list.component";
 import {RestaurantComponent} from "./restaurant-search-results/restaurant/restaurant.component";
+import {MenuComponent} from "./restaurant-search-results/menu/menu.component";
+import {LeftSideComponent} from "./restaurant-search-results/menu/left-side/left-side.component";
+import {ItemComponent} from "./restaurant-search-results/menu/item/item.component";
 
 // Services
 import {UserService} from './services/userService';
@@ -38,7 +41,10 @@ import { appRoutes } from './route';
     ProfileComponent,
     RestaurantSearchResultsComponent,
     RestaurantListComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    MenuComponent,
+    LeftSideComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
