@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'restaurant',
@@ -10,7 +11,7 @@ export class RestaurantComponent implements OnInit {
   @Input() restaurant;
   address: string;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -19,4 +20,7 @@ export class RestaurantComponent implements OnInit {
       + this.restaurant.state + ' ' + this.restaurant.zip;
   }
 
+  jumpToMenu(apikey: string) {
+    this.router.navigate([`/restaurant/${apikey}/menu`])
+  }
 }
