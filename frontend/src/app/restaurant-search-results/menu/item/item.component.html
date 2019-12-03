@@ -1,0 +1,15 @@
+<!--Menu-->
+<div id="menu" *ngFor="let row of menu">
+  <div id="{{row.name}}">
+    <h3>{{row.name}}</h3>
+    <div *ngFor="let item of row.items">
+      <div class="item">
+        <a href="javascript:;">{{item.name}}</a>
+        <span>${{item.basePrice}}</span>
+      </div>
+
+      <p>{{item.description}}</p>
+    </div>
+  </div>
+</div>
+
