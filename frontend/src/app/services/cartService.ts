@@ -1,20 +1,36 @@
 import {Injectable} from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
+import {AuthenticationService} from "./authenticationService";
 
 @Injectable()
 export class CartService {
+  username: string;
 
   // Constructor
-  constructor(private cookieService: CookieService) {
-    cookieService.set('totalPrice', '0');
-
+  constructor(private cookieService: CookieService, private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUser.subscribe(user => {
+      if(user) {
+        this.username = user.username;
+      } else {
+        this.username = null;
+      }
+    })
   }
 
+  // add a item into cart
   addToCart(restaurantName, name, price) {
-    if (this.cookieService.get('cart')) {
-      const totalPrice = JSON.parse(this.cookieService.get('cart')).totalPrice;
-      const totalItemNum = JSON.parse(this.cookieService.get('cart')).totalItemNum;
-      const currentFoods = Array.from(JSON.parse(this.cookieService.get('cart')).foods);
+    // this.cookieService.deleteAll();
+    // if the cookie exist
+    if (this.cookieService.get(`${this.username}`)) {
+      // get data from cookie
+      const totalPrice = JSON.parse(this.cookieService.get(`${this.username}`)).totalPrice;
+      const totalItemNum = JSON.parse(this.cookieService.get(`${this.username}`)).totalItemNum;
+      const currentFoods = Array.from(JSON.parse(this.cookieService.get(`${this.username}`)).foods);
+      // if the restaurant already in the cart, then:
+      //      determine whether the item already exists
+      //            if exists, update price and quantity
+      //            else, populate a new item under this restaurant
+      // else populate a new restaurant info with the given item
       for (var i = 0; i < currentFoods.length; i++) {
         // @ts-ignore
         if (currentFoods[i].restaurantName === restaurantName) {
@@ -23,17 +39,15 @@ export class CartService {
             // @ts-ignore
             if (currentFoods[i].items[j].name === name) {
               // @ts-ignore
-              const singlePrice = currentFoods[i].items[j].price / currentFoods[i].items[j].quantity;
-              // @ts-ignore
               currentFoods[i].items[j].quantity += 1;
               // @ts-ignore
-              currentFoods[i].items[j].price += price;
+              currentFoods[i].items[j].price = (parseFloat(currentFoods[i].items[j].price)+price).toFixed(2);
               const cart = {
                 foods: currentFoods,
-                totalPrice: totalPrice+singlePrice,
+                totalPrice: totalPrice+price,
                 totalItemNum: totalItemNum+1
               };
-              this.cookieService.set('cart', JSON.stringify(cart));
+              this.cookieService.set(`${this.username}`, JSON.stringify(cart));
               return;
             }
           }
@@ -48,7 +62,7 @@ export class CartService {
             totalPrice: totalPrice+price,
             totalItemNum: totalItemNum+1
           };
-          this.cookieService.set('cart', JSON.stringify(cart));
+          this.cookieService.set(`${this.username}`, JSON.stringify(cart));
           return;
         }
       }
@@ -65,8 +79,8 @@ export class CartService {
         totalPrice: totalPrice+price,
         totalItemNum: totalItemNum+1
       };
-      this.cookieService.set('cart', JSON.stringify(cart));
-    } else {
+      this.cookieService.set(`${this.username}`, JSON.stringify(cart));
+    } else { // if the cookie doesn't exist, create a new one with the given item
       console.log("catch");
       const cart = {
         foods:
@@ -81,30 +95,34 @@ export class CartService {
         totalPrice: price,
         totalItemNum: 1
       };
-      this.cookieService.set('cart', JSON.stringify(cart));
+      this.cookieService.set(`${this.username}`, JSON.stringify(cart));
     }
   }
 
+  // get foods in the cart
   retrieveCart() {
-    console.log(this.cookieService.get('cart'))
-    if (this.cookieService.get('cart')) {
-      return JSON.parse(this.cookieService.get('cart')).foods;
+    console.log(this.cookieService.get(`${this.username}`))
+    if (this.cookieService.get(`${this.username}`)) {
+      return JSON.parse(this.cookieService.get(`${this.username}`)).foods;
     } else {
       return [];
     }
   }
 
+  // get total price of the cart
   retrieveTotalPrice() {
-    if (this.cookieService.get('cart')) {
-      return JSON.parse(this.cookieService.get('cart')).totalPrice.toFixed(2);
+    console.log(this.cookieService.get(`${this.username}`))
+    if (this.cookieService.get(`${this.username}`)) {
+      return parseFloat(JSON.parse(this.cookieService.get(`${this.username}`)).totalPrice).toFixed(2);
     } else {
       return 0;
     }
   }
 
+  // get total number of items in the cart
   retrieveTotalItemNum() {
-    if (this.cookieService.get('cart')) {
-      return JSON.parse(this.cookieService.get('cart')).totalItemNum;
+    if (this.cookieService.get(`${this.username}`)) {
+      return JSON.parse(this.cookieService.get(`${this.username}`)).totalItemNum;
     } else {
       return 0;
     }

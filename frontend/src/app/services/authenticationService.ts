@@ -5,6 +5,7 @@ import {catchError, map, retry} from 'rxjs/operators';
 
 import {User} from '../models/user';
 import {environment} from "../../environments/environment";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
