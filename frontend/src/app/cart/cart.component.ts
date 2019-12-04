@@ -1,7 +1,5 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
 
-// declare var showCart: any;
-
 @Component({
   selector: 'cart',
   templateUrl: './cart.component.html',
