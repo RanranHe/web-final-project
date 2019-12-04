@@ -1,4 +1,5 @@
 import {User} from "./user";
+import {Item} from "./item";
 
 export enum DeliveryStatus {
   Processing, Pickup, OnTheWay, Cancelled, Completed
@@ -8,7 +9,7 @@ export class Order {
   _deliveryMan: User;
   _user: User;
   address: string;
-  foods: Array<string>;
+  foods: Array<Item>;
   creditCard: Number;
   creditCardHolder: String;
   creditCardExpireDate: String;
@@ -18,7 +19,7 @@ export class Order {
   date: Date;
   status: DeliveryStatus;
 
-  constructor(_user: User, address: string, foods: Array<string>, creditCard: Number, creditCardHolder: String,
+  constructor(_user: User, address: string, foods: Array<Item>, creditCard: Number, creditCardHolder: String,
               creditCardExpireDate: String, name: String, totalPrice: Number, phone: String) {
     this._user = _user;
     this.address = address;

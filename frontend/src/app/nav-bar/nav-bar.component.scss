@@ -1,4 +1,4 @@
-$main-color: #6394F8;
+$main-color: #66a068;
 $light-text: #ABB0BE;
 
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
@@ -72,7 +72,7 @@ nav {
 }
 
 .badge {
-  background-color: #6394F8;
+  background-color: #66a068;
   border-radius: 10px;
   color: white;
   display: inline-block;
@@ -85,13 +85,18 @@ nav {
 }
 
 .shopping-cart {
-  margin: 45px 0;
+  font-family: Poppins-Regular, serif;
+  right: 8%;
+  top: 45px;
   float: right;
   background: white;
   width: 320px;
-  position: relative;
-  border-radius: 3px;
-  padding: 20px;
+  max-height: 400px;
+  overflow-y: scroll;
+  position: fixed;
+  border: 1px solid #66a068;
+  border-radius: 10px;
+  padding: 10px;
   z-index: 10;
 
   .shopping-cart-header {
@@ -103,50 +108,39 @@ nav {
     }
   }
 
-  .shopping-cart-items {
+  h6 {
+    color: black;
+    padding-top: 15px;
+    padding-left: 5px;
+  }
 
-    padding-top: 20px;
+  .shopping-cart-items {
+    color: #767676;
+
+    padding-top: 5px;
 
     li {
       list-style-type:none;
-      margin-bottom: 18px;
-    }
-
-    img {
-      float: left;
-      margin-right: 12px;
+      margin-bottom: 10px;
     }
 
     .item-name {
       display: block;
-      padding-top: 10px;
+      //padding-top: 10px;
       font-size: 16px;
     }
 
     .item-price {
       color: $main-color;
       margin-right: 8px;
+      font-size: 14px;
     }
 
     .item-quantity {
       color: $light-text;
+      font-size: 14px;
     }
   }
-
-}
-
-.shopping-cart:after {
-  bottom: 100%;
-  left: 89%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-bottom-color: white;
-  border-width: 8px;
-  margin-left: -8px;
 }
 
 .cart-icon {
@@ -159,13 +153,14 @@ nav {
 .button {
   background: $main-color;
   color: white;
+  height: 40px;
   text-align: center;
-  padding: 12px;
+  line-height: 40px;
+  vertical-align: middle;
   text-decoration: none;
   display: block;
   border-radius: 3px;
   font-size: 16px;
-  margin: 25px 0 15px 0;
 
   &:hover {
     background: lighten($main-color, 3%);
@@ -177,57 +172,3 @@ nav {
   display: table;
   clear: both;
 }
-
-
-//$color_1: #000000;
-//$color_2: black;
-//$background_color_1: #e1ede1;
-//
-//nav {
-//  z-index: 100;
-//  height: 50px;
-//  position: fixed;
-//  width: 100%;
-//  background-color: $background_color_1;
-//  opacity: 0.9;
-//  font-size: 18px;
-//  a {
-//    color: $color_1;
-//    text-decoration: none;
-//    &:visited {
-//      color: $color_1;
-//    }
-//  }
-//  >ul {
-//    margin-top: 1%;
-//    img {
-//      height: 50px;
-//      width: 50px;
-//    }
-//    h3 {
-//      margin: 0;
-//      vertical-align: center;
-//      line-height: 30px;
-//      color: $color_2;
-//      font-size: 22px;
-//    }
-//    >li {
-//      float: left;
-//      display: inline-block;
-//      line-height: 30px;
-//      vertical-align: middle;
-//      margin-right: 3%;
-//    }
-//    .li_img {
-//      margin: 0;
-//      margin-top: -1%;
-//      margin-left: -2%;
-//    }
-//    .li_login {
-//      float: right;
-//    }
-//    .li_register {
-//      float: right;
-//    }
-//  }
-//}

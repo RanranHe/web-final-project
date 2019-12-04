@@ -10,8 +10,7 @@
         <a *ngIf="!isLogin" href="/login">Login</a>
         <a *ngIf="isLogin" (click)="logout()" href="/login">Logout</a>
       </li>
-      <li *ngIf="isCustomer"><a href="#" id="cart" (mouseover)="show()"><i class="fa fa-shopping-cart"></i> Cart <span
-        class="badge">3</span></a></li>
+      <li *ngIf="isCustomer"><a href="#" id="cart" (mouseover)="show()"><i class="fa fa-shopping-cart"></i> Cart</a></li>
     </ul> <!--end navbar-right -->
   </div> <!--end container -->
 </nav>
@@ -20,21 +19,24 @@
 <div *ngIf="showCart" class="container" (mouseleave)="show()">
   <div id="shopping-cart" class="shopping-cart">
     <div class="shopping-cart-header">
-      <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
+      <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{{totalItemNum}}</span>
       <div class="shopping-cart-total">
         <span class="lighter-text">Total:</span>
-        <span class="main-color-text">$2,229.97</span>
+        <span class="main-color-text"> ${{totalPrice}}</span>
       </div>
     </div> <!--end shopping-cart-header -->
 
-    <ul class="shopping-cart-items">
-      <li class="clearfix">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1"/>
-        <span class="item-name">Sony DSC-RX100M III</span>
-        <span class="item-price">$849.99</span>
-        <span class="item-quantity">Quantity: 01</span>
-      </li>
-    </ul>
+    <div *ngFor="let pack of cart">
+      <h6>{{pack.restaurantName}}</h6>
+      <ul class="shopping-cart-items" *ngFor="let item of pack.items">
+        <li class="clearfix">
+          <span class="item-name">{{item.name}}</span>
+          <span class="item-price">${{item.price}}</span>
+          <span class="item-quantity">Quantity: {{item.quantity}}</span>
+        </li>
+      </ul>
+    </div>
+
 
     <a href="#" class="button">Checkout</a>
   </div> <!--end shopping-cart -->

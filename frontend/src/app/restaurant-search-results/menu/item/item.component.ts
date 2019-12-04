@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Restaurant} from "../../../models/restaurant";
+import {CartService} from "../../../services/cartService";
 import {RestaurantService} from "../../../services/restaurantService";
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'item',
@@ -11,12 +10,21 @@ import {ActivatedRoute} from "@angular/router";
 
 export class ItemComponent implements OnInit {
   @Input() menu: Array<any>;
+  @Input() apiKey: string;
+  restaurantName: string;
 
-  constructor() {
+  constructor(private cartService: CartService, private restaurantService: RestaurantService) {
   }
 
   ngOnInit() {
+    this.restaurantService.findRestaurantByApiKey(this.apiKey).subscribe(data => {
+      // @ts-ignore
+      this.restaurantName = data.restaurant.name;
+    })
+  }
 
+  addToCart(name, price) {
+    this.cartService.addToCart(this.restaurantName, name, price);
   }
 
 }
