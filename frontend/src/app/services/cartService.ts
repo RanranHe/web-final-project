@@ -10,20 +10,34 @@ export class CartService {
 
   }
 
-  addToCart(name, price) {
+  addToCart(restaurantName, name, price) {
     for (var i = 0; i < this.cart.length; i++) {
-      if (this.cart[i].name === name) {
-        var singlePrice = this.cart[i].price / this.cart[i].quantity;
-        this.cart[i].quantity += 1;
-        this.cart[i].price += singlePrice;
-        this.totalPrice += singlePrice;
+      if (this.cart[i].restaurantName === restaurantName) {
+        for (var j = 0; j < this.cart[i].items.length; j++) {
+          if (this.cart[i].items[j].name === name) {
+            const singlePrice = this.cart[i].items[j].price / this.cart[i].items[j].quantity;
+            this.cart[i].items[j].quantity += 1;
+            this.cart[i].items[j].price += singlePrice;
+            this.totalPrice += singlePrice;
+            return;
+          }
+        }
+        this.cart[i].items.push({
+          name: name,
+          quantity: 1,
+          price: price
+        });
+        this.totalPrice += price;
         return;
       }
     }
     this.cart.push({
-      name: name,
-      quantity: 1,
-      price: price
+      restaurantName: restaurantName,
+      items: [{
+        name: name,
+        quantity: 1,
+        price: price
+      }]
     });
     console.log(this.cart);
     this.totalPrice += price;
@@ -33,7 +47,7 @@ export class CartService {
     return this.cart;
   }
 
-  getTotalPrice() {
+  retrieveTotalPrice() {
     return this.totalPrice;
   }
 }

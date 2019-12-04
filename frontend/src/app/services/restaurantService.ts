@@ -26,4 +26,9 @@ export class RestaurantService {
     return this.http.get<Array<any>>(url);
   }
 
+  findRestaurantByApiKey(apiKey) {
+    const url = `${this.resourceURL}/restaurant?apikey=${apiKey}`;
+    return this.http.get<Array<any>>(url);
+  }
+
 }

@@ -1,4 +1,4 @@
-$main-color: #6394F8;
+$main-color: #66a068;
 $light-text: #ABB0BE;
 
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
@@ -72,7 +72,7 @@ nav {
 }
 
 .badge {
-  background-color: #6394F8;
+  background-color: #66a068;
   border-radius: 10px;
   color: white;
   display: inline-block;
@@ -85,6 +85,7 @@ nav {
 }
 
 .shopping-cart {
+  font-family: Poppins-Regular, serif;
   right: 10%;
   top: 50px;
   float: right;
@@ -113,24 +114,21 @@ nav {
       margin-bottom: 18px;
     }
 
-    img {
-      float: left;
-      margin-right: 12px;
-    }
-
     .item-name {
       display: block;
-      padding-top: 10px;
+      //padding-top: 10px;
       font-size: 16px;
     }
 
     .item-price {
       color: $main-color;
       margin-right: 8px;
+      font-size: 14px;
     }
 
     .item-quantity {
       color: $light-text;
+      font-size: 14px;
     }
   }
 

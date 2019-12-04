@@ -20,6 +20,8 @@ export class NavBarComponent implements OnInit {
   isDeliveryman = false;
   isManager = false;
   showCart = false;
+  cart = null;
+  totalPrice = 0;
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private cartService: CartService) {
 
@@ -56,8 +58,10 @@ export class NavBarComponent implements OnInit {
     if (this.showCart) {
       this.showCart = false;
     } else {
+      console.log(this.cartService.retrieveCart());
+      this.cart = this.cartService.retrieveCart();
+      this.totalPrice=this.cartService.retrieveTotalPrice();
       this.showCart = true;
-      console.log(this.cartService.retrieveCart())
     }
   }
 
