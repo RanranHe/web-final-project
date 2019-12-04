@@ -22,10 +22,12 @@ export class NavBarComponent implements OnInit {
   showCart = false;
   cart = null;
   totalPrice = 0;
+  totalItemNum = 0;
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private cartService: CartService) {
-
+    // determine whether is logged in.
     this.authenticationService.currentUser.subscribe(user => {
+      // determine the role of logged in user
       if (user) {
         this.currentUser = user;
         this.isLogin = true;
@@ -54,20 +56,23 @@ export class NavBarComponent implements OnInit {
     });
   }
 
+  // control whether show cart details.
   show() {
     if (this.showCart) {
       this.showCart = false;
     } else {
-      console.log(this.cartService.retrieveCart());
+      // retrieve car info from cart service cookie
       this.cart = this.cartService.retrieveCart();
-      this.totalPrice=this.cartService.retrieveTotalPrice();
+      this.totalPrice = this.cartService.retrieveTotalPrice();
+      this.totalItemNum = this.cartService.retrieveTotalItemNum();
       this.showCart = true;
     }
   }
 
+  // clean local Storage and reset nav bar info
   logout() {
     this.authenticationService.logout();
-    this.isLogin=false;
+    this.isLogin = false;
     this.isCustomer = false;
     this.isDeliveryman = false;
     this.isManager = false;

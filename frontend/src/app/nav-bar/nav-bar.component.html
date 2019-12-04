@@ -19,21 +19,24 @@
 <div *ngIf="showCart" class="container" (mouseleave)="show()">
   <div id="shopping-cart" class="shopping-cart">
     <div class="shopping-cart-header">
-      <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{{cart.length}}</span>
+      <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{{totalItemNum}}</span>
       <div class="shopping-cart-total">
         <span class="lighter-text">Total:</span>
         <span class="main-color-text"> ${{totalPrice}}</span>
       </div>
     </div> <!--end shopping-cart-header -->
 
-    <ul class="shopping-cart-items"*ngFor="let pack of cart">
-      <h3>{{pack.restaurantName}}</h3>
-      <li class="clearfix" *ngFor="let item of pack.items">
-        <span class="item-name">{{item.name}}</span>
-        <span class="item-price">${{item.price}}</span>
-        <span class="item-quantity">Quantity: {{item.quantity}}</span>
-      </li>
-    </ul>
+    <div *ngFor="let pack of cart">
+      <h6>{{pack.restaurantName}}</h6>
+      <ul class="shopping-cart-items" *ngFor="let item of pack.items">
+        <li class="clearfix">
+          <span class="item-name">{{item.name}}</span>
+          <span class="item-price">${{item.price}}</span>
+          <span class="item-quantity">Quantity: {{item.quantity}}</span>
+        </li>
+      </ul>
+    </div>
+
 
     <a href="#" class="button">Checkout</a>
   </div> <!--end shopping-cart -->

@@ -26,6 +26,7 @@ import {UserService} from './services/userService';
 import {AuthenticationService} from './services/authenticationService';
 import {RestaurantService} from "./services/restaurantService";
 import {CartService} from "./services/cartService";
+import {CookieService} from "ngx-cookie-service";
 
 // Routes
 import { appRoutes } from './route';
@@ -54,7 +55,7 @@ import { appRoutes } from './route';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [UserService, AuthenticationService, RestaurantService, CartService],
+  providers: [CookieService, UserService, AuthenticationService, RestaurantService, CartService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
