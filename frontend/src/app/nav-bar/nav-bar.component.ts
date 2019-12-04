@@ -2,6 +2,7 @@ import {Component, OnInit, Input, Output} from '@angular/core';
 import {AuthenticationService} from "../services/authenticationService";
 import {Role, User} from "../models/user";
 import {Router} from "@angular/router";
+import {CartService} from "../services/cartService";
 
 // declare var showCart: any;
 
@@ -20,7 +21,8 @@ export class NavBarComponent implements OnInit {
   isManager = false;
   showCart = false;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private authenticationService: AuthenticationService, private router: Router, private cartService: CartService) {
+
     this.authenticationService.currentUser.subscribe(user => {
       if (user) {
         this.currentUser = user;
@@ -55,6 +57,7 @@ export class NavBarComponent implements OnInit {
       this.showCart = false;
     } else {
       this.showCart = true;
+      console.log(this.cartService.retrieveCart())
     }
   }
 

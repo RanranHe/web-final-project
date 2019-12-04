@@ -85,11 +85,12 @@ nav {
 }
 
 .shopping-cart {
-  margin: 45px 0;
+  right: 10%;
+  top: 50px;
   float: right;
   background: white;
   width: 320px;
-  position: relative;
+  position: fixed;
   border-radius: 3px;
   padding: 20px;
   z-index: 10;

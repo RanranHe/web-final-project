@@ -25,6 +25,7 @@ import {ItemComponent} from "./restaurant-search-results/menu/item/item.componen
 import {UserService} from './services/userService';
 import {AuthenticationService} from './services/authenticationService';
 import {RestaurantService} from "./services/restaurantService";
+import {CartService} from "./services/cartService";
 
 // Routes
 import { appRoutes } from './route';
@@ -53,7 +54,7 @@ import { appRoutes } from './route';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [UserService, AuthenticationService, RestaurantService],
+  providers: [UserService, AuthenticationService, RestaurantService, CartService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

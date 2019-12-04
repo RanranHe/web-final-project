@@ -4,7 +4,7 @@
     <h3>{{row.name}}</h3>
     <div *ngFor="let item of row.items">
       <div class="item">
-        <a href="javascript:;">{{item.name}}</a>
+        <a href="javascript:;" (click)="addToCart(item.name, item.basePrice)">{{item.name}}</a>
         <span>${{item.basePrice}}</span>
       </div>
 

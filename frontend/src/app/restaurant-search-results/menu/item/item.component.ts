@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Restaurant} from "../../../models/restaurant";
-import {RestaurantService} from "../../../services/restaurantService";
-import {ActivatedRoute} from "@angular/router";
+import {CartService} from "../../../services/cartService";
 
 @Component({
   selector: 'item',
@@ -12,11 +10,14 @@ import {ActivatedRoute} from "@angular/router";
 export class ItemComponent implements OnInit {
   @Input() menu: Array<any>;
 
-  constructor() {
+  constructor(private cartService: CartService) {
   }
 
   ngOnInit() {
+  }
 
+  addToCart(name, price) {
+    this.cartService.addToCart(name, price);
   }
 
 }

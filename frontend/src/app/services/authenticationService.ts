@@ -5,7 +5,6 @@ import {catchError, map, retry} from 'rxjs/operators';
 
 import {User} from '../models/user';
 import {environment} from "../../environments/environment";
-import {error} from "selenium-webdriver";
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
