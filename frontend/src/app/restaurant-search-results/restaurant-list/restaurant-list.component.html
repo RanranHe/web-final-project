@@ -1,0 +1,17 @@
+<div class="restaurant-list">
+  <ul class="restaurant-list-basic" id='restaurant-list'>
+    <br><br>
+    <li *ngFor="let restaurant of restaurants">
+      <restaurant [restaurant]="restaurant"></restaurant>
+    </li>
+
+    <button *ngIf="showMoreBtn" class="button" (click)="showMoreRestaurants()">Show more...</button>
+  </ul>
+</div>
+
+
+
+
+
+
+

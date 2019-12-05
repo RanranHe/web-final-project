@@ -13,8 +13,15 @@ import {MainComponent} from './main/main.component'
 import {LoginComponent} from './login/login.component'
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {FooterComponent} from './footer/footer.component';
+import {CartComponent} from "./cart/cart.component";
+import {CartItemComponent} from "./cart/cart-item/cart-item.component";
 import {ProfileComponent} from './profile/profile.component'
 import {RestaurantSearchResultsComponent} from "./restaurant-search-results/restaurant-search-results.component";
+import {RestaurantListComponent} from "./restaurant-search-results/restaurant-list/restaurant-list.component";
+import {RestaurantComponent} from "./restaurant-search-results/restaurant/restaurant.component";
+import {MenuComponent} from "./restaurant-search-results/menu/menu.component";
+import {LeftSideComponent} from "./restaurant-search-results/menu/left-side/left-side.component";
+import {ItemComponent} from "./restaurant-search-results/menu/item/item.component";
 
 // Services
 import {UserService} from './services/userService';
@@ -27,7 +34,7 @@ import { appRoutes } from './route';
 import { RestaurantSearchComponent } from './restaurant-search/restaurant-search.component';
 import { RestaurantCreateComponent } from './restaurant-create/restaurant-create.component';
 import { RestaurantUpdateComponent } from './restaurant-update/restaurant-update.component';
-import {RestaurantComponent} from "./restaurant-search-results/restaurant/restaurant.component";
+import { RestaurantComponent } from "./restaurant-search-results/restaurant/restaurant.component";
 import { OrderAssignManagerComponent } from './order-assign-manager/order-assign-manager.component';
 import { OrderListDeliveryComponent } from './order-list-delivery/order-list-delivery.component';
 import { OrderListManagerComponent } from './order-list-manager/order-list-manager.component';
@@ -44,6 +51,8 @@ import { UpdateDeliveryComponent } from './update-delivery/update-delivery.compo
     NavBarComponent,
     FooterComponent,
     MainComponent,
+    CartComponent,
+    CartItemComponent,
     LoginComponent,
     SignUpComponent,
     ProfileComponent,
@@ -52,6 +61,7 @@ import { UpdateDeliveryComponent } from './update-delivery/update-delivery.compo
     RestaurantUpdateComponent,
     RestaurantComponent,
     RestaurantSearchResultsComponent,
+<<<<<<< HEAD
     OrderAssignManagerComponent,
     OrderListDeliveryComponent,
     OrderListManagerComponent,
@@ -59,6 +69,13 @@ import { UpdateDeliveryComponent } from './update-delivery/update-delivery.compo
     OrderListComponent,
     OrderNewComponent,
     UpdateDeliveryComponent
+=======
+    RestaurantListComponent,
+    RestaurantComponent,
+    MenuComponent,
+    LeftSideComponent,
+    ItemComponent
+>>>>>>> c31f30e13bc7f7f79a4e1f31adbcc8f2a74d9032
   ],
   imports: [
     BrowserModule,
@@ -67,7 +84,11 @@ import { UpdateDeliveryComponent } from './update-delivery/update-delivery.compo
     HttpClientModule,
     ReactiveFormsModule,
   ],
+<<<<<<< HEAD
   providers: [UserService, AuthenticationService, RestaurantService, DataTransfer],
+=======
+  providers: [CookieService, UserService, AuthenticationService, RestaurantService, CartService],
+>>>>>>> c31f30e13bc7f7f79a4e1f31adbcc8f2a74d9032
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

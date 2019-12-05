@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   showNavBar = false;
   alert = false;
 
-  private itemForm: FormGroup;
+  itemForm: FormGroup;
 
   constructor(userService: UserService, authenticationService: AuthenticationService, private router: Router) {
     this.userService = userService;
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     temp.subscribe(user => {
       this.alert = false;
       if (user) {
-        this.router.navigate(['/profile']);
+        this.router.navigate(['']);
       }
     }, err => {
       this.alert = true;

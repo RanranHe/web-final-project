@@ -11,7 +11,7 @@ export class UserService {
 
   // Constructor
   constructor(private http: HttpClient) {
-    this.resourceURL = `${environment.serverBaseURL}/api/project`;
+    this.resourceURL = `${environment.serverBaseURL}/api/users`;
   }
 
   // Register

@@ -1,0 +1,18 @@
+<div class="infoWrap">
+  <div class="cartSection">
+    <h3>{{item.name}}</h3>
+    <form [formGroup]="itemForm">
+      <p>
+          <input (keyup)="modifyQuantity(restaurantName, item, itemForm)"
+                 (mouseup)="modifyQuantity(restaurantName, item, itemForm)"
+                 type="number" class="qty" formControlName="quantity"/>
+        x ${{item.singlePrice}}</p>
+    </form>
+  </div>
+  <div class="prodTotal cartSection">
+    <p>${{item.price}}</p>
+  </div>
+  <div class="cartSection removeWrap">
+    <a href="javascript:;" (click)='deleteItem(restaurantName, item.name)' class="remove">x</a>
+  </div>
+</div>

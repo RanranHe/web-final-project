@@ -5,7 +5,7 @@ import {catchError, map, retry} from 'rxjs/operators';
 import {UserService} from '../services/userService';
 import {User} from '../models/user';
 import {environment} from "../../environments/environment";
-import {error} from "selenium-webdriver";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
@@ -13,8 +13,13 @@ export class AuthenticationService {
   public currentUser: Observable<User>;
   resourceURL: string;
 
+<<<<<<< HEAD
   constructor(private http: HttpClient, private userService: UserService) {
     this.resourceURL = `${environment.serverBaseURL}/api/project`;
+=======
+  constructor(private http: HttpClient) {
+    this.resourceURL = `${environment.serverBaseURL}/api/users`;
+>>>>>>> c31f30e13bc7f7f79a4e1f31adbcc8f2a74d9032
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     
     this.currentUser = this.currentUserSubject.asObservable();
