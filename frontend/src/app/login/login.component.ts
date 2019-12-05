@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   showNavBar = false;
   alert = false;
 
-  private itemForm: FormGroup;
+  itemForm: FormGroup;
 
   constructor(userService: UserService, authenticationService: AuthenticationService, private router: Router) {
     this.userService = userService;
