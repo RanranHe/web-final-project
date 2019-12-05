@@ -1,3 +1,29 @@
 <p>
   order-list-user works!
 </p>
+<div class="panel panel-default orderPanel">
+    <div class="panel-heading">
+        <b><h3 class="header">My Orders</h3></b>
+        <div class="panel-body">
+            <ul class="list-group">
+                <div ng-repeat="order in model.orders">
+                    <a data-toggle="collapse" data-target="#{{order._id}}" aria-expanded="false" class="list-group-item grey"><b><h4>Order on date: {{order.date}}</h4></b></a>
+                    <div class="orderList" id="{{order._id}}">
+                        <li class="list-group-item">
+                            <b>Order by:</b> {{order.name}}
+                        </li>
+                        <li class="list-group-item">
+                            <b>Phone Number:</b> {{order.phone}}
+                        </li>
+                        <li class="list-group-item">
+                            <b>Total Price:</b> {{order.totalPrice}}
+                        </li>
+                        <li class="list-group-item">
+                            <b>Current Status: </b> {{order.status}}
+                        </li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
