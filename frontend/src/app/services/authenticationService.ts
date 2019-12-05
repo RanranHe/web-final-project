@@ -14,7 +14,7 @@ export class AuthenticationService {
   resourceURL: string;
 
   constructor(private http: HttpClient) {
-    this.resourceURL = `${environment.serverBaseURL}/api/project`;
+    this.resourceURL = `${environment.serverBaseURL}/api/users`;
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
