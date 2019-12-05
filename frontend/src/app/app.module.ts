@@ -26,23 +26,12 @@ import {ItemComponent} from "./restaurant-search-results/menu/item/item.componen
 // Services
 import {UserService} from './services/userService';
 import {AuthenticationService} from './services/authenticationService';
-import {RestaurantService} from './services/restuarantService';
-import {DataTransfer} from './services/dataTransfer';
+import {RestaurantService} from "./services/restaurantService";
+import {CartService} from "./services/cartService";
+import {CookieService} from "ngx-cookie-service";
 
 // Routes
 import { appRoutes } from './route';
-import { RestaurantSearchComponent } from './restaurant-search/restaurant-search.component';
-import { RestaurantCreateComponent } from './restaurant-create/restaurant-create.component';
-import { RestaurantUpdateComponent } from './restaurant-update/restaurant-update.component';
-import { RestaurantComponent } from "./restaurant-search-results/restaurant/restaurant.component";
-import { OrderAssignManagerComponent } from './order-assign-manager/order-assign-manager.component';
-import { OrderListDeliveryComponent } from './order-list-delivery/order-list-delivery.component';
-import { OrderListManagerComponent } from './order-list-manager/order-list-manager.component';
-import { OrderListUserComponent } from './order-list-user/order-list-user.component';
-import { OrderListComponent } from './order-list/order-list.component';
-import { OrderNewComponent } from './order-new/order-new.component';
-import { UpdateDeliveryComponent } from './update-delivery/update-delivery.component';
-
 
 
 @NgModule({
@@ -56,26 +45,12 @@ import { UpdateDeliveryComponent } from './update-delivery/update-delivery.compo
     LoginComponent,
     SignUpComponent,
     ProfileComponent,
-    RestaurantSearchComponent,
-    RestaurantCreateComponent,
-    RestaurantUpdateComponent,
-    RestaurantComponent,
     RestaurantSearchResultsComponent,
-<<<<<<< HEAD
-    OrderAssignManagerComponent,
-    OrderListDeliveryComponent,
-    OrderListManagerComponent,
-    OrderListUserComponent,
-    OrderListComponent,
-    OrderNewComponent,
-    UpdateDeliveryComponent
-=======
     RestaurantListComponent,
     RestaurantComponent,
     MenuComponent,
     LeftSideComponent,
     ItemComponent
->>>>>>> c31f30e13bc7f7f79a4e1f31adbcc8f2a74d9032
   ],
   imports: [
     BrowserModule,
@@ -84,11 +59,7 @@ import { UpdateDeliveryComponent } from './update-delivery/update-delivery.compo
     HttpClientModule,
     ReactiveFormsModule,
   ],
-<<<<<<< HEAD
-  providers: [UserService, AuthenticationService, RestaurantService, DataTransfer],
-=======
   providers: [CookieService, UserService, AuthenticationService, RestaurantService, CartService],
->>>>>>> c31f30e13bc7f7f79a4e1f31adbcc8f2a74d9032
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
