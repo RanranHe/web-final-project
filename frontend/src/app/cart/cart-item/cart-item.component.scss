@@ -1,0 +1,101 @@
+$fontSans: Poppins-Regular, serif;
+
+.infoWrap {
+  display: table;
+  width: 100%;
+}
+
+.cartSection {
+  display: table-cell;
+
+  vertical-align: middle;
+
+
+  .itemNumber {
+    font-size: .75em;
+    color: #777;
+    margin-bottom: .5em;
+  }
+
+  h3 {
+
+    font-size: 1em;
+    font-family: $fontSans;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .025em;
+  }
+
+  > p {
+    display: inline-block;
+    font-size: .85em;
+
+    color: #777777;
+    font-family: $fontSans;
+
+    .quantity {
+      font-weight: bold;
+      color: #333;
+    }
+
+    &.stockStatus {
+      color: #82CA9C;
+      font-weight: bold;
+      padding: .5em 0 0 1em;
+      text-transform: uppercase;
+
+      &.out {
+        color: #F69679;
+      }
+    }
+  }
+
+  &.qtyWrap, &.prodTotal {
+    text-align: center;
+
+    p {
+      font-weight: bold;
+      font-size: 1.25em;
+      float: right;
+      margin: 0;
+    }
+  }
+
+  input.qty {
+    width: 4em;
+    text-align: center;
+    font-size: 1em;
+    padding: .25em;
+    margin: 1em .5em 0 0;
+  }
+}
+
+@mixin transition($transition-property, $transition-time, $method) {
+  transition: $transition-property $transition-time $method;
+}
+
+.removeWrap {
+  width: 60px;
+}
+
+a.remove {
+  text-decoration: none;
+  font-family: $fontSans;
+  color: #ffffff;
+  font-weight: bold;
+  background: #e0e0e0;
+  padding: .5em;
+  padding-top: 4px;
+  font-size: .8em;
+  display: inline-block;
+  border-radius: 100%;
+  line-height: .85;
+  float: right;
+  width: 20px;
+  height: 20px;
+  @include transition(all, .25s, linear);
+
+  &:hover {
+    background: #f30;
+  }
+}
