@@ -2,24 +2,14 @@
   <h1 class="projTitle">My Shopping Cart</h1>
   <div class="heading cf">
     <h3>Total {{totalItemNum}} items</h3>
-    <a href="javascript:;" class="continue" (click)="resetCart()">Continue Shopping</a>
+    <a href="" class="continue">Continue Shopping</a>
+    <a href="javascript:;" class="resetCart" (click)="resetCart()">Clear Cart</a>
   </div>
   <div class="cart">
     <ul class="cartWrap"  *ngFor="let food of foods">
       <li class="restaurantName"><h3>{{food.restaurantName}}</h3></li>
       <li class="items odd" *ngFor="let item of food.items">
-        <cart-item [item]="item" [restaurantName]="food.restaurantName">
-          <!--<div class="cartSection">-->
-            <!--<h3>{{item.name}}</h3>-->
-            <!--<p><input type="text" class="qty"/> x ${{item.price/food.items.length}}</p>-->
-          <!--</div>-->
-          <!--<div class="prodTotal cartSection">-->
-            <!--<p>${{item.price}}</p>-->
-          <!--</div>-->
-          <!--<div class="cartSection removeWrap">-->
-            <!--<a href="#" class="remove">x</a>-->
-          <!--</div>-->
-        </cart-item>
+        <cart-item [item]="item" [restaurantName]="food.restaurantName"></cart-item>
       </li>
     </ul>
   </div>

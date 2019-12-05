@@ -26,6 +26,7 @@ export class CartComponent implements OnInit {
 
   resetCart() {
     this.carService.resetCart();
+    window.location.reload();
   }
 
   ngOnInit() {
