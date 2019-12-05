@@ -21,9 +21,9 @@ export class RestaurantService {
   createRestaurant(restaurant: Restaurant = null, userId: string) {
     const url = `${this.resourceURL}/user/${userId}/restaurant`;
     const observable = this.http.post<Restaurant>(url, restaurant);
-    // observable.subscribe(res => {
-    //   console.log(res);
-    // })
+    observable.subscribe(res => {
+      console.log(res);
+    })
   }
 
   findRestaurantById(restaurantId: string): Observable<Restaurant>{
@@ -58,7 +58,7 @@ export class RestaurantService {
     // observable.subscribe(res => {
     //   console.log(res);
     // })
-    // return observable;
+    return observable;
   }
 
   insertFood(restaurantId: string, newFood: Food): Observable<Restaurant>{

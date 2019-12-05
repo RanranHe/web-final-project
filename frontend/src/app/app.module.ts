@@ -28,6 +28,13 @@ import { RestaurantSearchComponent } from './restaurant-search/restaurant-search
 import { RestaurantCreateComponent } from './restaurant-create/restaurant-create.component';
 import { RestaurantUpdateComponent } from './restaurant-update/restaurant-update.component';
 import {RestaurantComponent} from "./restaurant-search-results/restaurant/restaurant.component";
+import { OrderAssignManagerComponent } from './order-assign-manager/order-assign-manager.component';
+import { OrderListDeliveryComponent } from './order-list-delivery/order-list-delivery.component';
+import { OrderListManagerComponent } from './order-list-manager/order-list-manager.component';
+import { OrderListUserComponent } from './order-list-user/order-list-user.component';
+import { OrderListComponent } from './order-list/order-list.component';
+import { OrderNewComponent } from './order-new/order-new.component';
+import { UpdateDeliveryComponent } from './update-delivery/update-delivery.component';
 
 
 
@@ -44,7 +51,14 @@ import {RestaurantComponent} from "./restaurant-search-results/restaurant/restau
     RestaurantCreateComponent,
     RestaurantUpdateComponent,
     RestaurantComponent,
-    RestaurantSearchResultsComponent
+    RestaurantSearchResultsComponent,
+    OrderAssignManagerComponent,
+    OrderListDeliveryComponent,
+    OrderListManagerComponent,
+    OrderListUserComponent,
+    OrderListComponent,
+    OrderNewComponent,
+    UpdateDeliveryComponent
   ],
   imports: [
     BrowserModule,

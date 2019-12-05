@@ -29,4 +29,16 @@ export class UserService {
     const url = `${this.resourceURL}/user?username=${email}`;
     return this.http.get<User>(url);
   }
+
+  findFreeDeliveryMan(): Observable<User>{
+    const url = `${this.resourceURL}/deliveryMan/free`;
+    const observable = this.http.get<User>(url);
+    return observable;
+  }
+
+  updateUser(userId: string, newUser: User): Observable<User>{
+    const url = `${this.resourceURL}/user/${userId}`;
+    const observable = this.http.put<User>(url, newUser);
+    return observable;
+  }
 }
