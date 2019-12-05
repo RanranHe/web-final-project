@@ -13,6 +13,7 @@ import {MainComponent} from './main/main.component'
 import {LoginComponent} from './login/login.component'
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {FooterComponent} from './footer/footer.component';
+import {CartComponent} from "./cart/cart.component";
 import {ProfileComponent} from './profile/profile.component'
 import {RestaurantSearchResultsComponent} from "./restaurant-search-results/restaurant-search-results.component";
 import {RestaurantListComponent} from "./restaurant-search-results/restaurant-list/restaurant-list.component";
@@ -38,6 +39,7 @@ import { appRoutes } from './route';
     NavBarComponent,
     FooterComponent,
     MainComponent,
+    CartComponent,
     LoginComponent,
     SignUpComponent,
     ProfileComponent,

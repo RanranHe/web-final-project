@@ -21,10 +21,11 @@ export class NavBarComponent implements OnInit {
   isManager = false;
   showCart = false;
   cart = null;
-  totalPrice = 0;
+  totalPrice: any;
   totalItemNum = 0;
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private cartService: CartService) {
+    this.totalPrice = 0;
     // determine whether is logged in.
     this.authenticationService.currentUser.subscribe(user => {
       // determine the role of logged in user
@@ -76,6 +77,11 @@ export class NavBarComponent implements OnInit {
     this.isCustomer = false;
     this.isDeliveryman = false;
     this.isManager = false;
+  }
+
+  // link to cart component
+  jumpToCart() {
+    this.router.navigate(['/cart'])
   }
 
   ngOnInit() {

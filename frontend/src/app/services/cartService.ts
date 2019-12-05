@@ -19,9 +19,11 @@ export class CartService {
 
   // add a item into cart
   addToCart(restaurantName, name, price) {
-    // this.cookieService.deleteAll();
+    // this.cookieService.set(`${this.username}`, " ")
+    // console.log(this.username)
+    // console.log(this.cookieService.get(`${this.username}`))
     // if the cookie exist
-    if (this.cookieService.get(`${this.username}`)) {
+    if (this.cookieService.get(`${this.username}`)!==" " && this.cookieService.get(`${this.username}`)) {
       // get data from cookie
       const totalPrice = JSON.parse(this.cookieService.get(`${this.username}`)).totalPrice;
       const totalItemNum = JSON.parse(this.cookieService.get(`${this.username}`)).totalItemNum;
@@ -81,7 +83,7 @@ export class CartService {
       };
       this.cookieService.set(`${this.username}`, JSON.stringify(cart));
     } else { // if the cookie doesn't exist, create a new one with the given item
-      console.log("catch");
+      console.log(this.cookieService.get(`${this.username}`));
       const cart = {
         foods:
           [{
@@ -101,8 +103,8 @@ export class CartService {
 
   // get foods in the cart
   retrieveCart() {
-    console.log(this.cookieService.get(`${this.username}`))
-    if (this.cookieService.get(`${this.username}`)) {
+    console.log(this.cookieService.get(`${this.username}`) !== " "&& this.cookieService.get(`${this.username}`))
+    if (this.cookieService.get(`${this.username}`)  !== " "&& this.cookieService.get(`${this.username}`)) {
       return JSON.parse(this.cookieService.get(`${this.username}`)).foods;
     } else {
       return [];
@@ -111,8 +113,7 @@ export class CartService {
 
   // get total price of the cart
   retrieveTotalPrice() {
-    console.log(this.cookieService.get(`${this.username}`))
-    if (this.cookieService.get(`${this.username}`)) {
+    if (this.cookieService.get(`${this.username}`) !== " " && this.cookieService.get(`${this.username}`)) {
       return parseFloat(JSON.parse(this.cookieService.get(`${this.username}`)).totalPrice).toFixed(2);
     } else {
       return 0;
@@ -121,7 +122,7 @@ export class CartService {
 
   // get total number of items in the cart
   retrieveTotalItemNum() {
-    if (this.cookieService.get(`${this.username}`)) {
+    if (this.cookieService.get(`${this.username}`) !== " "&& this.cookieService.get(`${this.username}`)) {
       return JSON.parse(this.cookieService.get(`${this.username}`)).totalItemNum;
     } else {
       return 0;
