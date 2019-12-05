@@ -10,7 +10,8 @@
         <a *ngIf="!isLogin" href="/login">Login</a>
         <a *ngIf="isLogin" (click)="logout()" href="/login">Logout</a>
       </li>
-      <li *ngIf="isCustomer"><a href="#" id="cart" (mouseover)="show()" (click)="jumpToCart()"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+      <li *ngIf="isCustomer"><a href="javascript:;" id="cart" (mouseover)="show()" (click)="jumpToCart()"><i
+        class="fa fa-shopping-cart"></i> Cart</a></li>
     </ul> <!--end navbar-right -->
   </div> <!--end container -->
 </nav>
@@ -19,7 +20,8 @@
 <div *ngIf="showCart" class="container" (mouseleave)="show()">
   <div id="shopping-cart" class="shopping-cart">
     <div class="shopping-cart-header">
-      <a href="javascript:;" (click)="jumpToCart()"><i class="fa fa-shopping-cart cart-icon"></i></a><span class="badge">{{totalItemNum}}</span>
+      <a href="javascript:;" (click)="jumpToCart()"><i class="fa fa-shopping-cart cart-icon"></i></a><span
+      class="badge">{{totalItemNum}}</span>
       <div class="shopping-cart-total">
         <span class="lighter-text">Total:</span>
         <span class="main-color-text"> ${{totalPrice}}</span>
