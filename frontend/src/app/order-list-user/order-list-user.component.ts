@@ -14,16 +14,19 @@ export class OrderListUserComponent implements OnInit {
   currUser: User;
   orders: Order[];
   constructor(private orderService: OrderService, private authenticationService: AuthenticationService) {
-  
+    this.updateOrder();
+  }
+
+  updateOrder(){
     this.authenticationService.currentUser.subscribe(user=>{
-        this.currUser = user
-    });
-    this.orders = [];
-    this.orderService.findOrderByUserId(this.currUser._id).subscribe(orders=>{
-      orders.forEach(order=>{
-        this.orders.push(order)
-      })
-    });
+      this.currUser = user
+  });
+  this.orders = [];
+  this.orderService.findOrderByUserId(this.currUser._id).subscribe(orders=>{
+    orders.forEach(order=>{
+      this.orders.push(order)
+    })
+  });
   }
 
   ngOnInit() {

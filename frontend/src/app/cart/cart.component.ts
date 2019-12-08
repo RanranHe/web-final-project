@@ -23,9 +23,13 @@ export class CartComponent implements OnInit {
   currOrder: Order;
   currUser: User;
   creditCard: Number;
-  creditCardHolder: String;
-  creditCardExpireDate: String;
-  name: String;
+  creditCardHolder: string;
+  creditCardExpireDate: string;
+  name: string;
+  contactName: string;
+  phone: string;
+  email: string;
+  address: string;
 
 
   constructor(private carService: CartService, private orderService: OrderService, private authenticationService: AuthenticationService, private router: Router) {
@@ -45,12 +49,22 @@ export class CartComponent implements OnInit {
   }
 
   generateOrder(){
-    console.log(this.currUser)
-    let currOrder = new Order(this.currUser, "default add", this.foods, this.creditCard, this.creditCardHolder, this.creditCardExpireDate, "name", this.totalPrice, "phonenum");
-    this.orderService.createOrder(currOrder, this.currUser._id)
-    this.router.navigate(["orderList"]);
-     
+    console.log(this.creditCardExpireDate)
+    let currOrder = new Order(this.currUser, this.address, this.foods, this.creditCard, this.creditCardHolder, "12/23/12", this.contactName, this.totalPrice, this.phone);
+    const order = this.orderService.createOrder(currOrder, this.currUser._id).subscribe(
+      data=>{
+        this.router.navigate(["orderList"]);
+      },
+      error=>{
+        console.log("false");
+      }
+    );
+    
+    
+    //this.router.navigate(["orderList"]);
+    
    
+    
   }
 
   ngOnInit() {
