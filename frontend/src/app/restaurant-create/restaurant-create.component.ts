@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RestaurantService } from "../services/restuarantService";
+import { RestaurantService } from "../services/restaurantService";
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import { AuthenticationService } from "../services/authenticationService";

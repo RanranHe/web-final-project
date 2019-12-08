@@ -5,7 +5,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from "../../services/authenticationService";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {catchError, ignoreElements} from "rxjs/operators";
-import {RestaurantService} from "../../services/restuarantService";
+import {RestaurantService} from "../../services/restaurantService";
+
 import {Restaurant} from "../../models/restaurant";
 
 declare var loginFormTextControl: any;

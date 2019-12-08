@@ -13,6 +13,34 @@
       </li>
     </ul>
   </div>
+  
+
+  <div class="payment">
+    <h1 class="projTitle">Payment Method</h1>
+      <div class="row">
+        <label>CardNumber</label>
+        <input type="text" [(ngModel)]="creditCard">
+      </div>
+      <div class="row">
+        <label>CreditCardName</label>
+        <input type="text" [(ngModel)]="creditCardHolder">
+      </div>
+      <div class="row">
+        <label>Credit Card Expire Date</label>
+        <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="MM/DD/YYYY"  [(ngModel)]="creditCardExpireDate">
+        <owl-date-time #dt1 [pickerType]="'calendar'"></owl-date-time>
+      </div>
+      
+
+  </div>
+  <div class="contact">
+      <h1 class="projTitle">Contact Information</h1>
+      <div class="row">
+        <label>CardNumber</label>
+        <input type="text" [(ngModel)]="creditCard">
+      </div>
+  </div>
+
 
   <div class="promoCode"><h4>Have A Promo Code?</h4><input type="text" name="promo" placholder="Enter Code"/>
     <a href="#" class="btn"></a></div>
@@ -25,7 +53,7 @@
 
       <li class="totalRow"><span class="label">Tax</span><span class="value">${{tax}}</span></li>
       <li class="totalRow final"><span class="label">Total</span><span class="value">${{finalTotal}}</span></li>
-      <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li>
+      <li class="totalRow"><button (click)="generateOrder()" class="btn continue">Checkout</button></li>
     </ul>
   </div>
 </div>

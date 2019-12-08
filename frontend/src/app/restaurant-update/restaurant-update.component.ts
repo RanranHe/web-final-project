@@ -3,7 +3,7 @@ import { Restaurant, Food} from '../models/restaurant';
 import { Observable } from 'rxjs';
 import {DataTransfer} from "../services/dataTransfer";
 import {Router} from '@angular/router';
-import {RestaurantService} from "../services/restuarantService";
+import {RestaurantService} from "../services/restaurantService";
 
 @Component({
   selector: 'app-restaurant-update',

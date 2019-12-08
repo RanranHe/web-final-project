@@ -16,17 +16,15 @@ export class OrderService {
     this.resourceURL = `${environment.serverBaseURL}/api/project`;
   }
 
-  createOrder(order: Order = null, userId: string) {
+  createOrder(order: Order = null, userId: string):Observable<Order> {
     const url = `${this.resourceURL}/user/${userId}/order`;
     const observable = this.http.post<Order>(url, order);
-    observable.subscribe(res => {
-        console.log(res);
-      })
+    return observable;
   } 
 
-  findOrderByUserId(userId: string): Observable<Order>{
+  findOrderByUserId(userId: string): Observable<Array<Order>>{
       const url = `${this.resourceURL}/user/${userId}/order`;
-      const observable = this.http.get<Order>(url);
+      const observable = this.http.get<Array<Order>>(url);
       return observable;
   }
 

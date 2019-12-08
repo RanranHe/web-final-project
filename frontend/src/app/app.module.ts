@@ -15,7 +15,9 @@ import {SignUpComponent} from "./sign-up/sign-up.component";
 import {FooterComponent} from './footer/footer.component';
 import {CartComponent} from "./cart/cart.component";
 import {CartItemComponent} from "./cart/cart-item/cart-item.component";
-import {ProfileComponent} from './profile/profile.component'
+import {ProfileComponent} from './profile/profile.component';
+import {RestaurantCreateComponent} from  "./restaurant-create/restaurant-create.component";
+import {RestaurantUpdateComponent} from "./restaurant-update/restaurant-update.component";
 import {RestaurantSearchResultsComponent} from "./restaurant-search-results/restaurant-search-results.component";
 import {RestaurantListComponent} from "./restaurant-search-results/restaurant-list/restaurant-list.component";
 import {RestaurantComponent} from "./restaurant-search-results/restaurant/restaurant.component";
@@ -26,13 +28,32 @@ import {ItemComponent} from "./restaurant-search-results/menu/item/item.componen
 // Services
 import {UserService} from './services/userService';
 import {AuthenticationService} from './services/authenticationService';
-import {RestaurantService} from "./services/restaurantService";
+import {RestaurantService} from "./services/restaurantServiceIII";
 import {CartService} from "./services/cartService";
 import {CookieService} from "ngx-cookie-service";
 
 // Routes
 import { appRoutes } from './route';
+import { RestaurantSearchComponent } from './restaurant-search/restaurant-search.component';
+import { OrderService } from './services/orderService';
+import { OrderAssignManagerComponent } from './order-assign-manager/order-assign-manager.component';
+import { OrderListComponent } from './order-list/order-list.component';
+import { OrderListManagerComponent } from './order-list-manager/order-list-manager.component';
+import { OrderListUserComponent } from './order-list-user/order-list-user.component';
+import { OrderNewComponent } from './order-new/order-new.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
+import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+export const MY_MOMENT_FORMATS = {
+  parseInput: 'DD/MM/YYYY',
+  fullPickerInput: 'DD/MM/YYYY hh:mm a',
+  datePickerInput: 'DD/MM/YYYY',
+  timePickerInput: 'hh:mm a',
+  monthYearLabel: 'MMM-YYYY',
+  dateA11yLabel: 'LL',
+  monthYearA11yLabel: 'MMMM-YYYY'
+};
 
 @NgModule({
   declarations: [
@@ -45,21 +66,33 @@ import { appRoutes } from './route';
     LoginComponent,
     SignUpComponent,
     ProfileComponent,
+    RestaurantCreateComponent,
     RestaurantSearchResultsComponent,
+    RestaurantUpdateComponent,
+    RestaurantSearchComponent,
     RestaurantListComponent,
     RestaurantComponent,
     MenuComponent,
     LeftSideComponent,
-    ItemComponent
+    ItemComponent,
+    OrderAssignManagerComponent,
+    OrderListComponent,
+    OrderListManagerComponent,
+    OrderListUserComponent,
+    OrderNewComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     ReactiveFormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    OwlMomentDateTimeModule
   ],
-  providers: [CookieService, UserService, AuthenticationService, RestaurantService, CartService],
+  providers: [CookieService, UserService, AuthenticationService, RestaurantService, CartService, OrderService,{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
