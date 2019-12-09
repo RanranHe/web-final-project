@@ -69,4 +69,8 @@ export class RestaurantSearchComponent implements OnInit {
     this.router.navigateByUrl("restaurant-update");
   }
 
+  toCheckOrders(){
+    this.router.navigateByUrl("orderListManager");
+  }
+
 }

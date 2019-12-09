@@ -28,9 +28,10 @@ import {ItemComponent} from "./restaurant-search-results/menu/item/item.componen
 // Services
 import {UserService} from './services/userService';
 import {AuthenticationService} from './services/authenticationService';
-import {RestaurantService} from "./services/restaurantServiceIII";
+import {RestaurantService} from "./services/restaurantService";
 import {CartService} from "./services/cartService";
 import {CookieService} from "ngx-cookie-service";
+import {DataTransfer} from './services/dataTransfer'
 
 // Routes
 import { appRoutes } from './route';
@@ -44,6 +45,7 @@ import { OrderNewComponent } from './order-new/order-new.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 export const MY_MOMENT_FORMATS = {
   parseInput: 'DD/MM/YYYY',
@@ -92,7 +94,7 @@ export const MY_MOMENT_FORMATS = {
     OwlNativeDateTimeModule,
     OwlMomentDateTimeModule
   ],
-  providers: [CookieService, UserService, AuthenticationService, RestaurantService, CartService, OrderService,{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
+  providers: [CookieService, UserService, AuthenticationService, RestaurantService, CartService, DataTransfer, OrderService,{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

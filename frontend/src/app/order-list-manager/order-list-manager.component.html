@@ -1,12 +1,35 @@
 <p>
   order-list-manager works!
 </p>
-<!-- <section class="row profileinmiddle">
+<section class="row profileinmiddle">
     <div class="list-group-item">
         <h5 class="header">All Orders</h5>
     </div>
 
-    <div class="list-group-item" ng-repeat="order in model.orders">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>User Name</th>
+            <th>User Address</th>
+            <th>Total Price</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Assign to delivery man</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table table-bordered" *ngFor="let ob of orders">
+            <td>{{ob.name}}</td>
+            <td>{{ob.address}}</td>
+            <td>{{ob.totalPrice}}</td>
+            <td>{{ob.date}}</td>
+            <td>{{ob.status}}</td>
+            <td><button class="btn btn-primary" (click)="assignToDeliveryMan(ob._id)">Assign</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+    <!-- <div class="list-group-item" ng-repeat="order in model.orders">
         <div class="row">
             <div class="col-xs-7">
                 <div data-toggle="collapse" data-target="#{{order._id}}">{{order.date}}</div>
@@ -45,6 +68,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-</section> -->
+</section>

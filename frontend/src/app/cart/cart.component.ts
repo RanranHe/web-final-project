@@ -51,18 +51,14 @@ export class CartComponent implements OnInit {
   generateOrder(){
     console.log(this.creditCardExpireDate)
     let currOrder = new Order(this.currUser, this.address, this.foods, this.creditCard, this.creditCardHolder, "12/23/12", this.contactName, this.totalPrice, this.phone);
-    currOrder.status = DeliveryStatus.Processing;
-    const order = this.orderService.createOrder(currOrder, this.currUser._id).subscribe(
-      data=>{
-        this.router.navigate(["orderList"]);
-      },
-      error=>{
-        console.log("false");
-      }
+    const order = this.orderService.createOrder(currOrder, this.currUser._id).subscribe(order=>{
+      console.log("getorder");
+    }
+      
     );
     
     
-    //this.router.navigate(["orderList"]);
+    this.router.navigate(["orderList"]);
     
    
     

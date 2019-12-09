@@ -11,7 +11,9 @@ import {RestaurantSearchResultsComponent} from "./restaurant-search-results/rest
 import {MenuComponent} from "./restaurant-search-results/menu/menu.component";
 import {CartComponent} from "./cart/cart.component";
 import {OrderListUserComponent} from "./order-list-user/order-list-user.component";
-
+import {OrderListManagerComponent} from "./order-list-manager/order-list-manager.component";
+import {OrderAssignManagerComponent} from "./order-assign-manager/order-assign-manager.component";
+ 
 
 export const appRoutes: Routes = [
   {path: '', component: MainComponent},
@@ -24,5 +26,7 @@ export const appRoutes: Routes = [
   {path: 'list/:key', component: RestaurantSearchResultsComponent},
   {path: 'restaurant/:apikey/menu', component: MenuComponent, canActivate:[AuthGuard]},
   {path: 'cart', component: CartComponent, canActivate:[AuthGuard]},
-  {path: 'orderList', component: OrderListUserComponent}
+  {path: 'orderList', component: OrderListUserComponent},
+  {path: 'orderListManager', component: OrderListManagerComponent},
+  {path: 'orderAssignManager', component: OrderAssignManagerComponent}
 ];

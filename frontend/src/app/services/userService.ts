@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../models/user';
 
 import {environment} from '../../environments/environment';
-import {observable, Observable} from 'rxjs';
+import {observable, Observable, Observer} from 'rxjs';
 
 @Injectable()
 export class UserService {
@@ -30,9 +30,14 @@ export class UserService {
     return this.http.get<User>(url);
   }
 
-  findFreeDeliveryMan(): Observable<User>{
+  findUserById(userId: string) : Observable<User>{
+    const url = `${this.resourceURL}/${userId}`;
+    return this.http.get<User>(url);
+  }
+
+  findFreeDeliveryMan(): Observable<Array<User>>{
     const url = `${this.resourceURL}/deliveryMan/free`;
-    const observable = this.http.get<User>(url);
+    const observable = this.http.get<Array<User>>(url);
     return observable;
   }
 
