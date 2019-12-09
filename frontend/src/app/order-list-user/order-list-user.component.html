@@ -4,26 +4,32 @@
 <div class="panel panel-default orderPanel">
     <div class="panel-heading">
         <b><h3 class="header">My Orders</h3></b>
-        <button click="updateOrder()">update</button>
+        <button (click)="updateOrder()">update</button>
         <div class="panel-body">
             
-            <ul class="list-group"  *ngFor="let order of orders">
+            <ul class="list-group"  *ngFor="let order of orders; let i = index">
+
                 <a data-toggle="collapse" data-target="#{{order._id}}" aria-expanded="false" class="list-group-item grey"><b><h4>Order on date: {{order.date}}</h4></b></a>
+                <button (click)="showDetails(i)">details</button>
                 <div class="orderList" id="{{order._id}}">
                     <li class="list-group-item">
                         <b>Order by:</b> {{order.name}}
                     </li>
-                    <li class="list-group-item">
-                        <b>Phone Number:</b> {{order.phone}}
-                    </li>
+                    
                     <li class="list-group-item">
                         <b>Total Price:</b> {{order.totalPrice}}
+                    </li>
+                    
+                </div>
+                <div *ngIf="details[i]">
+                    <li class="list-group-item">
+                        <b>Phone Number:</b> {{order.phone}}
                     </li>
                     <li class="list-group-item">
                         <b>Current Status: </b> {{order.status}}
                     </li>
                 </div>
-                
+               
             </ul>
         </div>
     </div>

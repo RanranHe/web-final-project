@@ -13,7 +13,10 @@ import {Order} from '../models/order';
 export class OrderListUserComponent implements OnInit {
   currUser: User;
   orders: Order[];
+  details: boolean[];
+
   constructor(private orderService: OrderService, private authenticationService: AuthenticationService) {
+    this.details = []
     this.updateOrder();
   }
 
@@ -22,11 +25,17 @@ export class OrderListUserComponent implements OnInit {
       this.currUser = user
   });
   this.orders = [];
+  
   this.orderService.findOrderByUserId(this.currUser._id).subscribe(orders=>{
     orders.forEach(order=>{
-      this.orders.push(order)
+      this.orders.push(order);
+      this.details.push(false);
     })
   });
+  }
+
+  showDetails(i: number){
+    this.details[i] = !this.details[i];
   }
 
   ngOnInit() {
