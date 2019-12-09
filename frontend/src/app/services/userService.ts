@@ -8,12 +8,12 @@ import {observable, Observable, Observer} from 'rxjs';
 @Injectable()
 export class UserService {
   resourceURL: string;
-
+  resourceURLTemp: string;
   // Constructor
   constructor(private http: HttpClient) {
     this.resourceURL = `${environment.serverBaseURL}/api/users`;
+    this.resourceURLTemp = `${environment.serverBaseURL}/api/users/user`
   }
-
   // Register
   register(user: User = null): Observable<User> {
     const url = `${this.resourceURL}/register`;
@@ -31,8 +31,12 @@ export class UserService {
   }
 
   findUserById(userId: string) : Observable<User>{
-    const url = `${this.resourceURL}/${userId}`;
-    return this.http.get<User>(url);
+    const url = this.resourceURLTemp + "/" + userId;
+    const observable = this.http.get<User>(url);
+    observable.subscribe(res => {
+      console.log("res from service: " + res);
+    })
+    return observable;
   }
 
   findFreeDeliveryMan(): Observable<Array<User>>{
