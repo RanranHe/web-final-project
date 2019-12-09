@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
 import {CartService} from "../services/cartService";
 import {OrderService} from "../services/orderService";
-import {Order} from '../models/order';
+import {Order, DeliveryStatus} from '../models/order';
 import {User} from '../models/user';
 import {AuthenticationService} from '../services/authenticationService';
 import { Router } from '@angular/router';
@@ -51,6 +51,7 @@ export class CartComponent implements OnInit {
   generateOrder(){
     console.log(this.creditCardExpireDate)
     let currOrder = new Order(this.currUser, this.address, this.foods, this.creditCard, this.creditCardHolder, "12/23/12", this.contactName, this.totalPrice, this.phone);
+    currOrder.status = DeliveryStatus.Processing;
     const order = this.orderService.createOrder(currOrder, this.currUser._id).subscribe(
       data=>{
         this.router.navigate(["orderList"]);
