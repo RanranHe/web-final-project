@@ -27,7 +27,8 @@
           <tr class="table table-bordered" *ngFor="let ob of deliveryMen">
             <td>{{ob.username}}</td>
             <td>{{ob.status}}</td>
-            <td><button class="btn btn-primary" (click)="assignOrder(ob._id)">Assign</button></td>
+            <td><button class="btn btn-primary" (click)="assignOrder(ob)">Assign</button></td>
+            <td><button class="btn btn-primary" (click)="back()">Back</button></td>
           </tr>
         </tbody>
       </table>

@@ -52,29 +52,21 @@ export class OrderAssignManagerComponent implements OnInit {
     );
   }
 
-  assignOrder(deliveryManId: string){
+  assignOrder(deliveryMan: User){
     let tmpMan: any = {};
-    this.userService.findUserById(deliveryManId).subscribe(
-      delMan=>{
+    deliveryMan.status = WorkerStatus.BUSY;;
+    this.userService.updateUser(deliveryMan._id, deliveryMan).subscribe(delMan=>
+     {
         console.log(delMan);
-        if(delMan){
-          this.dMId = delMan["_id"]
-          this.username = delMan["username"];
-          this.password  = delMan["password"];
-          this.role = delMan["role"];
-          this.status  = WorkerStatus.BUSY;
-          this.reviews = delMan["reviews"];
-          this.restaurants  = delMan["restaurants"];
-          this.order  = delMan["order"];
-      }
+        
     });
-      tmpMan.username = this.username;
-      tmpMan.password = this.password;
-      tmpMan.role = this.role;
-      tmpMan.status = this.status;
-      tmpMan.reviews = this.reviews;
-      tmpMan.restaurants = this.restaurants;
-      tmpMan.order = this.order;
+      // tmpMan.username = this.username;
+      // tmpMan.password = this.password;
+      // tmpMan.role = this.role;
+      // tmpMan.status = this.status;
+      // tmpMan.reviews = this.reviews;
+      // tmpMan.restaurants = this.restaurants;
+      // tmpMan.order = this.order;
 
     //   this.userService.updateUser(this.dMId, tmpMan);
     // // tmpMan.status = WorkerStatus.BUSY;
@@ -85,6 +77,9 @@ export class OrderAssignManagerComponent implements OnInit {
     //   this.newOrder.status = this.deliveryStatus;
     //   this.orderService.updateOrder(this.orderId, this.newOrder);
     // })
+    
+  }
+  back(){
     this.router.navigateByUrl("orderListManager");
   }
 
