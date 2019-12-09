@@ -31,7 +31,7 @@ import {AuthenticationService} from './services/authenticationService';
 import {RestaurantService} from "./services/restaurantService";
 import {CartService} from "./services/cartService";
 import {CookieService} from "ngx-cookie-service";
-import {DataTransfer} from './services/dataTransfer'
+import {DataTransfer} from './services/dataTransfer';
 
 // Routes
 import { appRoutes } from './route';
@@ -45,6 +45,7 @@ import { OrderNewComponent } from './order-new/order-new.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddDeliveryManComponent } from './add-delivery-man/add-delivery-man.component';
 
 
 export const MY_MOMENT_FORMATS = {
@@ -81,7 +82,8 @@ export const MY_MOMENT_FORMATS = {
     OrderListComponent,
     OrderListManagerComponent,
     OrderListUserComponent,
-    OrderNewComponent
+    OrderNewComponent,
+    AddDeliveryManComponent
   ],
   imports: [
     BrowserModule,

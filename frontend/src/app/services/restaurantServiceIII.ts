@@ -7,7 +7,7 @@ import {observable, Observable} from 'rxjs';
 import {Restaurant} from "../models/restaurant";
 
 @Injectable()
-export class RestaurantService {
+export class RestaurantServiceYelp {
   resourceURL: string;
 
   // Constructor

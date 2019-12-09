@@ -13,6 +13,7 @@ import {CartComponent} from "./cart/cart.component";
 import {OrderListUserComponent} from "./order-list-user/order-list-user.component";
 import {OrderListManagerComponent} from "./order-list-manager/order-list-manager.component";
 import {OrderAssignManagerComponent} from "./order-assign-manager/order-assign-manager.component";
+import { AddDeliveryManComponent } from './add-delivery-man/add-delivery-man.component'
  
 
 export const appRoutes: Routes = [
@@ -28,5 +29,6 @@ export const appRoutes: Routes = [
   {path: 'cart', component: CartComponent, canActivate:[AuthGuard]},
   {path: 'orderList', component: OrderListUserComponent},
   {path: 'orderListManager', component: OrderListManagerComponent},
-  {path: 'orderAssignManager', component: OrderAssignManagerComponent}
+  {path: 'orderAssignManager', component: OrderAssignManagerComponent},
+  {path: 'adddeliveryman', component: AddDeliveryManComponent}
 ];

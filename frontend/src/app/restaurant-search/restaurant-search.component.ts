@@ -73,4 +73,8 @@ export class RestaurantSearchComponent implements OnInit {
     this.router.navigateByUrl("orderListManager");
   }
 
+  toAddDeliveryMan(){
+    this.router.navigateByUrl("adddeliveryman");
+  }
+
 }
