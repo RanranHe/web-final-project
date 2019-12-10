@@ -16,6 +16,10 @@ $fontSerif: Poppins-Regular, serif;
 .row{
   display: flex;
   flex-direction: column;
+
+  label {
+    padding-top: 15px;
+  }
 }
 
 .cf:before, .cf:after {
@@ -37,6 +41,18 @@ $fontSerif: Poppins-Regular, serif;
   margin: 0 auto;
   padding: 5% 0;
   margin-bottom: 5em;
+
+  h5 {
+    float: left;
+    width: 35%;
+    margin-top: 20px;
+    color: red;
+    font-style: italic;
+    font-size: 1em;
+    font-family: $fontSans;
+    margin-bottom: .5em;
+    letter-spacing: -.025em;
+  }
 
 }
 
@@ -61,6 +77,26 @@ $fontSerif: Poppins-Regular, serif;
   }
 }
 
+.subTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 1em 0;
+  border-bottom: 1px solid #dadada;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0;
+
+  span {
+    font-family: $fontSerif;
+    font-weight: normal;
+    font-style: italic;
+    text-transform: lowercase;
+    color: #777;
+  }
+}
+
 // CART HEADER
 .heading {
   padding: 1em 0;
@@ -76,6 +112,7 @@ $fontSerif: Poppins-Regular, serif;
   }
 
   a.continue {
+
     &:link, &:visited {
       text-decoration: none;
       font-family: $fontSans;
@@ -107,6 +144,48 @@ $fontSerif: Poppins-Regular, serif;
         right: -10px;
       }
     }
+  }
+}
+
+.btn {
+  color: #fff;
+  background: #99CC99;
+  width: 130px;
+  &:link, &:visited {
+    text-decoration: none;
+    font-family: $fontSans;
+    letter-spacing: -.015em;
+    font-size: 1em;
+    padding: 1em 3em;
+    color: #fff;
+    background: #99CC99;
+    font-weight: bold;
+    border-radius: 50px;
+    float: right;
+    text-align: right;
+    @include transition(all, .25s, linear);
+  }
+
+  &:after {
+    content: "\276f";
+    padding: .5em;
+    position: relative;
+    right: 0;
+    @include transition(all, .15s, linear);
+
+  }
+
+  &:hover, &:focus, &:active {
+    background: #f69679;
+
+    &:after {
+      right: -10px;
+    }
+  }
+
+  .promoCode & {
+    font-size: .85em;
+    paddding: .5em 2em;
   }
 }
 
@@ -225,7 +304,6 @@ a.resetCart {
     font-family: $fontSans;
     margin-bottom: .5em;
     letter-spacing: -.025em;
-
   }
 
   input {
@@ -257,44 +335,7 @@ a.resetCart {
   }
 }
 
-.btn {
-  &:link, &:visited {
-    text-decoration: none;
-    font-family: $fontSans;
-    letter-spacing: -.015em;
-    font-size: 1em;
-    padding: 1em 3em;
-    color: #fff;
-    background: #99CC99;
-    font-weight: bold;
-    border-radius: 50px;
-    float: right;
-    text-align: right;
-    @include transition(all, .25s, linear);
-  }
 
-  &:after {
-    content: "\276f";
-    padding: .5em;
-    position: relative;
-    right: 0;
-    @include transition(all, .15s, linear);
-
-  }
-
-  &:hover, &:focus, &:active {
-    background: #f69679;
-
-    &:after {
-      right: -10px;
-    }
-  }
-
-  .promoCode & {
-    font-size: .85em;
-    paddding: .5em 2em;
-  }
-}
 
 /* TOTAL AND CHECKOUT  */
 .subtotal {
