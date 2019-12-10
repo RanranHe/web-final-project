@@ -1,35 +1,15 @@
-.orderPanel{
-    margin-top: 50px;
-}
-.row{
-    display: flex;
-    margin-left: 10px;
-}
+@import "../cart/cart.component";
+@import "../cart/cart-item/cart-item.component";
 
-.header{
-    margin-left: 30px;
-    margin-right: 50px
-}   
-
-button{
-    text-decoration: none;
-    letter-spacing: -.015em;
-    font-size: .75em;
-    padding: 1em;
-    color: #fff;
-    background: #99CC99;
-    font-weight: bold;
-    border-radius: 50px;
-    //float: right;
-    size: 50px;
-    margin-left: 20px;
-    margin-bottom: 10px;
+h3 {
+  font-size: 20px;
 }
 
-.list-group{
-    margin: 30px;
+h4 {
+  font-size: 12px;
 }
 
-.panel-body{
-    border: 5px solid #99CC99;
+.smallerPriceSize {
+  float: right;
+  font-size: 16px;
 }
