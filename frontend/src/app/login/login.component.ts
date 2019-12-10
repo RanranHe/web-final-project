@@ -37,8 +37,10 @@ export class LoginComponent implements OnInit {
     const pass = this.itemForm.get('pass').value;
     const temp = this.authenticationService.login(email, pass);
     temp.subscribe(user => {
+      console.log("user")
       this.alert = false;
       if (user) {
+        this.authenticationService.setCurrentUser(user);
         this.router.navigate(['']);
       }
     }, err => {

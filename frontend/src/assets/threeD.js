@@ -222,34 +222,36 @@ function threeD() {
     const color = vechicleColors[Math.floor(Math.random() * vechicleColors.length)];
 
     // truck cargo textures
-    const cargo_texture_1 = new THREE.TextureLoader().load("../assets/textures/white_cargo.jpg");
-    const cargo_texture_2 = new THREE.TextureLoader().load("../assets/textures/red_cargo.jpg");
-    const cargo_texture_3 = new THREE.TextureLoader().load("../assets/textures/orange_cargo.jpg");
-    const cargo_texture_4 = new THREE.TextureLoader().load("../assets/textures/yellow_cargo.jpg");
-    const cargo_texture_5 = new THREE.TextureLoader().load("../assets/textures/blue_cargo.jpg");
+    const cargo_texture_3 = new THREE.TextureLoader().load("../assets/textures/subway.jpg");
+    const cargo_texture_4 = new THREE.TextureLoader().load("../assets/textures/starbucks.png");
+    const cargo_texture_5 = new THREE.TextureLoader().load("../assets/textures/mcdonalds.png");
     const cargo_texture_6 = new THREE.TextureLoader().load("../assets/textures/kfc.png");
 
-    // const cargoTypes = [cargo_texture_1, cargo_texture_2, cargo_texture_3, cargo_texture_4, cargo_texture_5];
-    const cargoTypes = [cargo_texture_6];
+    const cargoTypes = [cargo_texture_3, cargo_texture_4, cargo_texture_5, cargo_texture_6];
     // const selector = Math.floor(Math.random() * cargoTypes.length);
 
+    // truck base part
     const base = new THREE.Mesh(
       new THREE.BoxBufferGeometry(100 * zoom, 25 * zoom, 5 * zoom),
       new THREE.MeshLambertMaterial({color: "#b4c6fc", flatShading: true})
     );
+    // set base position
     base.position.z = 10 * zoom;
     truck.add(base);
 
+    // truck cargo part
     const cargo = new THREE.Mesh(
       new THREE.BoxBufferGeometry(75 * zoom, 35 * zoom, 40 * zoom),
       new THREE.MeshPhongMaterial({map: cargoTypes[Math.floor(Math.random() * cargoTypes.length)]})
     );
+    // set cargo position
     cargo.position.x = 15 * zoom;
     cargo.position.z = 30 * zoom;
     cargo.castShadow = true;
     cargo.receiveShadow = true;
     truck.add(cargo);
 
+    // truck cabin part
     const cabin = new THREE.Mesh(
       new THREE.BoxBufferGeometry(25 * zoom, 30 * zoom, 30 * zoom),
       [
@@ -261,6 +263,7 @@ function threeD() {
         new THREE.MeshPhongMaterial({color, flatShading: true}) // bottom
       ]
     );
+    // set cabin position
     cabin.position.x = -40 * zoom;
     cabin.position.z = 20 * zoom;
     cabin.castShadow = true;
