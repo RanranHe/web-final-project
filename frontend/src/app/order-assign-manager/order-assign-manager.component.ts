@@ -54,8 +54,10 @@ export class OrderAssignManagerComponent implements OnInit {
 
   assignOrder(deliveryMan: User){
     let tmpMan: any = {};
-    deliveryMan.status = WorkerStatus.BUSY;;
-    this.userService.updateUser(deliveryMan._id, deliveryMan).subscribe(delMan=>
+    deliveryMan.status = WorkerStatus.BUSY;
+    tmpMan.id = deliveryMan._id;
+    tmpMan.newUser = deliveryMan;
+    this.userService.updateUser(deliveryMan._id, tmpMan).subscribe(delMan=>
      {
         console.log(delMan);
         
@@ -84,11 +86,12 @@ export class OrderAssignManagerComponent implements OnInit {
   updateOrderStatus(deliveryMan: User){
     this.orderService.findOrderById(this.orderId).subscribe(res=>{
       if(res){
-        if(res.status === DeliveryStatus.Processing){
-          res.status = DeliveryStatus.Pickup;
-          res._deliveryMan = deliveryMan;
+        let no = new Order(res._user, res.address, res.foods, res.creditCard, res.creditCardHolder, res.creditCardExpireDate, res.name, res.totalPrice, res.phone);
+        if(res.status == DeliveryStatus.Processing){
+          no.status = DeliveryStatus.Pickup;
+          no._deliveryMan = deliveryMan;
         }
-        this.orderService.updateOrder(this.orderId, res);
+        this.orderService.updateOrder(this.orderId, no);
       }
     })
   }

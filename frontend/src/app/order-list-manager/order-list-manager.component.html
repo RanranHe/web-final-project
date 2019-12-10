@@ -24,7 +24,7 @@
             <td>{{ob.totalPrice}}</td>
             <td>{{ob.date}}</td>
             <td>{{ob.status}}</td>
-            <td><button class="btn btn-primary" (click)="assignToDeliveryMan(ob._id)">Assign</button></td>
+            <td><button *ngIf="ob.status==0" class="btn btn-primary" (click)="assignToDeliveryMan(ob._id)">Assign</button></td>
           </tr>
         </tbody>
       </table>
