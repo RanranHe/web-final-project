@@ -60,11 +60,13 @@ export class CheckOutComponent implements OnInit {
 
     if (creditCard && creditCardHolder && expireDate && contactName && phone && address) {
       let currOrder = new Order(this.currUser, address, this.foods, creditCard, creditCardHolder,
-        expireDate, contactName, this.totalPrice, phone);
+        expireDate, contactName, this.finalTotal, phone);
       currOrder.status = DeliveryStatus.Processing;
       // @ts-ignore
       const order = this.orderService.createOrder(currOrder, this.currUser._id);
+
       this.router.navigate(["orderList"]);
+      this.carService.resetCart();
     } else {
       this.alert = true;
     }
