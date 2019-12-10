@@ -1,6 +1,6 @@
 @import "../cart/cart.component";
 @import "../cart/cart-item/cart-item.component";
-
+// set style for order-list
 h3 {
   font-size: 20px;
 }
@@ -12,4 +12,17 @@ h4 {
 .smallerPriceSize {
   float: right;
   font-size: 16px;
+}
+
+button{
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    color: #82CA9C;
+    padding: .5em;
+    padding-top: 4px;
+    font-size: .8em;
+    display: inline-block;
+    border-radius: 20%;
+    line-height: .85;
 }

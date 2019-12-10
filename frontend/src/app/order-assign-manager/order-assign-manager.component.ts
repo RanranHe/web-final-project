@@ -30,6 +30,7 @@ export class OrderAssignManagerComponent implements OnInit {
   restaurants: Array<Restaurant>;
   order: string;
   dMId: string;
+  orderStatus: string;
   
 
   constructor(userService: UserService, private dataTransfer: DataTransfer, orderService: OrderService, private router:Router) { 
@@ -41,6 +42,7 @@ export class OrderAssignManagerComponent implements OnInit {
     // });
   }
 
+  // call this function to find all delivery men during the website.
   findFreeDeliveryMen(){
     this.deliveryMen = new Array<User>();
     this.userService.findFreeDeliveryMan().subscribe(
@@ -53,6 +55,8 @@ export class OrderAssignManagerComponent implements OnInit {
     );
   }
 
+//call this function to update the status of the delivery man from free to busy who been selected to handle this order.
+// and make a record to the delivery man about this order.
   updateUser(deliveryMan: User, or_id:string){
     let tmpMan: any = {};
     console.log(or_id);
@@ -70,43 +74,15 @@ export class OrderAssignManagerComponent implements OnInit {
     });
   }
 
+  // update delivery man work status from free to busy.
   assignOrder(deliveryMan: User){
     
     deliveryMan.status = WorkerStatus.BUSY;
     this.updateOrderStatus(deliveryMan);
-    // deliveryMan.orders.push(or);
-    // tmpMan.id = deliveryMan._id;
-    // tmpMan.newUser = deliveryMan;
-   
-    // // tmpMan.orders.push(or);
-    // this.userService.updateUser(deliveryMan._id, tmpMan).subscribe(delMan=>
-    //  {
-    //     console.log(delMan);
-        
-    // });
-
-  
-    
-      // tmpMan.username = this.username;
-      // tmpMan.password = this.password;
-      // tmpMan.role = this.role;
-      // tmpMan.status = this.status;
-      // tmpMan.reviews = this.reviews;
-      // tmpMan.restaurants = this.restaurants;
-      // tmpMan.order = this.order;
-
-    //   this.userService.updateUser(this.dMId, tmpMan);
-    // // tmpMan.status = WorkerStatus.BUSY;
-    // // this.userService.updateUser(deliveryManId, tmpMan);
-    // this.orderService.findOrderById(this.orderId).subscribe(res => {
-    //   this.newOrder = res;
-    //   this.newOrder._deliveryMan = this.deliveryMan;
-    //   this.newOrder.status = this.deliveryStatus;
-    //   this.orderService.updateOrder(this.orderId, this.newOrder);
-    // })
     
   }
 
+  // update the order status from prcoessing to pickup and assign the corresponding delivery man to this order.
   updateOrderStatus(deliveryMan: User) {
     let no: Order;
     this.orderService.findOrderById(this.orderId).subscribe(res=>{
@@ -120,9 +96,9 @@ export class OrderAssignManagerComponent implements OnInit {
         this.updateUser(deliveryMan, res._id);
       }
     })
-    
-    
   }
+
+  //back to the main page.
   back(){
     this.router.navigateByUrl("orderListManager");
   }

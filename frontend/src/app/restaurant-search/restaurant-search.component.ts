@@ -38,6 +38,7 @@ export class RestaurantSearchComponent implements OnInit {
     this.findRestaurantByUserId();
   }
 
+  //  find all restaurants created by current admin user.
   findRestaurantByUserId(){
     this.restaurants = new Array<Restaurant>();
     this.restaurantService.findRestaurantByUserId(this.curUserId).subscribe(
@@ -49,6 +50,7 @@ export class RestaurantSearchComponent implements OnInit {
     );
   }
 
+  // delete the restaurant by id.
   deleteRestaurant(restaurantId){
     this.restaurantService.deleteRestaurant(restaurantId);
     this.findRestaurantByUserId();
@@ -60,6 +62,7 @@ export class RestaurantSearchComponent implements OnInit {
     console.log(currentUser);
   }
   
+  // four router function for all next steps.
   toCreate(){
     this.router.navigateByUrl("restaurant-create");
   }
