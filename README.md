@@ -20,6 +20,7 @@ multiple restaurants. After giving some delivery details, the food will be deliv
     
 ## API
 We got restaurant and menu data from "Eatstreet" api.
+
 https://developers.eatstreet.com/
 
 ## Database
@@ -31,7 +32,9 @@ Remote MongoDB (mLab MongoDB) is used in this project to store user and order da
 
 ## JavaScript library
 three.js – JavaScript 3D library is used on the main page in the project to enriching the visual feedback.
+
 https://threejs.org/
+
 
 ## How to run
 1. Go to https://github.com/neu-mis-info6150-fall-2019/final-project-team-tas.git
