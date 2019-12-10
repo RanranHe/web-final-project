@@ -1,14 +1,8 @@
 /*Class Selectors*/
-
-@font-face {
-  font-family: Poppins-Regular;
-  src: url('../assets/fonts/poppins/Poppins-Regular.ttf');
-}
-
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 body {
   margin: 0;
-  font-family: Poppins-Regular, serif;
+  font-family: 'Abhaya Libre', serif;
   background-size: 100% 100vh;
 }
-
 

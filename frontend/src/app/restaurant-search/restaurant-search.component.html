@@ -1,0 +1,28 @@
+<p>restaurant-search works!</p>
+<button class="btn btn-primary" (click)="toCreate()">Create Restaurant</button>
+<button class="btn btn-primary" (click)="toCheckOrders()">Check All Orders</button>
+<button class="btn btn-primary" (click)="toAddDeliveryMan()">Add Delivary Man</button>
+<!-- <button (click)="toUpdate()">Update Restaurant</button> -->
+<input class="btn btn-primary" (click)="findRestaurantByUserId()" type=button value="List All" />
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Restaurant Name</th>
+      <th>Restaurant Address</th>
+      <th>Restaurant State</th>
+      <th>Food List</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table table-bordered" *ngFor="let ob of restaurants">
+      <td>{{ob.name}}</td>
+      <td>{{ob.address}}</td>
+      <td>{{ob.state}}</td>
+      <td><option *ngFor="let m of ob.food">{{m.name}}</option></td>
+      <td><button class="btn btn-primary" (click)="toUpdate(ob._id)">Update</button></td>
+      <td><button class="btn btn-primary" (click)="deleteRestaurant(ob._id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

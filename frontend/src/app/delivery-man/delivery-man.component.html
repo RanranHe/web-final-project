@@ -1,0 +1,29 @@
+
+<h1>delivery-man works!</h1>
+
+<div class="list-group-item">
+  <h5 class="header">All Of Your Orders</h5>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>User Address</th>
+      <th>Total Price</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Pick Up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table table-bordered" *ngFor="let ob of yourOrders">
+      <td>{{ob.name}}</td>
+      <td>{{ob.address}}</td>
+      <td>{{ob.totalPrice}}</td>
+      <td>{{ob.date}}</td>
+      <td>{{ob.status}}</td>
+      <td><button class="btn btn-primary" (click)="pickUp(ob)">Pick Up</button></td>
+    </tr>
+  </tbody>
+</table>

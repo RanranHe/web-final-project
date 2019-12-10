@@ -13,6 +13,11 @@ $fontSerif: Poppins-Regular, serif;
   box-sizing: border-box;
 }
 
+.row{
+  display: flex;
+  flex-direction: column;
+}
+
 .cf:before, .cf:after {
   content: " ";
   display: table;
