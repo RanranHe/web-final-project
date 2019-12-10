@@ -13,21 +13,39 @@
                 </div>
                 
                 <div class="orderList" id="{{order._id}}">
-                    <li class="list-group-item">
+                    <li class="list-group-item row">
                         <b>Order by:</b> {{order.name}}
                     </li>
                     
-                    <li class="list-group-item">
+                    <li class="list-group-item row">
                         <b>Total Price:</b> {{order.totalPrice}}
                     </li>
                     
                 </div>
                 <div *ngIf="details[i]">
-                    <li class="list-group-item">
+                    <li class="list-group-item row">
                         <b>Phone Number:</b> {{order.phone}}
                     </li>
-                    <li class="list-group-item">
-                        <b>Current Status: </b> {{order.status}}
+                    <li class="list-group-item row">
+                        
+                            <b>Current Status: </b> 
+                            <div *ngIf="order.status==0">
+                                Processing
+                            </div>
+                            <div *ngIf="order.status==1">
+                                Pickup
+                            </div>
+                            <div *ngIf="order.status==2">
+                                OnTheWay
+                            </div>
+                            <div *ngIf="order.status==3">
+                                Cancelled
+                            </div>
+                            <div *ngIf="order.status==4">
+                                Completed
+                            </div>
+                            <button (click)="confirmOrder(i)">Comfirm Order</button>
+                        
                     </li>
                 </div>
                

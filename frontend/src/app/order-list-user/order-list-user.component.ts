@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import { User } from '../models/user';
 import { OrderService } from '../services/orderService';
 import {AuthenticationService} from '../services/authenticationService';
-import {Order} from '../models/order';
+import {Order, DeliveryStatus} from '../models/order';
 
 @Component({
   selector: 'app-order-list-user',
@@ -40,6 +40,12 @@ export class OrderListUserComponent implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  confirmOrder(i: number){
+    let currOrder = this.orders[i];
+    currOrder.status = DeliveryStatus.Completed;
+    this.orderService.updateOrder(currOrder._id, currOrder);
   }
 
 }

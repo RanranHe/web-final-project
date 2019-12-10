@@ -6,7 +6,11 @@ export enum DeliveryStatus {
 }
 
 export class Order {
+<<<<<<< HEAD
   _id:string;
+=======
+  _id: string;
+>>>>>>> update order
   _deliveryMan: User;
   _user: User;
   address: string;
