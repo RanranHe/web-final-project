@@ -23,6 +23,7 @@ export class ItemComponent implements OnInit {
     })
   }
 
+  // add food into cart
   addToCart(name, price) {
     this.cartService.addToCart(this.restaurantName, name, price);
   }

@@ -16,6 +16,7 @@ export class LeftSideComponent implements OnInit {
 
   }
 
+  // scroll to each food category
   scroll(name:string) {
     const el = document.getElementById(`${name}`);
     el.scrollIntoView({behavior: 'smooth'});

@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     this.userService = userService;
     this.authenticationService = authenticationService;
 
+    // email and password form
     this.itemForm = new FormGroup({
       email: new FormControl('', Validators.required),
       pass: new FormControl('', Validators.required)

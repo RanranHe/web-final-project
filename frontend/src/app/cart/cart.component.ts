@@ -35,6 +35,7 @@ export class CartComponent implements OnInit {
     window.location.reload();
   }
 
+  // go to checkout page
   generateOrder() {
     this.router.navigate(["checkout"]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
