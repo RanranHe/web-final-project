@@ -25,6 +25,7 @@ export class CheckOutComponent implements OnInit {
 
   paymentForm: FormGroup;
   contactForm: FormGroup;
+  alert = false;
 
   constructor(private carService: CartService, private orderService: OrderService, private authenticationService: AuthenticationService, private router: Router) {
     this.foods = this.carService.retrieveCart();
@@ -44,7 +45,6 @@ export class CheckOutComponent implements OnInit {
     this.contactForm = new FormGroup({
       contactName: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required)
     });
   }
@@ -56,16 +56,19 @@ export class CheckOutComponent implements OnInit {
 
     const contactName = this.contactForm.get("contactName").value;
     const phone = this.contactForm.get("phone").value;
-    const email = this.contactForm.get("email").value;
     const address = this.contactForm.get("address").value;
 
-    let currOrder = new Order(this.currUser, address, this.foods, creditCard, creditCardHolder,
-      expireDate, contactName, this.totalPrice, phone);
-    console.log(currOrder);
-    currOrder.status = DeliveryStatus.Processing;
-    // @ts-ignore
-    const order = this.orderService.createOrder(currOrder, this.currUser._id);
-    this.router.navigate(["orderList"]);
+    if (creditCard && creditCardHolder && expireDate && contactName && phone && address) {
+      let currOrder = new Order(this.currUser, address, this.foods, creditCard, creditCardHolder,
+        expireDate, contactName, this.totalPrice, phone);
+      currOrder.status = DeliveryStatus.Processing;
+      // @ts-ignore
+      const order = this.orderService.createOrder(currOrder, this.currUser._id);
+      this.router.navigate(["orderList"]);
+    } else {
+      this.alert = true;
+    }
+
   }
 
   ngOnInit() {

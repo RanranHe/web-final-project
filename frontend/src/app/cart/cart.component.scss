@@ -42,6 +42,18 @@ $fontSerif: Poppins-Regular, serif;
   padding: 5% 0;
   margin-bottom: 5em;
 
+  h5 {
+    float: left;
+    width: 35%;
+    margin-top: 20px;
+    color: red;
+    font-style: italic;
+    font-size: 1em;
+    font-family: $fontSans;
+    margin-bottom: .5em;
+    letter-spacing: -.025em;
+  }
+
 }
 
 .projTitle {
@@ -292,7 +304,6 @@ a.resetCart {
     font-family: $fontSans;
     margin-bottom: .5em;
     letter-spacing: -.025em;
-
   }
 
   input {

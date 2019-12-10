@@ -6,7 +6,7 @@
     <form [formGroup]="paymentForm" (submit)="generateOrder()">
       <div class="row">
         <label>CardNumber</label>
-        <input type="text" formControlName="creditCard" required>
+        <input type="number" formControlName="creditCard" required>
       </div>
       <div class="row">
         <label>CreditCardName</label>
@@ -30,11 +30,7 @@
       </div>
       <div class="row">
         <label>Phone Number</label>
-        <input type="text" formControlName="phone" required>
-      </div>
-      <div class="row">
-        <label>Email</label>
-        <input type="text" formControlName="email" required>
+        <input type="number" formControlName="phone" required>
       </div>
       <div class="row">
         <label>Address</label>
@@ -42,6 +38,8 @@
       </div>
     </form>
   </div>
+
+  <h5 *ngIf="alert">* Please fill all fields</h5>
 
   <div class="subtotal cf">
     <ul>
@@ -52,7 +50,7 @@
       <li class="totalRow"><span class="label">Tax</span><span class="value">${{tax}}</span></li>
       <li class="totalRow final"><span class="label">Total</span><span class="value">${{finalTotal}}</span></li>
       <li class="totalRow">
-        <button class="btn continue">Place Order</button>
+        <button (click)="generateOrder()" class="btn continue">Place Order</button>
       </li>
     </ul>
   </div>
