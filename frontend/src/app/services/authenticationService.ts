@@ -24,17 +24,22 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
+  public setCurrentUser(user) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    this.currentUserSubject.next(user);
+  }
+
   // Login service
   login(username: string, password: string) {
     const url = `${this.resourceURL}/login`;
     const observable = this.http.post<any>(url, {username, password});
-    observable.subscribe(user => {
-      if (user) {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-      }
-    }, catchError);
+    // observable.subscribe(user => {
+    //   if (user) {
+    //     // store user details and jwt token in local storage to keep user logged in between page refreshes
+    //     localStorage.setItem('currentUser', JSON.stringify(user));
+    //     this.currentUserSubject.next(user);
+    //   }
+    // });
     return observable;
   }
 
