@@ -8,7 +8,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.scss']
 })
-
+// include all cart items
 export class CartItemComponent implements OnInit {
   @Input() item: Item;
   @Input() restaurantName: string;
