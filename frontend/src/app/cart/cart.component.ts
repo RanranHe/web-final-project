@@ -35,9 +35,18 @@ export class CartComponent implements OnInit {
     window.location.reload();
   }
 
+<<<<<<< HEAD
   generateOrder() {
     this.router.navigate(["checkout"]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+=======
+  generateOrder(){
+    console.log(this.creditCardExpireDate)
+    let currOrder = new Order(this.currUser, this.address, this.foods, this.creditCard, this.creditCardHolder, "12/23/12", this.contactName, this.totalPrice, this.phone);
+    currOrder.status = DeliveryStatus.Processing;
+    const order = this.orderService.createOrder(currOrder, this.currUser._id)
+    this.router.navigate(["orderList"]);
+>>>>>>> updatee
   }
 
   ngOnInit() {
