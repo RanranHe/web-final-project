@@ -19,7 +19,9 @@ export class OrderService {
   createOrder(order: Order = null, userId: string):Observable<Order>{
     const url = `${this.resourceURL}/user/${userId}/order`;
     const obs = this.http.post<Order>(url, order);
-    console.log(obs);
+    obs.subscribe(res => {
+      console.log(res);
+    });
     return obs;
   } 
 

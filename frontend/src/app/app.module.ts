@@ -24,6 +24,7 @@ import {RestaurantComponent} from "./restaurant-search-results/restaurant/restau
 import {MenuComponent} from "./restaurant-search-results/menu/menu.component";
 import {LeftSideComponent} from "./restaurant-search-results/menu/left-side/left-side.component";
 import {ItemComponent} from "./restaurant-search-results/menu/item/item.component";
+import {CheckOutComponent} from "./cart/checkout/check-out.component";
 
 // Services
 import {UserService} from './services/userService';
@@ -67,6 +68,7 @@ export const MY_MOMENT_FORMATS = {
     MainComponent,
     CartComponent,
     CartItemComponent,
+    CheckOutComponent,
     LoginComponent,
     SignUpComponent,
     ProfileComponent,

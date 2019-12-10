@@ -1,0 +1,59 @@
+<div class="wrap cf">
+  <h1 class="projTitle">Checkout</h1>
+
+  <div class="payment">
+    <h1 class="subTitle">Payment Method</h1>
+    <form [formGroup]="paymentForm" (submit)="generateOrder()">
+      <div class="row">
+        <label>CardNumber</label>
+        <input type="text" formControlName="creditCard" required>
+      </div>
+      <div class="row">
+        <label>CreditCardName</label>
+        <input type="text" formControlName="creditCardHolder" required>
+      </div>
+      <div class="row">
+        <label>Credit Card Expire Date</label>
+        <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="MM/DD/YYYY"
+               formControlName="creditCardExpireDate" required>
+        <owl-date-time #dt1 [pickerType]="'calendar'"></owl-date-time>
+      </div>
+    </form>
+  </div>
+
+  <div class="contact">
+    <h1 class="subTitle">Contact Information</h1>
+    <form [formGroup]="contactForm">
+      <div class="row">
+        <label>Name</label>
+        <input type="text" formControlName="contactName" required>
+      </div>
+      <div class="row">
+        <label>Phone Number</label>
+        <input type="text" formControlName="phone" required>
+      </div>
+      <div class="row">
+        <label>Email</label>
+        <input type="text" formControlName="email" required>
+      </div>
+      <div class="row">
+        <label>Address</label>
+        <input type="text" formControlName="address" required>
+      </div>
+    </form>
+  </div>
+
+  <div class="subtotal cf">
+    <ul>
+      <li class="totalRow"><span class="label">Subtotal</span><span class="value">${{totalPrice}}</span></li>
+
+      <li class="totalRow"><span class="label">Shipping</span><span class="value">${{shipping}}</span></li>
+
+      <li class="totalRow"><span class="label">Tax</span><span class="value">${{tax}}</span></li>
+      <li class="totalRow final"><span class="label">Total</span><span class="value">${{finalTotal}}</span></li>
+      <li class="totalRow">
+        <button class="btn continue">Place Order</button>
+      </li>
+    </ul>
+  </div>
+</div>
