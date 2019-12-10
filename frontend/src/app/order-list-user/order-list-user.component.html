@@ -6,7 +6,7 @@
     <a href="" class="continue">Continue Shopping</a>
   </div>
   <div class="cart">
-    <ul class="cartWrap"  *ngFor="let order of orders">
+    <ul class="cartWrap"  *ngFor="let order of orders; let i =index">
       <li class="restaurantName"><h3>{{order.date}}</h3></li>
       <li class="items odd" *ngFor="let food of order.foods">
         <div class="cartSection"><h3>{{food.restaurantName}}</h3></div>
@@ -20,8 +20,30 @@
         </div>
       </li>
       <div class="cartSection smallerPriceSize">
+            <p><b>Status:</b></p>&nbsp;&nbsp;
+            <p *ngIf="order.status==0">
+                Processing
+            </p>
+            <p *ngIf="order.status==1">
+              Pickup
+            </p>
+            <p *ngIf="order.status==2">
+              OnTheWay
+            </p>
+            <p *ngIf="order.status==3">
+              Cancelled
+            </p>
+            <p *ngIf="order.status==4">
+                Confirmed
+            </p>
+            &nbsp;&nbsp;&nbsp;&nbsp;
         <p><b>Total:</b>&nbsp;&nbsp;${{order.totalPrice}}</p>
+        &nbsp;&nbsp;
+        <button *ngIf="order.status==2" (click)="confirmOrder(i)"> Confirmed</button>
       </div>
+        
+        
+      
     </ul>
   </div>
 </div>
@@ -57,21 +79,7 @@
                     <!--<li class="list-group-item row">-->
                         <!---->
                             <!--<b>Current Status: </b> -->
-                            <!--<div *ngIf="order.status==0">-->
-                                <!--Processing-->
-                            <!--</div>-->
-                            <!--<div *ngIf="order.status==1">-->
-                                <!--Pickup-->
-                            <!--</div>-->
-                            <!--<div *ngIf="order.status==2">-->
-                                <!--OnTheWay-->
-                            <!--</div>-->
-                            <!--<div *ngIf="order.status==3">-->
-                                <!--Cancelled-->
-                            <!--</div>-->
-                            <!--<div *ngIf="order.status==4">-->
-                                <!--Completed-->
-                            <!--</div>-->
+                             
                             <!--<button (click)="confirmOrder(i)">Comfirm Order</button>-->
                         <!---->
                     <!--</li>-->

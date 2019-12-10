@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../models/user';
+import {User, WorkerStatus} from '../models/user';
 import {OrderService} from '../services/orderService';
 import {AuthenticationService} from '../services/authenticationService';
 import {Order, DeliveryStatus} from '../models/order';
+import { UserService } from '../services/userService';
 
 @Component({
   selector: 'app-order-list-user',
@@ -15,7 +16,7 @@ export class OrderListUserComponent implements OnInit {
   orders: Order[];
   // details: boolean[];
 
-  constructor(private orderService: OrderService, private authenticationService: AuthenticationService) {
+  constructor(private orderService: OrderService, private authenticationService: AuthenticationService, private userService: UserService) {
     // this.details = [];
     this.updateOrder();
   }
@@ -40,11 +41,14 @@ export class OrderListUserComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   confirmOrder(i: number) {
     let currOrder = this.orders[i];
     currOrder.status = DeliveryStatus.Completed;
     this.orderService.updateOrder(currOrder._id, currOrder);
+    let dm = currOrder._deliveryMan;
+    dm.status = WorkerStatus.FREE;
+    this.userService.updateUser(dm._id, dm);
   }
 
 }
