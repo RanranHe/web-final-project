@@ -30,6 +30,7 @@ export class OrderAssignManagerComponent implements OnInit {
   restaurants: Array<Restaurant>;
   order: string;
   dMId: string;
+  
 
   constructor(userService: UserService, private dataTransfer: DataTransfer, orderService: OrderService, private router:Router) { 
     this.orderService = orderService;
@@ -52,17 +53,40 @@ export class OrderAssignManagerComponent implements OnInit {
     );
   }
 
-  assignOrder(deliveryMan: User){
+  updateUser(deliveryMan: User, or_id:string){
     let tmpMan: any = {};
-    deliveryMan.status = WorkerStatus.BUSY;
+    console.log(or_id);
+    deliveryMan.orders.push(or_id);
+    
     tmpMan.id = deliveryMan._id;
+    
     tmpMan.newUser = deliveryMan;
+    
+    // tmpMan.orders.push(or);
     this.userService.updateUser(deliveryMan._id, tmpMan).subscribe(delMan=>
      {
         console.log(delMan);
         
     });
+  }
+
+  assignOrder(deliveryMan: User){
+    
+    deliveryMan.status = WorkerStatus.BUSY;
     this.updateOrderStatus(deliveryMan);
+    // deliveryMan.orders.push(or);
+    // tmpMan.id = deliveryMan._id;
+    // tmpMan.newUser = deliveryMan;
+   
+    // // tmpMan.orders.push(or);
+    // this.userService.updateUser(deliveryMan._id, tmpMan).subscribe(delMan=>
+    //  {
+    //     console.log(delMan);
+        
+    // });
+
+  
+    
       // tmpMan.username = this.username;
       // tmpMan.password = this.password;
       // tmpMan.role = this.role;
@@ -83,17 +107,21 @@ export class OrderAssignManagerComponent implements OnInit {
     
   }
 
-  updateOrderStatus(deliveryMan: User){
+  updateOrderStatus(deliveryMan: User) {
+    let no: Order;
     this.orderService.findOrderById(this.orderId).subscribe(res=>{
       if(res){
-        let no = new Order(res._user, res.address, res.foods, res.creditCard, res.creditCardHolder, res.creditCardExpireDate, res.name, res.totalPrice, res.phone);
+        no = new Order(res._user, res.address, res.foods, res.creditCard, res.creditCardHolder, res.creditCardExpireDate, res.name, res.totalPrice, res.phone);
         if(res.status == DeliveryStatus.Processing){
           no.status = DeliveryStatus.Pickup;
           no._deliveryMan = deliveryMan;
         }
         this.orderService.updateOrder(this.orderId, no);
+        this.updateUser(deliveryMan, res._id);
       }
     })
+    
+    
   }
   back(){
     this.router.navigateByUrl("orderListManager");

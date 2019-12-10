@@ -30,52 +30,23 @@ export class AddDeliveryManComponent implements OnInit {
   }
 
   
-  // if username and password are valid
+  // use this function create new delivery man object.
+  // for delivery man creation, three arguments are needed: username, password and role title.
   directToHomePage() {
-    // in order to pass global value to a nested function
-    // const userService = this.userService;
-    
     const username = this.itemForm.get('email').value;
     const pass = this.itemForm.get('pass').value;
+    // new delivery man object created.
     const newdel = new User(username, pass, Role.DELIVERYMAN);
     console.log(newdel);
+    //call register function from userService to post delivery man into DB.
     this.userService.register(newdel).subscribe(user=>{
       this.tempUser = user;
       console.log(this.tempUser);
     });
-    // this.findUserByEmail(this.itemForm.get('email').value).subscribe(user=>{
-    //   console.log(user);
-    //   user.status =  WorkerStatus.FREE;
-    //   this.tempUser.username = user.username;
-    //   this.tempUser.password = user.password;
-    //   this.tempUser.role = user.role;
-    //   this.tempUser.status = WorkerStatus.FREE;
-    //   console.log(this.tempUser);
-    //   this.updateUser(user._id, this.tempUser);
-    // });
     console.log(this.tempUser);
-    
-    // js validation, if pass or validations, then return true;
-    // else return false;
-    // const result = signUpcheckValid();
-
-    // search typed in email in database, in order to check whether it already exists.
-    // this.userService.findUserByEmail(email).subscribe(user => checkAndRegisterUser(user));
-
-    // if the email already exists, show alert
-    // else register this new user
-    // function checkAndRegisterUser(user) {
-    //   if (!user) {
-      //   // call js effects
-      //   signUpExistUserAlert();
-      // } else {
-      //   if (result) {
-          // creat new delivery man and call userService
-          
-        // } else {
-        //   return;
   }
 
+  
   findUserByEmail(email: string){
     return this.userService.findUserByEmail(email);
   }
@@ -84,6 +55,7 @@ export class AddDeliveryManComponent implements OnInit {
     this.userService.updateUser(userId, tempUser);
   }
   
+  //use this function to nevigate back to admin main page after new delivery man has been created.
   backto(){
     this.router.navigateByUrl("restaurant-search");
   }

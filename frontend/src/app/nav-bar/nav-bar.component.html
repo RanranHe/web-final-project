@@ -2,8 +2,8 @@
   <div class="container">
     <ul class="navbar-left">
       <li><a href="">Home</a></li>
-      <li><button (click)="restaurantModification()">Admin</button></li>
-      <li><button (click)="deliveryManEntry()">Delivery Man</button></li>
+      <li><a *ngIf="checkUser('ADMIN')" (click)="restaurantModification()">Admin</a></li>
+      <li><a *ngIf="checkUser('DELIVERYMAN')" (click)="deliveryManEntry()">Delivery Man</a></li>
     </ul> <!--end navbar-left -->
 
     <ul class="navbar-right">
@@ -13,7 +13,7 @@
         <a *ngIf="isLogin" (click)="logout()" href="/login">Logout</a>
       </li>
       <li>
-        <a *ngIf="isLogin" href="/orderList">My Order</a>
+        <a *ngIf="isLogin && !checkUser('ADMIN')" href="/orderList">My Order</a>
       </li>
       <li *ngIf="isCustomer"><a href="javascript:;" id="cart" (mouseover)="show()" (click)="jumpToCart()"><i
         class="fa fa-shopping-cart"></i> Cart</a>
