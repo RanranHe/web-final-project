@@ -1,6 +1,6 @@
 
 <h1>delivery-man works!</h1>
-
+<!-- delivery man view, all orders belong to this delivery man with order status -->
 <div class="list-group-item">
   <h5 class="header">All Of Your Orders</h5>
 </div>
@@ -22,6 +22,7 @@
       <td>{{ob.address}}</td>
       <td>{{ob.totalPrice}}</td>
       <td>{{ob.date}}</td>
+      <!-- convert order status from number to string -->
       <td *ngIf="ob.status==0">
           Processing
       </td>

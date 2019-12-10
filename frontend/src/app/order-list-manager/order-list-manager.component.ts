@@ -19,7 +19,8 @@ export class OrderListManagerComponent implements OnInit {
     this.orderService = orderService;
     this.getAllOrders();
   }
-  
+
+  //find all orders with histocrical orders in the website 
   getAllOrders(){
     this.orders = new Array<Order>();
     this.orderService.getAllOrders().subscribe(
@@ -31,6 +32,7 @@ export class OrderListManagerComponent implements OnInit {
     );
   }
 
+  // nevigate to the assign delivery man component for next step.
   assignToDeliveryMan(orderId: string){
     this.dataTransfer.setData(orderId);
     this.router.navigateByUrl("orderAssignManager");

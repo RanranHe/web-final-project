@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
   tax: number;
   finalTotal: number;
 
-
+  // initial cart
   constructor(private carService: CartService, private orderService: OrderService, private authenticationService: AuthenticationService, private router: Router) {
     this.foods = this.carService.retrieveCart();
     this.totalItemNum = this.carService.retrieveTotalItemNum();
@@ -29,7 +29,7 @@ export class CartComponent implements OnInit {
     this.tax = parseFloat((this.taxRate * this.totalPrice).toFixed(2));
     this.finalTotal = this.tax + parseFloat(this.totalPrice);
   }
-
+  // reset cart to empty
   resetCart() {
     this.carService.resetCart();
     window.location.reload();

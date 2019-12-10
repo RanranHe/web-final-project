@@ -29,15 +29,18 @@ export class DeliveryManComponent implements OnInit {
     this.authenticationService = authenticationService;
     this.currDelMan = this.authenticationService.currentUserValue;
     this.currDelManId = this.currDelMan._id;
+    // show orders when this page be opened.
     this.getAllYourOrders();
   }
 
+  // fins all orders belong to this delivery man.
   getAllYourOrders(){
     if(!this.currDelMan){
       this.currDelMan = this.authenticationService.currentUserValue;
     }
     this.yourOrders = new Array<Order>();
     this.currDelMan.orders.map(oid=>{
+      //push each order into an array, for the table component in HTML.
      this.orderService.findOrderById(oid).subscribe(order=>{
       this.yourOrders.push(order);
      })
@@ -51,9 +54,10 @@ export class DeliveryManComponent implements OnInit {
     // );
   }
 
+  //pickup function for delivery man to change the status of each order.
   pickUp(order: Order){
     if(order.status == DeliveryStatus.Pickup){
-      
+      //new an order with the information from the old order, in order to update the order with original order id.
       let no = new Order(order._user, order.address, order.foods, order.creditCard, order.creditCardHolder, order.creditCardExpireDate, order.name, order.totalPrice, order.phone);
       no.status = DeliveryStatus.OnTheWay;
       this.orderService.updateOrder(order._id, no);

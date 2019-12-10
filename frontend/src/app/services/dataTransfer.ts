@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+// an additional service for data transfer between different components. 
 
 @Injectable()
 export class DataTransfer {

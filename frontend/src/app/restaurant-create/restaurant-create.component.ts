@@ -44,6 +44,7 @@ export class RestaurantCreateComponent implements OnInit {
     this.curUserId = this.curUser._id;
   }
 
+  // call this function to create a new restuarant.
   createRestaurant(){
     let foods = new Array<Food>();
     let restNew:any = {};
@@ -57,16 +58,6 @@ export class RestaurantCreateComponent implements OnInit {
     restNew.phone = this.phone;
     restNew.url = this.uRL;
     restNew.food = foods;
-    // restNew.name = this.restCreateForm.controls['name'].value;
-    // restNew.address = this.restCreateForm.controls['address'].value;
-    // console.log("Restaurantn Address: " + this.restCreateForm.controls['address'].value);
-    // restNew.city = this.restCreateForm.controls['city'].value;
-    // restNew.state = this.restCreateForm.controls['state'].value;
-    // restNew.zip = this.restCreateForm.controls['zip'].value;
-    // restNew.foodType = this.restCreateForm.controls['foodType'].value;
-    // restNew.phone = this.restCreateForm.controls['phone'].value;
-    // restNew.url = this.restCreateForm.controls['url'].value;
-
     console.log("current_id:"+this.curUser._id);
     console.log("current_id:"+JSON.stringify(restNew));
     this.restaurantService.createRestaurant(restNew, this.curUser._id);
@@ -89,6 +80,7 @@ export class RestaurantCreateComponent implements OnInit {
     
 }
 
+//clear up the input fields of new restaurant information.
   cleanUp(){
     this.name = "";
     this.address = "";
@@ -100,10 +92,13 @@ export class RestaurantCreateComponent implements OnInit {
     this.uRL = "";
   }
 
+
+// back to the main page 
   backToSearch(){
     this.router.navigateByUrl("restaurant-search");
   }
 
+  //provide the validator to the input fields 
   ngOnInit() {
     this.restCreateForm = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -117,6 +112,7 @@ export class RestaurantCreateComponent implements OnInit {
     });
   }
 
+  // apply validator
   get f() { return this.restCreateForm.controls; }
 
   onReset() {

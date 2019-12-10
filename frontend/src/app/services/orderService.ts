@@ -7,6 +7,8 @@ import {environment} from '../../environments/environment';
 import {observable, Observable} from 'rxjs';
 import { Order } from '../models/order';
 
+// order service for all order measurements.
+
 @Injectable()
 export class OrderService {
   resourceURL: string;
