@@ -46,6 +46,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } fro
 import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddDeliveryManComponent } from './add-delivery-man/add-delivery-man.component';
+import { DeliveryManComponent } from './delivery-man/delivery-man.component';
 
 
 export const MY_MOMENT_FORMATS = {
@@ -83,7 +84,8 @@ export const MY_MOMENT_FORMATS = {
     OrderListManagerComponent,
     OrderListUserComponent,
     OrderNewComponent,
-    AddDeliveryManComponent
+    AddDeliveryManComponent,
+    DeliveryManComponent
   ],
   imports: [
     BrowserModule,

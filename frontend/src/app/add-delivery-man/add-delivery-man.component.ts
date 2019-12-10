@@ -4,7 +4,7 @@ import {UserService} from '../services/userService'
 import {Router} from '@angular/router';
 import {Role, User, WorkerStatus} from "../models/user";
 import { containsElement } from '@angular/animations/browser/src/render/shared';
-import { ConsoleReporter } from 'jasmine';
+
 
 declare var signUpFormTextControl: any;
 declare var signUpcheckValid: any;

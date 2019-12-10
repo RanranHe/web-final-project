@@ -88,6 +88,10 @@ export class NavBarComponent implements OnInit {
     this.router.navigateByUrl("restaurant-search");
   }
 
+  deliveryManEntry(){
+    this.router.navigateByUrl("deliveryman");
+  }
+
   ngOnInit() {
 
   }

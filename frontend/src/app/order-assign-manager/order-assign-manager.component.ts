@@ -60,6 +60,7 @@ export class OrderAssignManagerComponent implements OnInit {
         console.log(delMan);
         
     });
+    this.updateOrderStatus(deliveryMan);
       // tmpMan.username = this.username;
       // tmpMan.password = this.password;
       // tmpMan.role = this.role;
@@ -78,6 +79,18 @@ export class OrderAssignManagerComponent implements OnInit {
     //   this.orderService.updateOrder(this.orderId, this.newOrder);
     // })
     
+  }
+
+  updateOrderStatus(deliveryMan: User){
+    this.orderService.findOrderById(this.orderId).subscribe(res=>{
+      if(res){
+        if(res.status === DeliveryStatus.Processing){
+          res.status = DeliveryStatus.Pickup;
+          res._deliveryMan = deliveryMan;
+        }
+        this.orderService.updateOrder(this.orderId, res);
+      }
+    })
   }
   back(){
     this.router.navigateByUrl("orderListManager");
