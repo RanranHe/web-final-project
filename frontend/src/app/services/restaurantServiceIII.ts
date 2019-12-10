@@ -21,11 +21,13 @@ export class RestaurantServiceYelp {
     return this.http.get<Array<Restaurant>>(url);
   }
 
+  // get menu of the restaurant
   findMenuByRestaurant(apiKey) {
     const url = `${this.resourceURL}/menu?apikey=${apiKey}`;
     return this.http.get<Array<any>>(url);
   }
 
+  // find restaurant by apiKey
   findRestaurantByApiKey(apiKey) {
     const url = `${this.resourceURL}/restaurant?apikey=${apiKey}`;
     return this.http.get<Array<any>>(url);

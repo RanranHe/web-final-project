@@ -30,6 +30,7 @@ export class UserService {
     return this.http.get<User>(url);
   }
 
+  // find user by its id
   findUserById(userId: string) : Observable<User>{
     const url = this.resourceURLTemp + "/" + userId;
     const observable = this.http.get<User>(url);
@@ -39,12 +40,14 @@ export class UserService {
     return observable;
   }
 
+  // get all deliver man who are free
   findFreeDeliveryMan(): Observable<Array<User>>{
     const url = `${this.resourceURL}/deliveryMan/free`;
     const observable = this.http.get<Array<User>>(url);
     return observable;
   }
 
+  // update user details
   updateUser(userId: string, newUser: User): Observable<User>{
     const url = `${this.resourceURL}/user/${userId}`;
     const observable = this.http.put<User>(url, newUser);

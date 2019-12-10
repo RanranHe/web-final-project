@@ -24,6 +24,7 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
+  // set the current user into local storage
   public setCurrentUser(user) {
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.currentUserSubject.next(user);
@@ -43,6 +44,8 @@ export class AuthenticationService {
     return observable;
   }
 
+  // for user logout.
+  // this will remove currentUser from local storage
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');

@@ -27,6 +27,7 @@ export class RestaurantService {
     })
   }
 
+  // get restaurant by the apikey
   findRestaurantById(restaurantId: string): Observable<Restaurant>{
     const url = `${this.resourceURL}/restaurant/${restaurantId}`;
     const observable = this.http.get<Restaurant>(url);
@@ -34,6 +35,7 @@ export class RestaurantService {
     return observable;
   }
 
+  // get restaurants under which user
   findRestaurantByUserId(userId: string): Observable<Array<Restaurant>>{
     const url = `${this.resourceURL}/user/${userId}/restaurant`;
     const observable = this.http.get<Array<Restaurant>>(url);
@@ -43,6 +45,7 @@ export class RestaurantService {
     return observable;
   }
 
+  // update Restaurant details
   updateRestaurant(restaurantId:  string, newRestaurant: Restaurant): Observable<Restaurant>{
       const url = `${this.resourceURL}/restaurant/${restaurantId}`;
       const observable = this.http.put<Restaurant>(url, newRestaurant);
@@ -53,6 +56,7 @@ export class RestaurantService {
       return observable;
   }
 
+  // delete restaurant
   deleteRestaurant(restaurantId: string){
     const url = `${this.resourceURL}/restaurant/${restaurantId}`;
     const observable = this.http.delete<Restaurant>(url);
@@ -62,6 +66,7 @@ export class RestaurantService {
     return observable;
   }
 
+  // create item in menu
   insertFood(restaurantId: string, newFood: Food): Observable<Restaurant>{
     const url = `${this.resourceURL}/restaurant/insertFood/${restaurantId}`;
     const observable = this.http.put<Restaurant>(url, newFood);
@@ -76,10 +81,14 @@ export class RestaurantService {
     const url = `${this.yelpResourceURL}?location=${location}`;
     return this.http.get<Array<Restaurant>>(url);
   }
+
+  // find restaurant by api key
   findRestaurantByApiKey(apiKey) {
     const url = `${this.yelpResourceURL}/restaurant?apikey=${apiKey}`;
     return this.http.get<Array<any>>(url);
   }
+
+  // find menu by restaurant key
   findMenuByRestaurant(apiKey) {
     const url = `${this.yelpResourceURL}/menu?apikey=${apiKey}`;
     return this.http.get<Array<any>>(url);
