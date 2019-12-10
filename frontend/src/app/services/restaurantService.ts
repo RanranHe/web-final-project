@@ -6,6 +6,7 @@ import {User} from "../models/user";
 import {environment} from '../../environments/environment';
 import {observable, Observable} from 'rxjs';
 
+// service for restaurant modification.
 @Injectable()
 export class RestaurantService {
   resourceURL: string;

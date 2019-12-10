@@ -33,22 +33,10 @@ export class RestaurantUpdateComponent implements OnInit {
     this.restaurantService = restaurantService;
     if(this.restID){
       this.showUpdate();
-      // restTemp.subscribe(res => this.restName = res.name);
-      // restTemp.subscribe(res => this.name = res.name);
-      // restTemp.subscribe(res => this.foodType = res.foodType);
-      // restTemp.subscribe(res => this.phone = res.phone);
-      // restTemp.subscribe(res => this.address = res.address);
-      // restTemp.subscribe(res => this.city = res.city);
-      // restTemp.subscribe(res => this.state = res.state);
-      // restTemp.subscribe(res => this.zip = res.zip);
-      // restTemp.subscribe(res => this.uRL = res.url);
-      // restTemp.subscribe(res => this.foods = res.food);
     }
   }
-
+// refresh the restaurant information after update.
 showUpdate(){
-  // restTemp: Restaurant;
-  //let res: Observable<Restaurant>;
   this.restaurantService.findRestaurantById(this.restID).subscribe(res=>{
     if(res){
       this.name = res["name"];
@@ -68,6 +56,8 @@ showUpdate(){
   
   
 }
+
+// call this function to update the restaurant information
 updateRestaurant(){
     let restTemp1: any = {};
     restTemp1.name = this.name;
@@ -85,6 +75,7 @@ updateRestaurant(){
     
   }
 
+  // enrich the food menue of this restaurant.
   addFood(){
     let foodTemp: any = {};
     foodTemp.name = this.newFoodName;
