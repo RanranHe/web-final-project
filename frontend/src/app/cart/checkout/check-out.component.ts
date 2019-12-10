@@ -28,6 +28,7 @@ export class CheckOutComponent implements OnInit {
   alert = false;
 
   constructor(private carService: CartService, private orderService: OrderService, private authenticationService: AuthenticationService, private router: Router) {
+    // retrieve data from cart
     this.foods = this.carService.retrieveCart();
     this.totalItemNum = this.carService.retrieveTotalItemNum();
     this.totalPrice = this.carService.retrieveTotalPrice();
@@ -37,11 +38,14 @@ export class CheckOutComponent implements OnInit {
       this.currUser = user
     });
 
+    // payment info part
     this.paymentForm = new FormGroup({
       creditCard: new FormControl('', Validators.required),
       creditCardHolder: new FormControl('', Validators.required),
       creditCardExpireDate: new FormControl('', Validators.required)
     });
+
+    // contact info part
     this.contactForm = new FormGroup({
       contactName: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
@@ -49,6 +53,7 @@ export class CheckOutComponent implements OnInit {
     });
   }
 
+  // do validation and create a new order under this user
   generateOrder() {
     const creditCard = this.paymentForm.get("creditCard").value;
     const creditCardHolder = this.paymentForm.get("creditCardHolder").value;

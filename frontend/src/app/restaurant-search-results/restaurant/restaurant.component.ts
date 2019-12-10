@@ -31,6 +31,7 @@ export class RestaurantComponent implements OnInit {
       + this.restaurant.state + ' ' + this.restaurant.zip;
   }
 
+  // go to menu page
   jumpToMenu(apikey: string) {
     this.router.navigate([`/restaurant/${apikey}/menu`])
   }

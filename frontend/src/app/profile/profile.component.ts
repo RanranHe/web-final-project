@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
       phone: new FormControl('', Validators.required)
     });
 
+    // get current user
     this.authenticationService.currentUser.subscribe(user => {
       if (user) {
         this.currentUser = user;
@@ -34,6 +35,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    // default populate user info
     if (this.currentUser !== null) {
       let email = '';
       let first = '';
@@ -59,6 +61,7 @@ export class ProfileComponent implements OnInit {
         phone: phone
       });
 
+      // form control
       Object.keys(this.itemForm.controls).forEach(attr => {
         if(this.itemForm.get(`${attr}`).value !== '') {
           document.getElementById(`${attr}`).classList.add('has-val');

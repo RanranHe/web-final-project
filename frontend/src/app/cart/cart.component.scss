@@ -13,6 +13,7 @@ $fontSerif: Poppins-Regular, serif;
   box-sizing: border-box;
 }
 
+//for each Line
 .row{
   display: flex;
   flex-direction: column;
@@ -56,6 +57,7 @@ $fontSerif: Poppins-Regular, serif;
 
 }
 
+// first title
 .projTitle {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;

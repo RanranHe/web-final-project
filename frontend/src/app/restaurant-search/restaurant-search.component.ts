@@ -67,15 +67,18 @@ export class RestaurantSearchComponent implements OnInit {
     this.router.navigateByUrl("restaurant-create");
   }
 
+  // update restaurant
   toUpdate(restId){
     this.datatransfer.setData(restId);
     this.router.navigateByUrl("restaurant-update");
   }
 
+  // check all orders
   toCheckOrders(){
     this.router.navigateByUrl("orderListManager");
   }
 
+  // create delivery man
   toAddDeliveryMan(){
     this.router.navigateByUrl("adddeliveryman");
   }

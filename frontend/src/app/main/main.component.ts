@@ -24,6 +24,7 @@ export class MainComponent implements OnInit {
     console.log(this.currentUser);
   }
 
+  // go to result page
   jumpToSearch(key: string) {
     this.router.navigate([`/list/${key}`]);
   }

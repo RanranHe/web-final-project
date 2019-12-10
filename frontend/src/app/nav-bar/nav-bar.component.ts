@@ -84,14 +84,17 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/cart'])
   }
 
+  // go to restaurant search page
   restaurantModification(){
     this.router.navigateByUrl("restaurant-search");
   }
 
+  // go to delivery man work area
   deliveryManEntry(){
     this.router.navigateByUrl("deliveryman");
   }
 
+  // check the user role
   checkUser(r: String):boolean{
     if(this.currentUser){
       return this.currentUser.role == r;

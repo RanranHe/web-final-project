@@ -28,7 +28,8 @@ export class CartItemComponent implements OnInit {
       quantity: this.item.quantity
     });
   }
-// show restaurant/item details
+
+  // show restaurant/item details
   modifyQuantity(restaurantName, item, itemForm) {
 
     const itemName = item.name;
@@ -39,7 +40,7 @@ export class CartItemComponent implements OnInit {
       this.deleteItem(restaurantName, itemName);
       return;
     }
-    if(newNum === " " || !newNum) {
+    if (newNum === " " || !newNum) {
       return;
     }
     if (newNum === item.quantity) {
@@ -50,7 +51,8 @@ export class CartItemComponent implements OnInit {
     window.location.reload();
   }
 
-  deleteItem(restaurantName, itemName){
+  // delete an item from cart
+  deleteItem(restaurantName, itemName) {
     this.carService.deleteItem(restaurantName, itemName);
     window.location.reload();
   }
