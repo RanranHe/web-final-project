@@ -51,23 +51,10 @@ export class CartComponent implements OnInit {
   generateOrder(){
     console.log(this.creditCardExpireDate)
     let currOrder = new Order(this.currUser, this.address, this.foods, this.creditCard, this.creditCardHolder, "12/23/12", this.contactName, this.totalPrice, this.phone);
-<<<<<<< HEAD
-    const order = this.orderService.createOrder(currOrder, this.currUser._id).subscribe(order=>{
-      console.log("getorder");
-    }
-      
-    );
-    
-    
-    this.router.navigate(["orderList"]);
-    
-   
-    
-=======
+
     currOrder.status = DeliveryStatus.Processing;
     const order = this.orderService.createOrder(currOrder, this.currUser._id)
     this.router.navigate(["orderList"]);
->>>>>>> add order details
   }
 
   ngOnInit() {
