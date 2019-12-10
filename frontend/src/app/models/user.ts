@@ -22,7 +22,7 @@ export class User {
   dateCreated: Date;
   // For users
   phone: string;
-  orders: Array<Order>;
+  orders: Array<string>;
   // For managers
   income: Number;
   restaurants: Array<Restaurant>;
@@ -35,7 +35,7 @@ export class User {
     this.password = password;
     this.role = role;
     this.dateCreated = new Date();
-    this.orders = new Array<Order>();
+    this.orders = new Array<string>();
     this.restaurants = new Array<Restaurant>();
     this.reviews = new Array<Review>();
     this.status = WorkerStatus.FREE;

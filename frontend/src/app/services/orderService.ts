@@ -45,7 +45,10 @@ export class OrderService {
 
   updateOrder(orderId: string, newOrder: Order): Observable<Order>{
     const url = `${this.resourceURL}/order/${orderId}`;
-    const observable = this.http.post<Order>(url, newOrder);
+    const observable = this.http.put<Order>(url, newOrder);
+    observable.subscribe(res=>{
+      console.log(res);
+    })
     return observable;
   }
 

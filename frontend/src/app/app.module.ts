@@ -39,10 +39,8 @@ import { appRoutes } from './route';
 import { RestaurantSearchComponent } from './restaurant-search/restaurant-search.component';
 import { OrderService } from './services/orderService';
 import { OrderAssignManagerComponent } from './order-assign-manager/order-assign-manager.component';
-import { OrderListComponent } from './order-list/order-list.component';
 import { OrderListManagerComponent } from './order-list-manager/order-list-manager.component';
 import { OrderListUserComponent } from './order-list-user/order-list-user.component';
-import { OrderNewComponent } from './order-new/order-new.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -82,10 +80,8 @@ export const MY_MOMENT_FORMATS = {
     LeftSideComponent,
     ItemComponent,
     OrderAssignManagerComponent,
-    OrderListComponent,
     OrderListManagerComponent,
     OrderListUserComponent,
-    OrderNewComponent,
     AddDeliveryManComponent,
     DeliveryManComponent
   ],
