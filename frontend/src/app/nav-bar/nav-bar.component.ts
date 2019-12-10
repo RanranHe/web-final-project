@@ -92,6 +92,14 @@ export class NavBarComponent implements OnInit {
     this.router.navigateByUrl("deliveryman");
   }
 
+  checkUser(r: String):boolean{
+    if(this.currentUser){
+      return this.currentUser.role == r;
+    }
+    return false;
+   
+  }
+
   ngOnInit() {
 
   }

@@ -20,31 +20,45 @@ export class DeliveryManComponent implements OnInit {
   deliveryManId: string;
   authenticationService: AuthenticationService;
   currDelMan: User;
-  currDelManId: string
+  currDelManId: string;
+  orderStatus: DeliveryStatus
 
   constructor(orderService: OrderService, private dataTransfer: DataTransfer, private router: Router, authenticationService: AuthenticationService) { 
     this.orderService = orderService;
-    this.getAllYourOrders(); 
+    
     this.authenticationService = authenticationService;
     this.currDelMan = this.authenticationService.currentUserValue;
-    this.currDelManId = this.currDelMan._id
+    this.currDelManId = this.currDelMan._id;
+    this.getAllYourOrders();
   }
 
   getAllYourOrders(){
+    if(!this.currDelMan){
+      this.currDelMan = this.authenticationService.currentUserValue;
+    }
     this.yourOrders = new Array<Order>();
-    this.orderService.findOrdersByDeliveryManId(this.currDelManId).subscribe(
-      orderList=>{orderList.forEach(
-        order=>{
-          this.yourOrders.push(order);
-        }
-      )}
-    );
+    this.currDelMan.orders.map(oid=>{
+     this.orderService.findOrderById(oid).subscribe(order=>{
+      this.yourOrders.push(order);
+     })
+   })
+    // this.orderService.findOrdersByDeliveryManId(this.currDelManId).subscribe(
+    //   orderList=>{orderList.forEach(
+    //     order=>{
+    //       this.yourOrders.push(order);
+    //     }
+    //   )}
+    // );
   }
 
   pickUp(order: Order){
-    if(order.status === DeliveryStatus.Pickup){
-      order.status = DeliveryStatus.OnTheWay;
-      this.orderService.updateOrder(order._id, order);
+    if(order.status == DeliveryStatus.Pickup){
+      
+      let no = new Order(order._user, order.address, order.foods, order.creditCard, order.creditCardHolder, order.creditCardExpireDate, order.name, order.totalPrice, order.phone);
+      no.status = DeliveryStatus.OnTheWay;
+      this.orderService.updateOrder(order._id, no);
+      this.getAllYourOrders();
+      // this.orderService.updateOrder(this.orderId, no);
     }
   }
 

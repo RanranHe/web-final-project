@@ -23,8 +23,19 @@
             <td>{{ob.address}}</td>
             <td>{{ob.totalPrice}}</td>
             <td>{{ob.date}}</td>
-            <td>{{ob.status}}</td>
-            <td><button class="btn btn-primary" (click)="assignToDeliveryMan(ob._id)">Assign</button></td>
+            <td *ngIf="ob.status==0">
+                Processing
+            </td>
+            <td *ngIf="ob.status==1">
+              Pickup
+            </td>
+            <td *ngIf="ob.status==2">
+              OnTheWay
+            </td>
+            <td *ngIf="ob.status==3">
+              Cancelled
+            </td>
+            <td><button *ngIf="ob.status==0" class="btn btn-primary" (click)="assignToDeliveryMan(ob._id)">Assign</button></td>
           </tr>
         </tbody>
       </table>
