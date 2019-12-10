@@ -18,9 +18,9 @@ export class UserService {
   register(user: User = null): Observable<User> {
     const url = `${this.resourceURL}/register`;
     const observable = this.http.post<User>(url, {username: user.username, password: user.password, role: user.role, status: user.status});
-    // observable.subscribe(res => {
-    //   console.log(res);
-    // })
+    observable.subscribe(res => {
+      console.log(res);
+    })
     return observable;
   }
 

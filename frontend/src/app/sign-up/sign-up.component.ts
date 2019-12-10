@@ -32,6 +32,7 @@ export class SignUpComponent implements OnInit {
 
   // if username and password are valid
   directToHomePage() {
+    console.log("here")
     // in order to pass global value to a nested function
     const userService = this.userService;
     const email = this.itemForm.get('email').value;
@@ -60,6 +61,7 @@ export class SignUpComponent implements OnInit {
         }
       }
     }
+    this.router.navigate(['login']);
   }
 
 
