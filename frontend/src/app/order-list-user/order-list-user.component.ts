@@ -19,7 +19,7 @@ export class OrderListUserComponent implements OnInit {
     // this.details = [];
     this.updateOrder();
   }
-
+  //find current user's orderlist
   updateOrder() {
     this.authenticationService.currentUser.subscribe(user => {
       this.currUser = user
@@ -40,7 +40,7 @@ export class OrderListUserComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
   confirmOrder(i: number) {
     let currOrder = this.orders[i];
     currOrder.status = DeliveryStatus.Completed;

@@ -28,7 +28,7 @@ export class CartItemComponent implements OnInit {
       quantity: this.item.quantity
     });
   }
-
+// show restaurant/item details
   modifyQuantity(restaurantName, item, itemForm) {
 
     const itemName = item.name;

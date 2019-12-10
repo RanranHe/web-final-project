@@ -1,3 +1,4 @@
+<!-- show current customer's order and details -->
 <div class="wrap cf">
   <h1 class="projTitle">My Orders</h1>
   <div class="heading cf">
@@ -17,7 +18,6 @@
             <p>${{item.price}}</p>
           </div>
         </div>
-<<<<<<< HEAD
       </li>
       <div class="cartSection smallerPriceSize">
         <p><b>Total:</b>&nbsp;&nbsp;${{order.totalPrice}}</p>
@@ -81,54 +81,3 @@
         <!--</div>-->
     <!--</div>-->
 <!--</div>-->
-=======
-        <div class="panel-body">
-            
-            <ul class="list-group"  *ngFor="let order of orders; let i = index">
-                <div class="row">
-                    <a data-toggle="collapse" data-target="#{{order._id}}"><b><h4>Order on date: {{order.date}}</h4></b></a>
-                    <button (click)="showDetails(i)">details</button>
-                </div>
-                
-                <div class="orderList" id="{{order._id}}">
-                    <li class="list-group-item row">
-                        <b>Order by:</b> {{order.name}}
-                    </li>
-                    
-                    <li class="list-group-item row">
-                        <b>Total Price:</b> {{order.totalPrice}}
-                    </li>
-                    
-                </div>
-                <div *ngIf="details[i]">
-                    <li class="list-group-item row">
-                        <b>Phone Number:</b> {{order.phone}}
-                    </li>
-                    <li class="list-group-item row">
-                        
-                            <b>Current Status: </b> 
-                            <div *ngIf="order.status==0">
-                                Processing
-                            </div>
-                            <div *ngIf="order.status==1">
-                                Pickup
-                            </div>
-                            <div *ngIf="order.status==2">
-                                OnTheWay
-                            </div>
-                            <div *ngIf="order.status==3">
-                                Cancelled
-                            </div>
-                            <div *ngIf="order.status==4">
-                                Completed
-                            </div>
-                            <button *ngIf="order.status==3" (click)="confirmOrder(i)">Comfirm Order</button>
-                        
-                    </li>
-                </div>
-               
-            </ul>
-        </div>
-    </div>
-</div>
->>>>>>> updatee
