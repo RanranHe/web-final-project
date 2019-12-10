@@ -41,7 +41,7 @@ export class OrderListUserComponent implements OnInit {
 
   ngOnInit() {
   }
-
+ //after confirmed order, status changed to confirmed
   confirmOrder(i: number) {
     let currOrder = this.orders[i];
     currOrder.status = DeliveryStatus.Completed;
