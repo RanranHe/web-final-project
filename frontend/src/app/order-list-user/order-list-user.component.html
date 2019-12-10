@@ -1,16 +1,17 @@
-<p>
-  order-list-user works!
-</p>
-<div class="panel panel-default orderPanel">
+<div class="orderPanel">
     <div class="panel-heading">
-        <b><h3 class="header">My Orders</h3></b>
-        <button (click)="updateOrder()">update</button>
+        <div class="row">
+            <b><h3 class="header">My Orders</h3></b>
+            <button class="updateBtn" (click)="updateOrder()">update</button>
+        </div>
         <div class="panel-body">
             
             <ul class="list-group"  *ngFor="let order of orders; let i = index">
-
-                <a data-toggle="collapse" data-target="#{{order._id}}" aria-expanded="false" class="list-group-item grey"><b><h4>Order on date: {{order.date}}</h4></b></a>
-                <button (click)="showDetails(i)">details</button>
+                <div class="row">
+                    <a data-toggle="collapse" data-target="#{{order._id}}"><b><h4>Order on date: {{order.date}}</h4></b></a>
+                    <button (click)="showDetails(i)">details</button>
+                </div>
+                
                 <div class="orderList" id="{{order._id}}">
                     <li class="list-group-item">
                         <b>Order by:</b> {{order.name}}
