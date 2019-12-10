@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 
+// to ensure the user can't access some url until log in.
 export class AuthGuard implements CanActivate {
   loggedIn = false;
 
@@ -15,6 +16,7 @@ export class AuthGuard implements CanActivate {
       if (user) {
         this.loggedIn = true;
       } else {
+        // redirect to login page
         this.router.navigateByUrl('/login');
         this.loggedIn = false;
       }
