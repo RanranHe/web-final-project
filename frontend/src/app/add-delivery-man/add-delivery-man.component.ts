@@ -39,11 +39,7 @@ export class AddDeliveryManComponent implements OnInit {
     const newdel = new User(username, pass, Role.DELIVERYMAN);
     console.log(newdel);
     //call register function from userService to post delivery man into DB.
-    this.userService.register(newdel).subscribe(user=>{
-      this.tempUser = user;
-      console.log(this.tempUser);
-    });
-    console.log(this.tempUser);
+    this.userService.register(newdel);
   }
 
   

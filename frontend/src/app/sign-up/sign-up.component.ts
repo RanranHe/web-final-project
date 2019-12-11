@@ -45,6 +45,7 @@ export class SignUpComponent implements OnInit {
     // search typed in email in database, in order to check whether it already exists.
     this.userService.findUserByEmail(email).subscribe(user => checkAndRegisterUser(user));
 
+    let router = this.router;
     // if the email already exists, show alert
     // else register this new user
     function checkAndRegisterUser(user) {
@@ -59,9 +60,9 @@ export class SignUpComponent implements OnInit {
         } else {
           return;
         }
+        router.navigate(['login']);
       }
     }
-    this.router.navigate(['login']);
   }
 
 
