@@ -1,10 +1,12 @@
 $fontSans: Poppins-Regular, serif;
 
+// cart info
 .infoWrap {
   display: table;
   width: 100%;
 }
 
+// for each item
 .cartSection {
   display: table-cell;
 
@@ -78,6 +80,7 @@ $fontSans: Poppins-Regular, serif;
   width: 60px;
 }
 
+// remove button
 a.remove {
   text-decoration: none;
   font-family: $fontSans;

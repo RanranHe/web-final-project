@@ -20,6 +20,7 @@ $light-text: #ABB0BE;
   color: $main-color;
 }
 
+// for the nav bar
 nav {
   height: 40px;
   width: 100%;
@@ -40,6 +41,7 @@ nav {
     float: right;
   }
 
+  // for each section
   ul {
     padding: 0;
     margin: 0;
@@ -84,6 +86,7 @@ nav {
   white-space: nowrap;
 }
 
+// for shopping cart
 .shopping-cart {
   font-family: Poppins-Regular, serif;
   right: 8%;
@@ -108,6 +111,7 @@ nav {
     }
   }
 
+  // shopping cart item name
   h6 {
     color: black;
     padding-top: 15px;
@@ -143,6 +147,7 @@ nav {
   }
 }
 
+// cart icon
 .cart-icon {
   color: #515783;
   font-size: 24px;
@@ -150,6 +155,7 @@ nav {
   float: left;
 }
 
+// for checkout button
 .button {
   background: $main-color;
   color: white;
