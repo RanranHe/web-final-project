@@ -27,7 +27,7 @@ export class CartComponent implements OnInit {
     this.totalItemNum = this.carService.retrieveTotalItemNum();
     this.totalPrice = this.carService.retrieveTotalPrice();
     this.tax = parseFloat((this.taxRate * this.totalPrice).toFixed(2));
-    this.finalTotal = this.tax + parseFloat(this.totalPrice);
+    this.finalTotal = parseFloat((this.tax + parseFloat(this.totalPrice)).toFixed(2));
   }
   // reset cart to empty
   resetCart() {
